@@ -11,15 +11,15 @@ const DATA_CACHE_NAME = 'mini-trainer-data-v1';
 
 // Static assets to cache immediately on install
 const STATIC_ASSETS = [
-    './',
-    './index.html',
-    './vite.svg',
-    './manifest.json',
+    '/',
+    '/index.html',
+    '/vite.svg',
+    '/manifest.json',
 ];
 
 // Data files to cache on first request
 const DATA_ASSETS = [
-    './data/exercises.js',
+    '/data/exercises.js',
 ];
 
 // File extensions to consider as static assets
@@ -171,7 +171,7 @@ async function cacheFirst(request, cacheName) {
 
         // Return offline fallback for navigation requests
         if (request.mode === 'navigate') {
-            return caches.match('./index.html');
+            return caches.match('/index.html');
         }
 
         throw error;
@@ -204,7 +204,7 @@ async function networkFirst(request, cacheName) {
 
         // Return offline fallback for navigation requests
         if (request.mode === 'navigate') {
-            return caches.match('./index.html');
+            return caches.match('/index.html');
         }
 
         throw error;

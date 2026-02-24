@@ -1,14 +1,14 @@
 {
-    "name": "DaZ Lernspiele",
-    "short_name": "DaZ",
-    "description": "Deutsch als Zweitsprache - Interaktive Übungen für Deutschlerner:innen",
-    "start_url": "./",
+    "name": "Mini Trainer Engine",
+    "short_name": "MiniTrainer",
+    "description": "A configurable learning platform for educational exercises",
+    "start_url": "/",
     "display": "standalone",
-    "background_color": "#121212",
-    "theme_color": "#4ADE80",
+    "background_color": "#ffffff",
+    "theme_color": "#4F46E5",
     "orientation": "any",
-    "scope": "./",
-    "lang": "de",
+    "scope": "/",
+    "lang": "en",
     "categories": [
         "education",
         "kids",
@@ -16,13 +16,13 @@
     ],
     "icons": [
         {
-            "src": "./vite.svg",
+            "src": "/vite.svg",
             "sizes": "any",
             "type": "image/svg+xml",
             "purpose": "any"
         },
         {
-            "src": "./vite.svg",
+            "src": "/vite.svg",
             "sizes": "512x512",
             "type": "image/svg+xml",
             "purpose": "maskable"
@@ -31,17 +31,17 @@
     "screenshots": [],
     "shortcuts": [
         {
-            "name": "Übungen starten",
-            "short_name": "Übungen",
-            "description": "Starte eine neue Übungssession",
-            "url": "./?action=exercise",
+            "name": "Start Exercises",
+            "short_name": "Exercises",
+            "description": "Start a new exercise session",
+            "url": "/exercise",
             "icons": []
         },
         {
-            "name": "Mein Profil",
-            "short_name": "Profil",
-            "description": "Zeige deinen Fortschritt und Erfolge",
-            "url": "./?action=profile",
+            "name": "My Profile",
+            "short_name": "Profile",
+            "description": "View your progress and achievements",
+            "url": "/profile",
             "icons": []
         }
     ],
