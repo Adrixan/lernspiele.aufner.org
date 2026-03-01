@@ -5,7 +5,7 @@
  * Version: 1.0.0
  */
 
-const CACHE_NAME = 'mini-trainer-daz-v1772199272766';
+const CACHE_NAME = 'mini-trainer-daz-v1772381558441';
 const STATIC_CACHE_NAME = 'mini-trainer-static-v1';
 const DATA_CACHE_NAME = 'mini-trainer-data-v1';
 
