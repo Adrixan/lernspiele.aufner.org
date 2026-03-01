@@ -19,31 +19,10 @@
         return;
     }
 
-    // Base path for LLVM.js files - dynamically determine from current location
-    // This works because all Pascal.js files are in the same directory structure
-    var basePath = '';
-
-    // Get the base path from the current page location
-    // For deployment at /in-memoriam-pascal/, this will be '/in-memoriam-pascal/'
-    // For local development, this will be '/' or the appropriate path
-    (function () {
-        var pathParts = window.location.pathname.split('/');
-        // Remove the last part (current page) to get the app base
-        pathParts.pop();
-        // Find 'in-memoriam-pascal' or similar app directory
-        var appBase = '';
-        for (var i = 0; i < pathParts.length; i++) {
-            if (pathParts[i] && pathParts[i] !== '') {
-                appBase += pathParts[i] + '/';
-                if (pathParts[i].includes('pascal') || pathParts[i] === 'in-memoriam-pascal') {
-                    break;
-                }
-            }
-        }
-        basePath = appBase || './';
-    })();
-
-    var LLVM_BASE_PATH = basePath + 'external/pascal.js/llvm.js/';
+    // Base path for LLVM.js files - use relative path for subdirectory deployment
+    // Using ./external/... works because Vite's base: './' ensures all relative paths
+    // correctly resolve to the app's subdirectory (e.g., /in-memoriam-pascal/external/...)
+    var LLVM_BASE_PATH = './external/pascal.js/llvm.js/';
 
     // Internal read function with correct base path
     function readWithBasePath(filename) {
