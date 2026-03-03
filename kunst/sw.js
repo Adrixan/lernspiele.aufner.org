@@ -5,7 +5,7 @@
  * Version: 1.0.0
  */
 
-const CACHE_NAME = 'mini-trainer-mathematik-v1772520403463';
+const CACHE_NAME = 'mini-trainer-kunst-v1772520380194';
 const STATIC_CACHE_NAME = 'mini-trainer-static-v1';
 const DATA_CACHE_NAME = 'mini-trainer-data-v1';
 
