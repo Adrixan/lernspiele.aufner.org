@@ -1,0 +1,2 @@
+// subject.json - Auto-generated for USB/offline mode
+window.__TRAINER_SUBJECT__ = {"id":"ahs-englisch","name":"Englisch (AHS)","description":"Learn English for AHS Lower Level - Vocabulary, Grammar, and Communication","targetAudience":"Schülerinnen und Schüler der AHS Unterstufe (10-14 Jahre)","primarySkillArea":"language","enabledExerciseTypes":["multiple-choice","fill-blank","matching"],"exerciseTypeConfig":{"multiple-choice":{"hintsEnabled":false,"maxAttempts":1},"fill-blank":{"hintsEnabled":true,"maxAttempts":3},"matching":{"hintsEnabled":true,"maxAttempts":2}}};

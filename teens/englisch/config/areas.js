@@ -1,0 +1,2 @@
+// areas.json - Auto-generated for USB/offline mode
+window.__TRAINER_AREAS__ = {"areas":[{"id":"vocabulary","name":"Vocabulary","description":"Word knowledge","color":"#059669"},{"id":"grammar","name":"Grammar","description":"Language structure","color":"#0891b2"},{"id":"reading","name":"Reading","description":"Comprehension","color":"#7c3aed"},{"id":"listening","name":"Listening","description":"Listening skills","color":"#ea580c"},{"id":"writing","name":"Writing","description":"Text production","color":"#dc2626"}]};

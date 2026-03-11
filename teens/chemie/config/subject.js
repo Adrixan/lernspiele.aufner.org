@@ -1,0 +1,2 @@
+// subject.json - Auto-generated for USB/offline mode
+window.__TRAINER_SUBJECT__ = {"id":"ahs-chemie","name":"Chemie (AHS)","description":"Lerne Chemie für die AHS Unterstufe - Stoffe, Reaktionen und Periodensystem","targetAudience":"Schülerinnen und Schüler der AHS Unterstufe (10-14 Jahre)","primarySkillArea":"science","enabledExerciseTypes":["multiple-choice","fill-blank"],"exerciseTypeConfig":{"multiple-choice":{"hintsEnabled":false,"maxAttempts":1},"fill-blank":{"hintsEnabled":true,"maxAttempts":3}}};

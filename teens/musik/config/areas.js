@@ -1,0 +1,2 @@
+// areas.json - Auto-generated for USB/offline mode
+window.__TRAINER_AREAS__ = {"areas":[{"id":"rhythmus","name":"Rhythmus","description":"Takt und Metrum","color":"#db2777"},{"id":"melodie","name":"Melodie","description":"Tonfolgen","color":"#7c3aed"},{"id":"harmonie","name":"Harmonie","description":"Akkorde","color":"#0891b2"},{"id":"instrumente","name":"Instrumente","description":"Instrumentenkunde","color":"#ea580c"},{"id":"geschichte","name":"Musikgeschichte","description":"Epochen","color":"#78350f"}]};

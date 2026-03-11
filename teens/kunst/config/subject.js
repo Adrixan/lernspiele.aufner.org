@@ -1,0 +1,2 @@
+// subject.json - Auto-generated for USB/offline mode
+window.__TRAINER_SUBJECT__ = {"id":"ahs-kunst","name":"Kunst (AHS)","description":"Lerne Kunst für die AHS Unterstufe - Malerei, Zeichnung und Gestaltung","targetAudience":"Schülerinnen und Schüler der AHS Unterstufe (10-14 Jahre)","primarySkillArea":"arts","enabledExerciseTypes":["multiple-choice"],"exerciseTypeConfig":{"multiple-choice":{"hintsEnabled":false,"maxAttempts":1}}};

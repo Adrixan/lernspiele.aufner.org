@@ -1,0 +1,2 @@
+// badges.json - Auto-generated for USB/offline mode
+window.__TRAINER_BADGES__ = {"badges":[{"id":"lauf-k1","name":"Sprinter","description":"Schnell laufen","icon":"🏃","level":1,"requirement":{"type":"exercises","count":5,"areaId":"leichtathletik"}},{"id":"ball-k2","name":"Ball-Sportler","description":"Ballspiele","icon":"⚽","level":2,"requirement":{"type":"exercises","count":5,"areaId":"spiele"}},{"id":"gesund-k3","name":"Gesundheits-Experte","description":"Sport und Gesundheit","icon":"💪","level":3,"requirement":{"type":"exercises","count":5,"areaId":"gesundheit"}}]};

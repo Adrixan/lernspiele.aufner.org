@@ -1,0 +1,2 @@
+// areas.json - Auto-generated for USB/offline mode
+window.__TRAINER_AREAS__ = {"areas":[{"id":"leichtathletik","name":"Leichtathletik","description":"Laufen, Springen, Werfen","color":"#16a34a"},{"id":"spiele","name":"Spiele","description":"Ballspiele, Teamsport","color":"#ea580c"},{"id":"gymnastik","name":"Gymnastik","description":"Turnen, Beweglichkeit","color":"#7c3aed"},{"id":"gesundheit","name":"Gesundheit","description":"Sport und Gesundheit","color":"#dc2626"}]};

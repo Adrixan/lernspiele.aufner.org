@@ -1,0 +1,2 @@
+// areas.json - Auto-generated for USB/offline mode
+window.__TRAINER_AREAS__ = {"areas":[{"id":"mechanik","name":"Mechanik","description":"Bewegung und Kraft","color":"#0d9488"},{"id":"waerme","name":"Wärme","description":"Temperatur und Wärme","color":"#ea580c"},{"id":"elektrik","name":"Elektrik","description":"Elektrizität und Magnetismus","color":"#eab308"},{"id":"optik","name":"Optik","description":"Licht und Strahlen","color":"#8b5cf6"},{"id":"wellen","name":"Wellen","description":"Schall und Wellen","color":"#06b6d4"}]};

@@ -1,0 +1,2 @@
+// areas.json - Auto-generated for USB/offline mode
+window.__TRAINER_AREAS__ = {"areas":[{"id":"berufswahl","name":"Berufswahl","description":"Beratung und Entscheidung","color":"#0d9488"},{"id":"arbeitswelt","name":"Arbeitswelt","description":"Rechte und Pflichten","color":"#0891b2"},{"id":"bildung","name":"Bildungswege","description":"Weiterbildung","color":"#7c3aed"},{"id":"kompetenzen","name":"Schlüsselkompetenzen","description":"Soft Skills","color":"#ea580c"}]};

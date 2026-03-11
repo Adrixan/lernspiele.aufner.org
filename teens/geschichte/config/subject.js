@@ -1,0 +1,2 @@
+// subject.json - Auto-generated for USB/offline mode
+window.__TRAINER_SUBJECT__ = {"id":"ahs-geschichte","name":"Geschichte (AHS)","description":"Lerne Geschichte für die AHS Unterstufe - Von der Antike bis zur Gegenwart","targetAudience":"Schülerinnen und Schüler der AHS Unterstufe (10-14 Jahre)","primarySkillArea":"history","enabledExerciseTypes":["multiple-choice","fill-blank"],"exerciseTypeConfig":{"multiple-choice":{"hintsEnabled":false,"maxAttempts":1},"fill-blank":{"hintsEnabled":true,"maxAttempts":3}}};

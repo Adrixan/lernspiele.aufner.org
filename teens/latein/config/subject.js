@@ -1,0 +1,2 @@
+// subject.json - Auto-generated for USB/offline mode
+window.__TRAINER_SUBJECT__ = {"id":"ahs-latein","name":"Latein (AHS)","description":"Lerne Latein für die AHS Unterstufe - Sprache, Grammatik und Kultur","targetAudience":"Schülerinnen und Schüler der AHS Unterstufe (10-14 Jahre)","primarySkillArea":"language","enabledExerciseTypes":["multiple-choice","fill-blank"],"exerciseTypeConfig":{"multiple-choice":{"hintsEnabled":false,"maxAttempts":1},"fill-blank":{"hintsEnabled":true,"maxAttempts":3}}};

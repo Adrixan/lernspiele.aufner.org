@@ -1,0 +1,2 @@
+// areas.json - Auto-generated for USB/offline mode
+window.__TRAINER_AREAS__ = {"areas":[{"id":"oesterreich","name":"Österreich","description":"Heimatkunde","color":"#047857"},{"id":"europa","name":"Europa","description":"Europäische Geographie","color":"#0891b2"},{"id":"welt","name":"Welt","description":"Globale Geographie","color":"#7c3aed"},{"id":"wirtschaft","name":"Wirtschaft","description":"Wirtschaftsgeographie","color":"#ea580c"},{"id":"umwelt","name":"Umwelt","description":"Klima und Ökologie","color":"#16a34a"}]};

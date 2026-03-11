@@ -1,0 +1,2 @@
+// subject.json - Auto-generated for USB/offline mode
+window.__TRAINER_SUBJECT__ = {"id":"ahs-sport","name":"Sport (AHS)","description":"Lerne Sport für die AHS Unterstufe - Bewegung, Gesundheit und Teamgeist","targetAudience":"Schülerinnen und Schüler der AHS Unterstufe (10-14 Jahre)","primarySkillArea":"health","enabledExerciseTypes":["multiple-choice"],"exerciseTypeConfig":{"multiple-choice":{"hintsEnabled":false,"maxAttempts":1}}};

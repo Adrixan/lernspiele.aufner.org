@@ -1,0 +1,2 @@
+// app.json - Auto-generated for USB/offline mode
+window.__TRAINER_APP__ = {"id":"ahs-chemie","name":"Chemie (AHS)","version":"1.0.0","build":{"pwaEnabled":true,"usbDistribution":true},"display":{"primaryColor":"#9333ea","icon":"/assets/ahs-chemie-icon.svg"},"terminology":{"level":"Klasse","levelPlural":"Klassen","theme":"Thema","themePlural":"Themen","exercise":"Aufgabe","exercisePlural":"Aufgaben"}};

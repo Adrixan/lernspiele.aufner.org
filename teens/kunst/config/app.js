@@ -1,0 +1,2 @@
+// app.json - Auto-generated for USB/offline mode
+window.__TRAINER_APP__ = {"id":"ahs-kunst","name":"Kunst (AHS)","version":"1.0.0","build":{"pwaEnabled":true,"usbDistribution":true},"display":{"primaryColor":"#e11d48","icon":"/assets/ahs-kunst-icon.svg"},"terminology":{"level":"Klasse","levelPlural":"Klassen","theme":"Thema","themePlural":"Themen","exercise":"Aufgabe","exercisePlural":"Aufgaben"}};

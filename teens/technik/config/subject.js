@@ -1,0 +1,2 @@
+// subject.json - Auto-generated for USB/offline mode
+window.__TRAINER_SUBJECT__ = {"id":"ahs-technik","name":"Technik (AHS)","description":"Lerne Technik für die AHS Unterstufe - Technologie und Design","targetAudience":"Schülerinnen und Schüler der AHS Unterstufe (10-14 Jahre)","primarySkillArea":"technology","enabledExerciseTypes":["multiple-choice"],"exerciseTypeConfig":{"multiple-choice":{"hintsEnabled":false,"maxAttempts":1}}};

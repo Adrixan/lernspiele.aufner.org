@@ -1,0 +1,2 @@
+// subject.json - Auto-generated for USB/offline mode
+window.__TRAINER_SUBJECT__ = {"id":"ahs-bko","name":"Bildungs- und Berufsorientierung (AHS)","description":"Lerne BKO für die AHS Unterstufe - Berufe, Ausbildung und Zukunftsplanung","targetAudience":"Schülerinnen und Schüler der AHS Unterstufe (10-14 Jahre)","primarySkillArea":"career","enabledExerciseTypes":["multiple-choice"],"exerciseTypeConfig":{"multiple-choice":{"hintsEnabled":false,"maxAttempts":1}}};

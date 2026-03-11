@@ -1,0 +1,2 @@
+// areas.json - Auto-generated for USB/offline mode
+window.__TRAINER_AREAS__ = {"areas":[{"id":"grundlagen","name":"Grundlagen","description":"Farbe, Form, Komposition","color":"#e11d48"},{"id":"techniken","name":"Techniken","description":"Malen, Zeichnen, Gestalten","color":"#db2777"},{"id":"geschichte","name":"Kunstgeschichte","description":"Epochen und Stile","color":"#9f1239"},{"id":"analyse","name":"Bildanalyse","description":"Kunstwerke verstehen","color":"#881337"}]};

@@ -1,0 +1,2 @@
+// areas.json - Auto-generated for USB/offline mode
+window.__TRAINER_AREAS__ = {"areas":[{"id":"christentum","name":"Christentum","description":"Bibel, Glaube, Kirche","color":"#7c2d12"},{"id":"andere-religionen","name":"Andere Religionen","description":"Weltreligionen","color":"#b45309"},{"id":"ethik","name":"Ethik","description":"Werte und Moral","color":"#a16207"},{"id":"geschichte","name":"Religionsgeschichte","description":"Kirchengeschichte","color":"#15803d"}]};

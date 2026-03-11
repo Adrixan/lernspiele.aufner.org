@@ -1,0 +1,2 @@
+// subject.json - Auto-generated for USB/offline mode
+window.__TRAINER_SUBJECT__ = {"id":"ahs-geographie","name":"Geographie (AHS)","description":"Lerne Geographie für die AHS Unterstufe - Erde, Klima, Wirtschaft und Europa","targetAudience":"Schülerinnen und Schüler der AHS Unterstufe (10-14 Jahre)","primarySkillArea":"geography","enabledExerciseTypes":["multiple-choice","fill-blank"],"exerciseTypeConfig":{"multiple-choice":{"hintsEnabled":false,"maxAttempts":1},"fill-blank":{"hintsEnabled":true,"maxAttempts":3}}};

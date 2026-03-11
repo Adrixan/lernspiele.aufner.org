@@ -1,0 +1,2 @@
+// areas.json - Auto-generated for USB/offline mode
+window.__TRAINER_AREAS__ = {"areas":[{"id":"werkstoffe","name":"Werkstoffe","description":"Holz, Metall, Kunststoff","color":"#525252"},{"id":"technisches-zeichnen","name":"Technisches Zeichnen","description":"Skizzen, Bemaßung","color":"#0891b2"},{"id":"energie","name":"Energie","description":"Elektrizität, Mechanik","color":"#ea580c"},{"id":"digital","name":"Digitaltechnik","description":"Steuerung, Robotik","color":"#7c3aed"}]};

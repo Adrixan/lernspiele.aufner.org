@@ -1,0 +1,2 @@
+// app.json - Auto-generated for USB/offline mode
+window.__TRAINER_APP__ = {"id":"ahs-englisch","name":"Englisch (AHS)","version":"1.0.0","build":{"pwaEnabled":true,"usbDistribution":true},"display":{"primaryColor":"#059669","icon":"/assets/ahs-englisch-icon.svg"},"terminology":{"level":"Klasse","levelPlural":"Klassen","theme":"Unit","themePlural":"Units","exercise":"Exercise","exercisePlural":"Exercises"}};
