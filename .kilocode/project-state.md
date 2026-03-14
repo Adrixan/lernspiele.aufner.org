@@ -22,10 +22,11 @@ Educational games website serving kids (Volksschule) and teens with interactive 
 | Sachunterricht | /kids/sachunterricht | Active |
 | Technik | /kids/technik | Active |
 
-### Teens Games (17)
+### Teens Games (18)
 | Game | Path | Status |
 |------|------|--------|
-| In Memoriam Pascal | /in-memoriam-pascal | Active |
+| In Memoriam Pascal | /teens/in-memoriam-pascal | Active |
+| Venomous Snake | /teens/venomous-snake | Active |
 | Biologie | /teens/biologie | Active |
 | BKO | /teens/bko | Active |
 | Chemie | /teens/chemie | Active |
@@ -44,6 +45,9 @@ Educational games website serving kids (Volksschule) and teens with interactive 
 | Technik | /teens/technik | Active |
 
 ## History
+
+### 2026-03-14
+- Added "Venomous Snake" game to teens section in index.html
 
 ### 2026-03-11
 - Updated index.html to match game-list.md structure
