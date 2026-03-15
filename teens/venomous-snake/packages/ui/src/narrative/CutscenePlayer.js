@@ -1,0 +1,162 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { useState, useEffect, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
+const FONT_FAMILY = "'JetBrains Mono', 'Fira Code', monospace";
+const CHAR_DELAY_MS = 30;
+const PORTRAIT_COLORS = {
+    cipher: '#00e5ff',
+    handler: '#f5a623',
+    snake: '#c0392b',
+};
+export function CutscenePlayer({ cutscene, onComplete }) {
+    const { t } = useTranslation(['dialog', 'story']);
+    const [sceneIndex, setSceneIndex] = useState(0);
+    const [displayedText, setDisplayedText] = useState('');
+    const [isTyping, setIsTyping] = useState(true);
+    const currentScene = cutscene.scenes[sceneIndex];
+    const fullText = currentScene ? t(currentScene.textKey) : '';
+    // Typewriter effect
+    useEffect(() => {
+        if (!currentScene)
+            return;
+        setDisplayedText('');
+        setIsTyping(true);
+        let charIndex = 0;
+        const id = setInterval(() => {
+            charIndex++;
+            if (charIndex >= fullText.length) {
+                setDisplayedText(fullText);
+                setIsTyping(false);
+                clearInterval(id);
+            }
+            else {
+                setDisplayedText(fullText.slice(0, charIndex));
+            }
+        }, CHAR_DELAY_MS);
+        return () => clearInterval(id);
+    }, [sceneIndex, fullText, currentScene]);
+    // Auto-advance if scene has a duration
+    useEffect(() => {
+        if (!currentScene?.duration || isTyping)
+            return;
+        const id = setTimeout(() => advance(), currentScene.duration);
+        return () => clearTimeout(id);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [sceneIndex, isTyping, currentScene]);
+    const advance = useCallback(() => {
+        if (isTyping) {
+            // Complete the typewriter instantly
+            setDisplayedText(fullText);
+            setIsTyping(false);
+            return;
+        }
+        if (sceneIndex >= cutscene.scenes.length - 1) {
+            onComplete();
+        }
+        else {
+            setSceneIndex((i) => i + 1);
+        }
+    }, [isTyping, fullText, sceneIndex, cutscene.scenes.length, onComplete]);
+    const handleKeyDown = useCallback((e) => {
+        if (e.key === ' ' || e.key === 'Enter') {
+            e.preventDefault();
+            advance();
+        }
+        else if (e.key === 'Escape') {
+            e.preventDefault();
+            onComplete();
+        }
+    }, [advance, onComplete]);
+    useEffect(() => {
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+    }, [handleKeyDown]);
+    if (!currentScene) {
+        onComplete();
+        return _jsx("div", {});
+    }
+    const portraitSide = currentScene.portraitSide ?? 'left';
+    const portraitColor = currentScene.portraitId
+        ? (PORTRAIT_COLORS[currentScene.portraitId] ?? '#00ff88')
+        : '#00ff88';
+    const speakerName = currentScene.speakerNameKey ? t(currentScene.speakerNameKey) : undefined;
+    const portraitBg = `${portraitColor}1e`;
+    return (_jsxs("div", { onClick: advance, role: "dialog", "aria-label": "Cutscene", style: {
+            position: 'fixed',
+            inset: 0,
+            zIndex: 9999,
+            background: 'linear-gradient(180deg, #0a0a0f 0%, #0d1b2a 100%)',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'flex-end',
+            fontFamily: FONT_FAMILY,
+            cursor: 'pointer',
+            userSelect: 'none',
+        }, children: [_jsx("button", { onClick: (e) => {
+                    e.stopPropagation();
+                    onComplete();
+                }, "aria-label": "Skip cutscene", style: {
+                    position: 'absolute',
+                    top: 20,
+                    right: 20,
+                    background: 'rgba(255,255,255,0.08)',
+                    border: '1px solid rgba(255,255,255,0.2)',
+                    color: 'rgba(255,255,255,0.5)',
+                    fontFamily: FONT_FAMILY,
+                    fontSize: 12,
+                    padding: '6px 16px',
+                    cursor: 'pointer',
+                    zIndex: 10000,
+                }, children: "SKIP \u23ED" }), _jsxs("div", { style: {
+                    position: 'absolute',
+                    top: 20,
+                    left: 20,
+                    color: 'rgba(255,255,255,0.25)',
+                    fontSize: 11,
+                }, children: [sceneIndex + 1, " / ", cutscene.scenes.length] }), _jsxs("div", { style: {
+                    display: 'flex',
+                    flexDirection: portraitSide === 'right' ? 'row-reverse' : 'row',
+                    alignItems: 'flex-end',
+                    padding: '0 40px 60px',
+                    gap: 24,
+                    maxWidth: 900,
+                    margin: '0 auto',
+                    width: '100%',
+                }, children: [currentScene.portraitId && (_jsx("div", { style: {
+                            width: 100,
+                            height: 100,
+                            flexShrink: 0,
+                            background: portraitBg,
+                            border: `2px solid ${portraitColor}`,
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            color: portraitColor,
+                            fontSize: 11,
+                            textTransform: 'uppercase',
+                            letterSpacing: '0.1em',
+                        }, children: currentScene.portraitId })), _jsxs("div", { style: {
+                            flex: 1,
+                            background: 'rgba(0,0,0,0.5)',
+                            border: '1px solid #1a2a3a',
+                            padding: '16px 20px',
+                            minHeight: 100,
+                        }, children: [speakerName && (_jsx("div", { style: {
+                                    color: portraitColor,
+                                    fontSize: 13,
+                                    fontWeight: 'bold',
+                                    marginBottom: 8,
+                                    letterSpacing: '0.05em',
+                                }, children: speakerName })), _jsxs("div", { "aria-live": "polite", style: {
+                                    color: '#d0d0d0',
+                                    fontSize: 15,
+                                    lineHeight: 1.6,
+                                    minHeight: 48,
+                                }, children: [displayedText, isTyping && (_jsx("span", { style: { color: '#00ff88', animation: 'blink 0.7s step-end infinite' }, children: "\u258C" }))] })] })] }), _jsx("div", { style: {
+                    textAlign: 'center',
+                    padding: '0 0 20px',
+                    color: 'rgba(255,255,255,0.2)',
+                    fontSize: 11,
+                }, children: isTyping ? 'Click or press Space to skip' : 'Click or press Space to continue' })] }));
+}
+//# sourceMappingURL=CutscenePlayer.js.map

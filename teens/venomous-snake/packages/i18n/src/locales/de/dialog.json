@@ -1,0 +1,512 @@
+{
+    "ch01_01": {
+        "pre": "Also gut, Neuling. Zeit für deinen ersten Hack. Siehst du das Sicherheitsterminal? Es läuft auf einem einfachen Anzeigesystem. Du musst es nur dazu bringen, eine Nachricht anzuzeigen. Benutze die print()-Funktion — es ist wie ins Leere zu rufen, nur dass die Leere tatsächlich zuhört.",
+        "post": "Nicht schlecht für einen Anfänger! Du hast gerade einen Computer nach deinem Willen handeln lassen. Das ist im Grunde Programmieren — Maschinen herumkommandieren. Weiter geht’s."
+    },
+    "ch01_02": {
+        "pre": "Jede gute Agentin braucht einen Decknamen. In Python speichern wir Dinge in Variablen — stell sie dir wie beschriftete Boxen vor. Lass uns deine Tarnung einrichten.",
+        "post": "Jetzt denkst du wie ein Coder. Variablen sind die Bausteine von allem, was wir tun werden. Merke: Der Name steht links, der Wert rechts."
+    },
+    "ch01_03": {
+        "pre": "Das Sicherheitssystem läuft auf Zahlen. Wenn wir die Mathematik manipulieren können, können wir die Schlösser manipulieren. Zeit, einige arithmetische Operatoren zu lernen.",
+        "post": "Zahlen lügen nicht — aber sie können überzeugt werden. Du hast die Grundlagen der Python-Mathematik drauf. Die Sicherheit des Gebäudes hat keine Chance."
+    },
+    "ch01_04": {
+        "pre": "Bevor wir tiefer gehen, musst du verstehen, mit welchen Daten du es zu tun hast. Die type()-Funktion ist wie ein Scanner — sie sagt dir genau, was etwas ist. Strings, Integer... jedes Datenstück hat eine Identität.",
+        "post": "Exzellente Aufklärungsarbeit. Deine Datentypen zu kennen ist entscheidend — behandle eine Zahl wie Text und die ganze Operation fällt auseinander."
+    },
+    "ch01_05": {
+        "pre": "Der Temperaturalarm im Serverraum ist losgegangen. Die Anzeige ist in Celsius, aber das Handbuch in Fahrenheit. Schnell — rechne den Wert um, bevor das Kühlsystem einen Lockdown auslöst.",
+        "post": "Krise abgewendet! Fließkommazahlen sind Pythons Art, mit Dezimalzahlen umzugehen. Beachte: Das Ergebnis ist 212.0, nicht 212 — Python sagt dir, dass es ein Float ist."
+    },
+    "ch01_06": {
+        "pre": "Wir haben eine Personalakte abgefangen, aber die Namensfelder sind getrennt. Vorname in einem Feld, Nachname in einem anderen. Wir müssen den vollständigen Namen zusammensetzen. Mit dem +-Operator kannst du Strings verknüpfen.",
+        "post": "Saubere Arbeit. String-Verknüpfung ist einfach aber mächtig. Vergiss das Leerzeichen zwischen den Namen nicht — Computer nehmen nichts an."
+    },
+    "ch01_07": {
+        "pre": "Willst du eine Visitenkarte hinterlassen? Jeder gute Hacker hat eine Signatur. Lass uns mehrere print-Anweisungen nutzen, um Terminal-Kunst zu erstellen.",
+        "post": "Schöne Kunst! Du hast mehrere print-Aufrufe gemeistert. Jeder gibt eine neue Zeile aus. Backslashes können in Strings knifflig sein — aber du hast es geschafft."
+    },
+    "ch01_08": {
+        "pre": "Hier ein Profi-Tipp: Dokumentiere immer deinen Code. Kommentare beginnen mit # und Python ignoriert sie komplett. Sie sind Notizen für Menschen — für dich, dein Team, das zukünftige Du.",
+        "post": "Gute Gewohnheit etabliert. Der Code läuft identisch mit oder ohne Kommentare, aber deine Teammitglieder werden dir danken. Boot-Sequenz abgeschlossen — gehen wir nach oben."
+    },
+    "ch02_01": {
+        "pre": "Willkommen auf Etage 2 — der Agentenprofil-Flügel. Zuerst: String-Methoden. Jeder String in Python hat eingebaute Superkräfte. .upper(), .lower(), .title() — Tarnmodi für Text.",
+        "post": "Jetzt kannst du in GROSSBUCHSTABEN schreien oder in kleinbuchstaben flüstern. String-Methoden verändern das Original nicht — sie erstellen eine neue Version."
+    },
+    "ch02_02": {
+        "pre": "Zugangscodes sind Strings, und manchmal müssen wir einzelne Zeichen herauspicken. Python lässt dich per Position in einen String greifen. Position 0 ist das erste Zeichen.",
+        "post": "Scharfes Auge. Negative Indizierung ist Pythons Trick — [-1] greift immer das letzte Zeichen, egal wie lang der String ist."
+    },
+    "ch02_03": {
+        "pre": "Wir haben eine geheime Nachricht abgefangen, brauchen aber nur Teile davon. String-Slicing lässt dich jeden Abschnitt extrahieren. Die Syntax ist string[start:end].",
+        "post": "Saubere Schnitte. Der Doppelpunkt-Operator ist unglaublich mächtig. [:n] greift vom Anfang, [n:] bis zum Ende, und [a:b] die Mitte."
+    },
+    "ch02_04": {
+        "pre": "Zeit für die moderne Art, Strings zu bauen — f-Strings. Statt umständlicher Verknüpfung setzt du Variablen direkt mit geschweiften Klammern in deinen Text ein.",
+        "post": "f-Strings sind der Goldstandard. Setze ein f vor die Anführungszeichen, benutze {variable} drin, und Python erledigt den Rest."
+    },
+    "ch02_05": {
+        "pre": "Echte Programme reden mit ihren Nutzern. Die input()-Funktion pausiert und wartet auf eine Eingabe. Was auch immer eingegeben wird, kommt als String zurück.",
+        "post": "Jetzt kann dein Code eine Unterhaltung führen! input() gibt immer einen String zurück, auch wenn der Nutzer eine Zahl eingibt. Merk dir das."
+    },
+    "ch02_06": {
+        "pre": "Hier ist der Haken bei input() — alles kommt als Text zurück. Wenn jemand 42 tippt, sieht Python den STRING 42, nicht die ZAHL 42. Mit einem String kann man nicht rechnen.",
+        "post": "Typumwandlung ist eine kritische Fähigkeit. int() wandelt Strings in Integer. str() wandelt Zahlen in Strings. Die Brücke zwischen Eingabe und Mathematik."
+    },
+    "ch02_07": {
+        "pre": "Missionsbriefings müssen präzise formatiert sein. Eine falsch platzierte Variable und der ganze Bericht ist unleserlich. Bauen wir einen komplexen Statusbericht mit f-Strings.",
+        "post": "Das ist ein professioneller Bericht. Mehrere Variablen, gemischte Typen, Sonderzeichen — alles mit f-Strings gemeistert."
+    },
+    "ch02_08": {
+        "pre": "Bevor wir diese Etage verlassen, noch eine Fähigkeit: die len()-Funktion. Sie zählt Zeichen in einem String oder Elemente in einer Liste. Wir prüfen damit die Passwortsicherheit.",
+        "post": "len() ist täuschend einfach aber endlos nützlich. Kombiniert mit Bedingungen wird es zum Validierungstool. Etage 2 abgeschlossen!"
+    },
+    "ch03_01": {
+        "pre": "Willkommen auf Etage 3 — Zugangskontrolle. Alles hier basiert auf Bedingungen. Eine if-Anweisung ist ein Entscheidungstor: Wenn das wahr ist, tue jenes.",
+        "post": "Deine erste Bedingung! Der ==-Operator prüft Gleichheit. Ein = weist zu, zwei == vergleichen. Verwechsle sie nicht!"
+    },
+    "ch03_02": {
+        "pre": "Einweg-Entscheidungen sind nett, aber echte Sicherheit braucht zwei Pfade: was tun wenn bestanden UND was tun wenn nicht. Dafür gibt es else — den Backup-Plan.",
+        "post": "if/else — die grundlegende Weggabelung. Jedes Sicherheitssystem braucht beide Pfade. Du denkst jetzt wie ein Systemarchitekt."
+    },
+    "ch03_03": {
+        "pre": "Sicherheit dreht sich nicht nur um Gleichheit. Ist deine Freigabe HÖHER als erforderlich? NIEDRIGER? Meistern wir alle Vergleichsoperatoren.",
+        "post": "Du hast das vollständige Vergleichs-Toolkit: >, <, ==, >=, <=, !=. Jeder ist eine andere Art von Frage."
+    },
+    "ch03_04": {
+        "pre": "Echte Bedrohungsbewertung ist nicht binär. KRITISCH, HOCH, MITTEL, NIEDRIG — wir brauchen mehrere Schwellenwerte. elif kettet Bedingungen aneinander.",
+        "post": "elif-Ketten sind das Rückgrat von Klassifizierungssystemen. Reihenfolge ist wichtig — Python nimmt den ersten Treffer."
+    },
+    "ch03_05": {
+        "pre": "Die Sicherheitsschleuse erfordert, dass mehrere Bedingungen gleichzeitig wahr sind. Ausweis? Check. Freigabe? Check. Nicht auf der schwarzen Liste? Check. Zeit für and, or und not.",
+        "post": "Logische Operatoren sind der Kleber komplexer Bedingungen. and braucht alle wahr, or mindestens eins, not dreht das Ergebnis um."
+    },
+    "ch03_06": {
+        "pre": "Hochsicherheitszonen nutzen Zwei-Faktor-Authentifizierung. Erst PIN prüfen, dann Fingerabdruck verifizieren. Das ist ein if in einem if — verschachtelte Bedingungen.",
+        "post": "Verschachtelte ifs modellieren mehrstufige Verifizierung. Je tiefer die Verschachtelung, desto spezifischer die Prüfung."
+    },
+    "ch03_07": {
+        "pre": "Boolesche Variablen sind wie Schalter — True oder False, an oder aus. Verkabeln wir ein Alarmsystem mit boolescher Logik.",
+        "post": "Boolesche Algebra ist nicht nur Theorie — so funktionieren echte Alarmsysteme. Bedingungen in Variablen speichern, logisch kombinieren."
+    },
+    "ch03_08": {
+        "pre": "Letzte Herausforderung auf dieser Etage: Baue einen echten Passwort-Validator. Er muss Länge, Ziffern und Buchstaben prüfen.",
+        "post": "DAS ist ein Validator. any() mit Generator-Ausdrücken ist fortgeschrittener Stoff — du bist dem Zeitplan voraus. Etage 3 geschafft!"
+    },
+    "ch04_01": {
+        "pre": "Etage 4 — Patrouillenrouten. Wachen folgen Mustern, und Muster bedeuten Schleifen. Eine for-Schleife geht eine Liste Element für Element durch.",
+        "post": "Deine erste Schleife! for geht jedes Element der Reihe nach durch. Einfach aber mächtig — so verarbeitest du Daten im großen Stil."
+    },
+    "ch04_02": {
+        "pre": "Manchmal musst du zählen statt iterieren. range() generiert eine Zahlenfolge. range(5) gibt dir 0, 1, 2, 3, 4.",
+        "post": "range() ist das Arbeitspferd der Python-Schleifen. Es startet bei 0 und stoppt VOR der angegebenen Zahl."
+    },
+    "ch04_03": {
+        "pre": "Wachschichten beginnen nicht bei Stunde 0. range(start, stop) lässt dich angeben, wo begonnen wird. Der Stop-Wert ist exklusiv.",
+        "post": "range(1, 6) gibt 1, 2, 3, 4, 5. Start ist enthalten, Stop ist ausgeschlossen. Fühlt sich erst komisch an, macht die Mathematik aber sauber."
+    },
+    "ch04_04": {
+        "pre": "for-Schleifen sind toll, wenn du weißt, wie oft wiederholt werden soll. Aber was ist mit \"mach weiter bis etwas passiert\"? Das ist eine while-Schleife.",
+        "post": "Countdown abgeschlossen! While-Schleifen sind mächtig aber gefährlich — vergiss die Bedingung zu aktualisieren und sie laufen ewig."
+    },
+    "ch04_05": {
+        "pre": "Echte Passwortsysteme geben nicht nach einem Versuch auf. Sie fragen weiter, bis du es richtig hast. Bauen wir eine Passwort-Schleife mit input().",
+        "post": "While-Schleifen mit Benutzereingabe — das ist interaktives Programmieren. Die Schleife läuft, solange das Passwort falsch ist."
+    },
+    "ch04_06": {
+        "pre": "Eine Verdächtigenliste durchsuchen? Du musst nicht alle prüfen, wenn du dein Ziel gefunden hast. break beendet eine Schleife sofort.",
+        "post": "break ist chirurgische Präzision. Sobald du findest was du suchst, bist du raus. Keine verschwendeten Iterationen."
+    },
+    "ch04_07": {
+        "pre": "Einige Kameras sind offline. Statt die ganze Schleife zu beenden, überspringt continue nur die aktuelle Iteration.",
+        "post": "continue ist der \"überspring das hier\"-Befehl. Anders als break — die Schleife läuft weiter, überspringt nur den aktuellen Durchlauf."
+    },
+    "ch04_08": {
+        "pre": "Der Etagenplan ist ein Raster — Zeilen und Spalten. Um jede Zelle zu prüfen, brauchst du eine Schleife in einer Schleife.",
+        "post": "Verschachtelte Schleifen multiplizieren: 3 Zeilen × 3 Spalten = 9 Zellen. Das ist die Macht und die Gefahr — denk nach bevor du verschachtelst."
+    },
+    "ch04_09": {
+        "pre": "Wir brauchen die Summe aller Ausweisnummern. Das Akkumulator-Muster: Starte bei 0, durchlaufe die Daten, addiere jeden Wert.",
+        "post": "Das Akkumulator-Muster ist überall in der Programmierung. Mit leerem Ergebnis starten, Iteration für Iteration aufbauen."
+    },
+    "ch04_10": {
+        "pre": "Letzter Schleifen-Trick: enumerate(). Wenn du Index UND Wert brauchst, gibt enumerate() dir beides in einem Schritt.",
+        "post": "enumerate() ist der beste Freund eines Pythonistas. Etage 4 abgeschlossen — du hast jedes Schleifen-Muster gemeistert, das ein Hacker braucht."
+    },
+    "ch05_01": {
+        "pre": "Willkommen auf Etage 5 — das Funktionslabor. Funktionen sind wiederverwendbare Codeblöcke. Einmal definieren, mehrfach aufrufen. def ist dein neuer bester Freund.",
+        "post": "Deine erste eigene Funktion! def erstellt sie, Parameter nehmen Eingaben entgegen, return sendet einen Wert zurück."
+    },
+    "ch05_02": {
+        "pre": "Funktionen die ETWAS TUN sind toll, aber Funktionen die ETWAS BERECHNEN sind noch besser. return sendet einen Wert an den Aufrufer zurück.",
+        "post": "return ist die Ausgabe der Funktion. Ohne return gibt die Funktion None zurück — Pythons Art, \"nichts\" zu sagen."
+    },
+    "ch05_03": {
+        "pre": "Echte Operationen brauchen mehrere Eingaben. Funktionen können beliebig viele Parameter haben — einfach mit Kommas trennen.",
+        "post": "Drei Parameter, eine formatierte Ausgabe. Funktionen organisieren Komplexität. DRY: Don’t Repeat Yourself."
+    },
+    "ch05_04": {
+        "pre": "Manchmal haben Parameter einen sinnvollen Standardwert. Warum den Aufrufer zwingen, jedes Mal \"low\" anzugeben? Standard-Parameter bieten einen Rückfallwert.",
+        "post": "Standard-Parameter machen Funktionen flexibel. Wert angeben wenn nötig, weglassen wenn der Standard passt."
+    },
+    "ch05_05": {
+        "pre": "Kodierte Koordinaten kommen als einzelner String, aber wir brauchen separate x- und y-Werte. Python-Funktionen können mehrere Werte zurückgeben.",
+        "post": "Mehrere Rückgabewerte sind eine elegante Python-Funktion. Unter der Haube ist es ein Tupel, aber die Syntax fühlt sich natürlich an."
+    },
+    "ch05_06": {
+        "pre": "Komplexe Systeme bestehen aus einfachen Teilen. Ein Verifizierungssystem prüft PIN, prüft Ausweis, kombiniert Ergebnisse. Funktionen die andere aufrufen — Komposition.",
+        "post": "Funktionskomposition baut komplexes Verhalten aus einfachen, testbaren Teilen. Jede Funktion macht eine Sache gut."
+    },
+    "ch05_07": {
+        "pre": "Ein kniffliges Konzept: Scope. Variablen in einer Funktion sind lokal — sie verschwinden wenn die Funktion endet. Variablen außerhalb sind global.",
+        "post": "Scope ist eines der wichtigsten Konzepte. Lokale Variablen sind sicher — sie können nichts außerhalb kaputt machen. Globale sind geteilt — Vorsicht."
+    },
+    "ch05_08": {
+        "pre": "Was wenn du nicht weißt, wie viele Argumente eine Funktion bekommt? *args zur Rettung. Es fängt beliebig viele positionelle Argumente als Tupel auf.",
+        "post": "*args ist pure Flexibilität. Übergib 1 Argument oder 100 — die Funktion verarbeitet alle. Dein Logger ist produktionsreif."
+    },
+    "ch05_09": {
+        "pre": "Jetzt die Schlüsselwort-Version: **kwargs fängt benannte Argumente als Dictionary auf. Wenn du flexible Konfiguration brauchst — kwargs ist dein Werkzeug.",
+        "post": "**kwargs verwandelt Schlüsselwort-Argumente in ein Dictionary. Maximale Flexibilität, saubere Schnittstelle."
+    },
+    "ch05_10": {
+        "pre": "Letzter Funktions-Trick: lambda. Eine Mini-Funktion in einer Zeile. Kein Name, kein def, nur Logik. Perfekt als Sortierschlüssel.",
+        "post": "Lambda-Funktionen sind prägnant und mächtig. sorted() mit einem Lambda-Key wirst du ständig nutzen. Etage 5 abgeschlossen — du bist jetzt ein Funktions-Architekt."
+    },
+    "ch06_01": {
+        "pre": "Etage 6 — das Asset-Inventar. Hier dreht sich alles um Collections: Listen, Tupel, Dictionaries, Sets. Listen sind geordnete Sammlungen — perfekt für Inventare.",
+        "post": "Deine erste Liste! Zugriff auf Elemente per Position ab 0. Listen sind veränderbar — du kannst sie nach der Erstellung ändern."
+    },
+    "ch06_02": {
+        "pre": "Listen sind nicht statisch. .append() fügt hinzu, .remove() entfernt. Diese Methoden verändern die Liste direkt.",
+        "post": "Listen-Methoden ändern die Liste direkt — kein Neuzuweisen nötig. append fügt am Ende hinzu, remove findet und löscht den ersten Treffer."
+    },
+    "ch06_03": {
+        "pre": "Genau wie String-Slicing kannst du auch Listen slicen. Die letzten drei, die ersten zwei oder jeden Bereich dazwischen.",
+        "post": "Listen-Slicing erstellt eine neue Liste aus einem Teil des Originals. Das Original bleibt unberührt."
+    },
+    "ch06_04": {
+        "pre": "List Comprehensions sind Pythons elegantestes Feature. Eine neue Liste durch Transformieren und Filtern erstellen — alles in einer Zeile.",
+        "post": "List Comprehensions machen süchtig. [Ausdruck for Element in Liste if Bedingung] — Filtern und Transformieren in einem Schritt."
+    },
+    "ch06_05": {
+        "pre": "Tupel sind wie Listen, die nicht verändert werden können — unveränderlich. Mit runden Klammern erstellt. Perfekt für Koordinaten.",
+        "post": "Tupel sind fix — einmal erstellt, nicht mehr änderbar. Das ist ein Feature, keine Einschränkung. Entpacken macht die Arbeit damit einfach."
+    },
+    "ch06_06": {
+        "pre": "Dictionaries sind Pythons mächtigste Collection — Schlüssel-Wert-Paare. Statt per Position greifst du per Name zu. Wie ein echtes Aktenschrank.",
+        "post": "Dictionaries ordnen Schlüsseln Werte zu. employee[\"name\"] ist sofort klar — viel lesbarer als employee[0]."
+    },
+    "ch06_07": {
+        "pre": "Dictionaries sind dynamisch. Neue Schlüssel hinzufügen, bestehende Werte aktualisieren, .get() für sicheren Zugriff nutzen.",
+        "post": "dict[\"key\"] = value fügt hinzu und aktualisiert. .get() ist der sichere Weg — gibt None zurück statt abzustürzen."
+    },
+    "ch06_08": {
+        "pre": "Echte Daten sind oft verschachtelt — Dictionaries in Dictionaries. Verkette deinen Klammerzugriff: data[\"außen\"][\"innen\"].",
+        "post": "Verschachtelte Dictionaries modellieren hierarchische Daten perfekt. Jede Klammer taucht eine Ebene tiefer."
+    },
+    "ch06_09": {
+        "pre": "Sets sind ungeordnete Sammlungen ohne Duplikate. Perfekt für Fragen wie: Was ist einzigartig? Was ist gemeinsam? Union kombiniert, Intersection findet Überschneidungen.",
+        "post": "Sets sind mathematisch — Vereinigung, Schnittmenge, Differenz. Duplikate verschwinden automatisch."
+    },
+    "ch06_10": {
+        "pre": "Letzte Herausforderung: Daten aus mehreren Quellen zusammenführen. {**dict1, **dict2} kombiniert Dictionaries. Spätere Werte überschreiben frühere.",
+        "post": "Dictionary-Zusammenführung mit Spread-Syntax ist sauber und mächtig. Etage 6 abgeschlossen — du hast Pythons gesamtes Collection-Toolkit gemeistert. Das Gebäude gehört dir, Agent."
+    },
+    "ai_sidekick": {
+        "greeting": "Hey, Agent. Ich bin CIPHER — dein KI-Assistent. Ich werde dein Führer durch dieses digitale Labyrinth sein. Bereit, etwas Python zu hacken?",
+        "encouragement": [
+            "Weitermachen! Jeder Meisterhacker hat mit Hello, World! angefangen!",
+            "Fehler sind nur Funktionen, die du noch nicht verstanden hast.",
+            "Das Terminal urteilt nicht. Na ja, ich schon. Aber ich bin nett dabei.",
+            "Denk daran: Auch die besten Programmierer googeln Sachen. Du machst das großartig.",
+            "Fehlermeldungen sind deine Freunde. Mürrische Freunde, aber Freunde."
+        ],
+        "idle": [
+            "Noch am Nachdenken? Lass dir Zeit. Die Firewall geht nirgendwo hin.",
+            "Brauchst du einen Hinweis? Frag einfach. Ich versprechs, niemand erfährt es.",
+            "Fun Fact: Python ist nach Monty Python benannt, nicht nach der Schlange. Krass."
+        ]
+    },
+    "cutscene": {
+        "cipher": {
+            "name": "Cipher"
+        },
+        "intro": {
+            "1": "Initialisierung... Verbindung hergestellt. Kannst du mich hören, Operative? Mein Name ist Cipher. Ich habe deinen Fortschritt in dieser Einrichtung beobachtet.",
+            "2": "Dieser Ort ist nicht das, was er zu sein scheint. Die eigentliche Herausforderung sind nicht die Sicherheitssysteme — es geht darum, ihre Sprache zu sprechen. Python. Die Schlangensprache der Maschinen.",
+            "3": "Jedes Terminal, das du freischaltest, jede Tür, die du öffnest — du wirst zu mehr als einem Hacker. Du wirst zum Programmierer. Jetzt... fangen wir an."
+        },
+        "ch1_start": {
+            "1": "Die Lobby. Erdgeschoss. Hier beginnt jede Operative ihre Reise. Acht Terminals stehen zwischen dir und dem Aufzug zu Etage 2.",
+            "2": "Beherrsche hier die Grundlagen: print-Anweisungen, Variablen, Arithmetik. Einfache Werkzeuge — aber sie sind das Fundament von allem. Nicht hetzen. Lerne jeden einzelnen."
+        },
+        "ch1_complete": {
+            "1": "Beeindruckend. Du hast die Lobby schneller geleert als die meisten Rekruten. Acht Herausforderungen — acht Siege.",
+            "2": "Du hast die Grundlagen gemeistert: Ausgabe, Variablen, Arithmetik, Typen, Strings, Verkettung, mehrzeilige Ausgabe und Dokumentation. Kapitel 1 abgeschlossen.",
+            "3": "Der Aufzug ist entsperrt. Etage 2 wartet. Die Herausforderungen werden schwieriger — aber du auch."
+        },
+        "ch2_start": {
+            "1": "Etage 2: Operative Profile. Hier lernen wir, Text wie ein Profi zu manipulieren. String-Methoden, Indizierung, Slicing, f-Strings.",
+            "2": "Daten sind nur Text, bis du weißt, wie man sie formt. Jeder Zugangscode, jede abgefangene Nachricht — alles Strings. Meistere diese Etage und du liest Daten wie ein Einheimischer."
+        },
+        "ch2_complete": {
+            "1": "Du hast den String-Tresor geknackt. Textmanipulation: abgeschlossen. Die Personalakten der Einrichtung haben keine Geheimnisse mehr vor dir.",
+            "2": "String-Methoden, Indizierung, Slicing, f-Strings, split und join — alles in deinem Werkzeugkasten. Etage 3 wartet. Booleans und Logik kommen als nächstes. Denk sorgfältig nach."
+        }
+    },
+    "ch07_01": {
+        "pre": "Etage 7 — Intel-Dateien. Echte Agenten müssen Daten aus Dateien lesen. Da wir im Browser arbeiten, simulieren wir Datei-I/O mit io.StringIO — eine Datei im Speicher.",
+        "post": "io.StringIO gibt dir ein dateiähnliches Objekt zum Lesen. Gleiche Schnittstelle wie eine echte Datei, null Festplattenzugriff. Sauber und portabel."
+    },
+    "ch07_02": {
+        "pre": "Lesen ist die halbe Miete. Jetzt schreiben wir Daten in eine simulierte Datei. io.StringIO() erstellt einen leeren Puffer — schreibe hinein, lies mit getvalue() aus.",
+        "post": "write() fügt Inhalt hinzu, getvalue() holt alles ab. In der echten Welt nutzt du open('datei', 'w') — aber das Konzept ist identisch."
+    },
+    "ch07_03": {
+        "pre": "Rohdaten sind chaotisch — extra Leerzeichen, leere Zeilen, inkonsistente Formatierung. Ein guter Agent bereinigt seine Daten vor der Verwendung.",
+        "post": "strip() entfernt Leerzeichen von beiden Enden. Filtern in einer Comprehension entfernt leere Zeilen. Immer Daten bereinigen — Müll rein, Müll raus."
+    },
+    "ch07_04": {
+        "pre": "CSV — Comma-Separated Values. Das einfachste Datenformat überhaupt, und eines der häufigsten. split(',') ist alles, was du brauchst.",
+        "post": "split() verwandelt einen String in eine Liste. Einfach, effektiv, bewährt. Für komplexes CSV mit Anführungszeichen gibt es das csv-Modul."
+    },
+    "ch07_05": {
+        "pre": "Nachrichten verwenden oft Trennzeichen. Aufteilen und Zusammenfügen ermöglicht Neuformatierung. split() trennt, join() verbindet.",
+        "post": "split(':') trennt bei Doppelpunkten. ' | '.join(parts) fügt mit Pipes zusammen. Dieses Split-Transform-Join-Muster ist überall."
+    },
+    "ch07_06": {
+        "pre": "Die with-Anweisung ist Pythons Kontextmanager — automatische Ressourcenbereinigung. Nie wieder vergessen, Dateien zu schließen.",
+        "post": "with garantiert Bereinigung auch bei Fehlern. Für Dateien, Datenbanken, Netzwerkverbindungen — immer with verwenden."
+    },
+    "ch07_07": {
+        "pre": "JSON ist die Lingua Franca des Datenaustauschs. APIs sprechen es, Configs nutzen es. json.loads() verwandelt einen JSON-String in ein Dictionary.",
+        "post": "json.loads() für Strings, json.load() für Dateien. JSON-Typen mappen auf Python: object→dict, array→list, true→True, null→None."
+    },
+    "ch07_08": {
+        "pre": "Letzte Intel-Herausforderung: JSON-Parsing mit Datentransformation kombinieren. Parsen, extrahieren, transformieren — der Kern der Datenverarbeitung.",
+        "post": "Parsen, extrahieren, transformieren, ausgeben. Etage 7 abgeschlossen — Pythons Datenverarbeitungstoolkit gemeistert. Deine Intel-Fähigkeiten sind einsatzbereit, Agent."
+    },
+    "ch08_01": {
+        "pre": "Etage 8 — Missions-Dossiers. In der echten Welt geht Dinge schief. try/except ist Pythons elegante Fehlerbehandlung — Probleme abfangen bevor sie abstürzen.",
+        "post": "try/except fängt Fehler ab ohne Absturz. ValueError feuert wenn int() keine Zahl bekommt. Immer voraussehen, was schiefgehen kann."
+    },
+    "ch08_02": {
+        "pre": "Verschiedene Fehler brauchen verschiedene Antworten. Mehrere except-Blöcke ermöglichen gezielte Behandlung von KeyError, TypeError und anderen.",
+        "post": "Mehrere except-Blöcke — wie mehrere Fluchtwege. Jeder fängt einen bestimmten Fehlertyp. Reihenfolge zählt: spezifische vor allgemeinen."
+    },
+    "ch08_03": {
+        "pre": "Das vollständige Fehlerbehandlungsmuster: try für riskanten Code, except fängt Fehler, else bei Erfolg, finally läuft immer.",
+        "post": "try → except → else → finally. Der else-Block wird oft übersehen, ist aber unglaublich nützlich — läuft nur ohne Ausnahme. finally läuft immer."
+    },
+    "ch08_04": {
+        "pre": "Manchmal MUSST du einen Fehler signalisieren. raise erzeugt eine Ausnahme auf Kommando. Kombiniert mit benutzerdefinierten Nachrichten wird dein Code selbstdokumentierend.",
+        "post": "raise ValueError('nachricht') erzeugt eine neue Ausnahme. Eingaben früh validieren, laut scheitern, klar scheitern."
+    },
+    "ch08_05": {
+        "pre": "Eingebaute Ausnahmen sind gut, aber benutzerdefinierte erzählen eine bessere Geschichte. class MissionError(Exception): — jetzt tragen deine Fehler missionsspezifische Daten.",
+        "post": "Benutzerdefinierte Ausnahmen erben von Exception. Sie können Extradaten tragen und machen Fehlerbehandlung präziser."
+    },
+    "ch08_06": {
+        "pre": "Eingabevalidierung ist die erste Verteidigungslinie. Alles prüfen, nichts vertrauen. Wenn Eingaben Anforderungen nicht erfüllen — ValueError auslösen.",
+        "post": "Früh validieren, vollständig validieren. startswith(), len() und raise ValueError — drei Werkzeuge gegen Datenchaos."
+    },
+    "ch08_07": {
+        "pre": "Nicht jeder Fehler ist fatal. Elegante Degradation bedeutet vernünftige Standardwerte bei Problemen. Besser 'UNBEKANNT' zeigen als abstürzen.",
+        "post": "Standardwerte und Fallback-Verhalten halten dein Programm am Laufen. Der Benutzer sieht ein Ergebnis, keinen Stacktrace."
+    },
+    "ch08_08": {
+        "pre": "Letzte Dossier-Herausforderung: Fehlerbehandlung in Schleifen. Ein fehlerhaftes Element soll nicht die ganze Operation stoppen. Erholen und weitermachen.",
+        "post": "Fehlerwiederherstellung in Schleifen — verarbeite was geht, behandle was nicht geht. Etage 8 abgeschlossen. Du behandelst Fehler wie ein erfahrener Agent."
+    },
+    "ch09_01": {
+        "pre": "Etage 9 — Feldhandbuch. Pythons Standardbibliothek ist riesig. import gibt dir Zugang zu math, random, os, json und hunderten mehr.",
+        "post": "import modul, dann modul.funktion(). Pythons Standardbibliothek hat für fast alles ein Modul. Lerne sie zu finden — das ist echte Programmierkraft."
+    },
+    "ch09_02": {
+        "pre": "from math import pi, ceil, floor bringt bestimmte Namen direkt in deinen Namespace. Sauberer Code ohne Modulpräfix.",
+        "post": "from...import ist sauberer für bestimmte Namen. Aber Vorsicht — zu viele Importe können Konflikte verursachen."
+    },
+    "ch09_03": {
+        "pre": "Lambda-Funktionen — anonym, inline, mächtig. Perfekt als Sortierschlüssel, Filterbedingungen und Map-Transformationen.",
+        "post": "lambda x: x[1] — eine winzige Funktion genau dort wo du sie brauchst. sorted() mit key=lambda ist eines der häufigsten Python-Muster."
+    },
+    "ch09_04": {
+        "pre": "map() wendet eine Funktion auf jedes Element einer Sequenz an. Kombiniert mit lambda ein Einzeiler-Datentransformer.",
+        "post": "map(funktion, iterable) — transformiere jedes Element ohne Schleife. Wickle in list() ein für die Ergebnisse."
+    },
+    "ch09_05": {
+        "pre": "filter() behält nur Elemente, die einen Test bestehen. Wie map() nimmt es eine Funktion und ein Iterable.",
+        "post": "filter(lambda x: x > 10, daten) — behalte was zählt, verwirf den Rest. Funktionale Werkzeuge machen deine Absicht kristallklar."
+    },
+    "ch09_06": {
+        "pre": "List Comprehensions mit Bedingungen — Pythons Schweizer Taschenmesser. [x for x in data if bedingung] macht was filter tut, aber pythonischer.",
+        "post": "Zusammengesetzte Bedingungen in Comprehensions: and, or, verschachtelte Prüfungen. Für mehrere Kriterien ist das der Weg."
+    },
+    "ch09_07": {
+        "pre": "Dictionary Comprehensions: {key: value for item in iterable}. Baue ganze Dictionaries in einem Ausdruck.",
+        "post": "Dict Comprehensions sind das Dictionary-Äquivalent von List Comprehensions. Gleiche Syntax, geschweifte statt eckige Klammern."
+    },
+    "ch09_08": {
+        "pre": "f-Strings können mehr als Interpolation. Formatspezifikationen steuern Breite, Ausrichtung und Auffüllung. Perfekt für saubere Berichte.",
+        "post": ":<10 linksbündig, :>5 rechtsbündig, :08d mit Nullen auffüllen. Formatspezifikationen verwandeln chaotische Ausgabe in professionelle Berichte."
+    },
+    "ch09_09": {
+        "pre": "Reguläre Ausdrücke — das ultimative Mustererkennungswerkzeug. Das re-Modul findet, extrahiert und ersetzt Textmuster.",
+        "post": "re.findall() extrahiert alle Treffer. \\d+ matcht Ziffern. Regex ist eine Sprache in der Sprache — lohnt sich zu lernen."
+    },
+    "ch09_10": {
+        "pre": "Letzte Feldhandbuch-Herausforderung: alle Werkzeuge verketten. filter → sorted → map → sum. Funktionale Programmierung vom Feinsten.",
+        "post": "Verkettete funktionale Werkzeuge erzeugen saubere Datenpipelines. Etage 9 abgeschlossen. Du hast ein beeindruckendes Toolkit zusammengestellt."
+    },
+    "ch10_01": {
+        "pre": "Etage 10 — Agenten-Klassen. Objektorientierte Programmierung organisiert Code in Klassen — Baupläne für Objekte. Attribute speichern Daten, Methoden definieren Verhalten.",
+        "post": "Klassen bündeln Daten und Verhalten. Erstelle Instanzen mit KlassenName(). Greife auf Attribute mit Punktnotation zu."
+    },
+    "ch10_02": {
+        "pre": "Methoden sind Funktionen innerhalb einer Klasse. Der erste Parameter ist immer self — er verweist auf die aufrufende Instanz.",
+        "post": "self ist die Instanz. Methoden nutzen self für den Zugriff auf eigene Daten. bot.greet() übergibt bot automatisch als self."
+    },
+    "ch10_03": {
+        "pre": "Der __init__-Konstruktor läuft automatisch beim Erstellen einer Instanz. Er richtet den Anfangszustand ein.",
+        "post": "__init__ ist die Geburt eines Objekts. self.attribut = parameter speichert Daten auf der Instanz. Jedes Objekt trägt seinen eigenen Zustand."
+    },
+    "ch10_04": {
+        "pre": "__str__ und __repr__ — wie sich dein Objekt vorstellt. __str__ für Menschen, __repr__ für Entwickler.",
+        "post": "str(obj) ruft __str__ auf. repr(obj) ruft __repr__ auf. Gutes __repr__ sollte wie ein gültiger Konstruktor aussehen."
+    },
+    "ch10_05": {
+        "pre": "Vererbung — neue Klassen auf bestehenden aufbauen. class Agent(Person): erbt alles von Person. super() ruft den Elternteil auf.",
+        "post": "Vererbung erzeugt Ist-ein-Beziehungen. Ein Agent IST eine Person. super().__init__() stellt sicher, dass der Elternteil initialisiert wird."
+    },
+    "ch10_06": {
+        "pre": "Methodenüberschreibung — Unterklassen können Elternmethoden ersetzen oder erweitern. Jede Unterklasse definiert eigenes Verhalten.",
+        "post": "Überschreibe zum Anpassen. Nutze super() zum Erweitern statt Ersetzen. Polymorphismus: gleicher Methodenaufruf, anderes Verhalten."
+    },
+    "ch10_07": {
+        "pre": "Kapselung — den internen Zustand eines Objekts schützen. Python nutzt Namenskonventionen: _geschützt, __privat (Name-Mangling).",
+        "post": "Doppelter Unterstrich löst Name-Mangling aus. Getter und Setter fügen Validierung hinzu. Nicht kugelsicher, aber ein klares Signal."
+    },
+    "ch10_08": {
+        "pre": "@classmethod empfängt die Klasse selbst. @staticmethod ist eine reguläre Funktion im Klassen-Namespace.",
+        "post": "Klassenmethoden kennen die Klasse. Statische Methoden nicht. @classmethod für Fabrikmethoden, @staticmethod für Hilfsfunktionen."
+    },
+    "ch10_09": {
+        "pre": "Komposition — komplexe Objekte aus einfacheren bauen. Ein Gebäude HAT Etagen. Diese Hat-ein-Beziehung ist oft flexibler als Vererbung.",
+        "post": "Komposition über Vererbung ist ein wichtiges Designprinzip. Objekte die andere Objekte enthalten schaffen flexible Strukturen."
+    },
+    "ch10_10": {
+        "pre": "Letzte OOP-Herausforderung: Polymorphismus durch Duck-Typing. Hat es patrol()? Dann kann es patrouillieren. Keine gemeinsame Basisklasse nötig.",
+        "post": "Wenn es wie eine Ente läuft und wie eine Ente quakt... Python kümmert sich nicht um den Typ, nur um die Schnittstelle. Etage 10 abgeschlossen."
+    },
+    "ch11_01": {
+        "pre": "Etage 11 — Qualitätssicherung. Professionelles Python beginnt mit Typhinweisen. Sie ändern nichts zur Laufzeit, machen aber Code selbstdokumentierend.",
+        "post": "Typhinweise sind Dokumentation, die Werkzeuge überprüfen können. def func(x: int) -> str sagt allen, was rein und raus geht."
+    },
+    "ch11_02": {
+        "pre": "Dataclasses eliminieren Boilerplate. @dataclass generiert automatisch __init__, __repr__ und __eq__. Felder definieren, Python macht den Rest.",
+        "post": "@dataclass ist Pythons Antwort auf 'Ich will nur eine einfache Klasse für Daten.' Weniger Code, weniger Bugs, besser lesbar."
+    },
+    "ch11_03": {
+        "pre": "assert-Anweisungen sind Laufzeitprüfungen für Dinge, die immer wahr sein sollten. Schlägt die Assertion fehl, stoppt dein Programm sofort.",
+        "post": "assert ist dein Sicherheitsnetz bei der Entwicklung. Es fängt unmögliche Zustände ab bevor sie mysteriöse Bugs verursachen."
+    },
+    "ch11_04": {
+        "pre": "Tests schreiben ist Versicherung abschließen. assert in Testfunktionen überprüft, ob dein Code korrekt funktioniert.",
+        "post": "Testfunktionen mit assert — die Grundlage zuverlässigen Codes. In Produktion nutzt du pytest oder unittest, aber das Konzept ist gleich."
+    },
+    "ch11_05": {
+        "pre": "Docstrings erklären was dein Code tut, was er nimmt und was er zurückgibt. In dreifachen Anführungszeichen, direkt nach der Funktionsdefinition.",
+        "post": "Gute Docstrings sind eine Investition. Args, Returns, Raises — dokumentiere den Vertrag. help(func) zeigt den Docstring."
+    },
+    "ch11_06": {
+        "pre": "Magische Zahlen sind ein Code-Smell. Enums geben Werten Namen: ThreatLevel.HIGH statt 8. Konstanten machen Code lesbar.",
+        "post": "Enums verhindern ungültige Werte. Konstanten verhindern magische Zahlen. Dein Code sagt jetzt was er meint."
+    },
+    "ch11_07": {
+        "pre": "Das typing-Modul bietet generische Typen: List[str], Dict[str, int], Optional[str]. Sie drücken komplexe Typbeziehungen aus.",
+        "post": "List[str] sagt 'eine Liste mit Strings.' Optional[str] sagt 'ein String oder None.' Diese Typen sind das Vokabular von professionellem Python."
+    },
+    "ch11_08": {
+        "pre": "Letzte QA-Herausforderung: alles kombinieren — Dataclasses, Enums, Typhinweise, Docstrings, Filterung. So sieht professionelles Python aus.",
+        "post": "Saubere Typen, klare Dokumentation, strukturierte Daten. Etage 11 abgeschlossen — dein Code ist jetzt produktionsreif. Eine Etage bleibt, Agent."
+    },
+    "ch12_01": {
+        "pre": "Etage 12 — Tiefe Tarnung. Die Chefetage. Fortgeschrittenes Python für Elite-Agenten. Generatoren nutzen yield für verzögerte Werteerzeugung.",
+        "post": "Generatoren sind speichereffizient — sie erzeugen Werte einzeln statt alles im Speicher zu halten. yield pausiert und setzt fort."
+    },
+    "ch12_02": {
+        "pre": "Generatorausdrücke — wie List Comprehensions aber mit runden Klammern. (x**2 for x in data) erzeugt eine faule Sequenz.",
+        "post": "Generatorausdrücke sind der faule Cousin der List Comprehensions. Fast kein Speicherverbrauch, da Werte on-the-fly berechnet werden."
+    },
+    "ch12_03": {
+        "pre": "Dekoratoren — Funktionen die andere Funktionen umwickeln. @logged fügt Verhalten vor und nach einem Aufruf hinzu, ohne die Funktion selbst zu ändern.",
+        "post": "Dekoratoren sind eines der mächtigsten Python-Muster. Logging, Timing, Authentifizierung — alles mit einem einfachen @dekorator."
+    },
+    "ch12_04": {
+        "pre": "Parametrisierte Dekoratoren — Dekoratoren mit Argumenten. Drei Verschachtelungsebenen: Fabrik, Dekorator, Wrapper.",
+        "post": "require_clearance(8) gibt einen Dekorator zurück. Drei verschachtelte Funktionen, eine saubere Schnittstelle. Pythons Closure-System auf Hochtouren."
+    },
+    "ch12_05": {
+        "pre": "Kontextmanager — das __enter__/__exit__-Protokoll. Du hast sie mit 'with' benutzt. Jetzt bau deinen eigenen.",
+        "post": "Du bist vom Nutzen zum Bauen übergegangen. __enter__ richtet ein, __exit__ räumt auf. Ausnahmen, Bereinigung, Ressourcenverwaltung — alles automatisch."
+    },
+    "ch12_06": {
+        "pre": "async/await — Pythons Nebenläufigkeitsmodell. async def erstellt eine Koroutine, await pausiert bis ein Ergebnis bereit ist.",
+        "post": "Async Python behandelt I/O-gebundene Aufgaben effizient. Während eine Aufgabe auf Daten wartet, können andere laufen."
+    },
+    "ch12_07": {
+        "pre": "Pattern Matching — Python 3.10s match/case. Strukturelles Pattern Matching dekonstruiert Daten und verzweigt basierend auf Struktur.",
+        "post": "match/case ist mehr als switch/case — es matcht Strukturen. Dictionaries, Tupel, verschachtelte Muster, Guards."
+    },
+    "ch12_08": {
+        "pre": "Der Walross-Operator (:=) — zuweisen und verwenden in einem Ausdruck. Perfekt in Schleifen, Comprehensions und Bedingungen.",
+        "post": "(:=) weist zu und gibt zurück. In Comprehensions lässt es dich gleichzeitig testen und einen Wert erfassen."
+    },
+    "ch12_09": {
+        "pre": "Fortgeschrittene Comprehensions — verschachtelte Schleifen, Kreuzprodukte, Matrixoperationen. Für mehrdimensionale Daten unschlagbar.",
+        "post": "Verschachtelte Comprehensions lesen sich wie verschachtelte Schleifen — links nach rechts, außen nach innen."
+    },
+    "ch12_10": {
+        "pre": "FINALER SHOWDOWN. Jede erlernte Fähigkeit konvergiert hier — Regex, Dataclasses, Typing, Comprehensions, Sortierung, Lambdas, Walross-Operator. Parse Schwachstellenprotokolle, filtere kritische Bedrohungen. Das ist es, Agent.",
+        "post": "Du hast jedes Werkzeug in deinem Arsenal kombiniert. Von print('Hello, World!') bis zur fortgeschrittenen Schwachstellenanalyse. Etage 12 — geräumt. Das Gebäude gehört dir. Willkommen auf der Chefetage, Agent. Mission abgeschlossen."
+    },
+    "npc": {
+        "guard": {
+            "speaker": "Wache",
+            "n1": "Halt. Eingeschränkter Bereich. Nennen Sie Ihr Anliegen, Agent.",
+            "n1_choice_show_id": "Ich habe Genehmigung. [Ausweis zeigen]",
+            "n1_choice_sneak": "Ich gehe nur… durch.",
+            "n1_choice_ask": "Warum ist hier so viel Sicherheit?",
+            "n2": "Ausweis bestätigt. Weiter — und wissen Sie, dass ich jeden Zugriff auf diesem Stockwerk protokolliere.",
+            "n3": "Nur durchgehen? Mit dem Aussehen? Versuchen Sie es nochmal.",
+            "n3_choice_apologize": "Entschuldigung. Falsche Tür.",
+            "n3_choice_bluff": "Wartung. Ich repariere die Lüftungsanlage.",
+            "n4": "Gut. Bleiben Sie in den öffentlichen Bereichen und berühren Sie nichts, das Ihnen nicht gehört.",
+            "n5": "Kameras auf jeder Etage. Zugriffsprotokolle für jedes Terminal. Was auch immer Sie planen — lassen Sie es.",
+            "n6": "Wartung… sicher. Ich prüfe Ihre Zugangsdaten in fünf Minuten erneut. Gehen Sie nirgendwo hin."
+        },
+        "silva": {
+            "speaker": "Dr. Silva",
+            "n1": "Oh! Ein neues Gesicht. Willkommen im Labor. Ich bin Dr. Silva. Sie sehen aus, als könnten Sie Orientierung gebrauchen.",
+            "n1_choice_terminal": "Was ist das für ein Terminal dort drüben?",
+            "n1_choice_project": "Woran arbeiten Sie?",
+            "n1_choice_hi": "Hallo. Ich erkunde nur.",
+            "n2": "Ah, das? Das ist der Sicherheitsknoten für diesen Flügel. Ältere Schnittstelle — Sie bräuchten print-Anweisungen und Variablen, nur um damit zu kommunizieren. Viel Erfolg.",
+            "n3": "Geheim. Offiziell. Aber unter uns — es ist ein Experiment zur automatisierten Code-Überprüfung. Maschinen beibringen, schlechtes Python zu erkennen. Ironisch, nicht wahr?",
+            "n4": "Klug! Der beste Weg, diesen Ort kennenzulernen, ist herumzustöbern. Vermeiden Sie nur die roten Terminals — die tun tatsächlich etwas."
+        },
+        "cipher": {
+            "speaker": "CIPHER",
+            "intro_n1": "Hallo. Ich bin CIPHER — Ihr Covert Intelligence Program for Heuristic Encoding and Reconnaissance. Etwas viel auf einmal, ich weiß.",
+            "intro_n2": "Ich sehe das gesamte Netzwerk: Kameras, Terminals, Türcodes. Alles außer der Kaffeemaschine auf Etage 3. Sie ist offline. Eine Tragödie.",
+            "intro_n3": "Hier ist die Mission: Infiltrieren Sie NeoCorp's Serverzentrale und extrahieren Sie die Überwachungsdateien. Jede Tür, jedes Terminal läuft auf Python. Also — Sie müssen es lernen.",
+            "intro_n3_choice_ready": "Ich bin bereit. Lass uns das angehen.",
+            "intro_n3_choice_info": "Warte — womit habe ich es hier genau zu tun?",
+            "intro_n4": "NeoCorp steuert Zugang, Protokollierung und ihre KI-Systeme vollständig durch Python-Skripte. Wenn Sie den Code schreiben können, können Sie ihr Netzwerk übernehmen. Ich führe Sie durch — ein Terminal nach dem anderen.",
+            "intro_n5": "Das ist der richtige Geist. Erstes Ziel: Finden Sie das Sicherheitsterminal auf dieser Etage und interagieren Sie damit. Ich führe Sie durch den Code. Vertrauen Sie mir — ich bin buchstäblich eine KI."
+        }
+    }
+}

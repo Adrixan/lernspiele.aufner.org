@@ -1,0 +1,1 @@
+{"version":3,"file":"NpcPortrait.d.ts","sourceRoot":"","sources":["../../../../../../packages/ui/src/narrative/portraits/NpcPortrait.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAK,MAAM,OAAO,CAAC;AAE1B,MAAM,WAAW,gBAAgB;IAC/B,UAAU,EAAE,MAAM,CAAC;IACnB,IAAI,CAAC,EAAE,MAAM,CAAC;CACf;AA2rDD,wBAAgB,WAAW,CAAC,EAAE,UAAU,EAAE,IAAS,EAAE,EAAE,gBAAgB,GAAG,KAAK,CAAC,GAAG,CAAC,OAAO,CAI1F"}
