@@ -1,1 +1,0 @@
-{"version":3,"file":"FocusTrap.d.ts","sourceRoot":"","sources":["../../../../../packages/ui/src/accessibility/FocusTrap.tsx"],"names":[],"mappings":"AAAA,OAAO,KAA4B,MAAM,OAAO,CAAC;AAEjD,MAAM,WAAW,cAAc;IAC7B,QAAQ,EAAE,KAAK,CAAC,SAAS,CAAC;IAC1B,MAAM,EAAE,OAAO,CAAC;CACjB;AAMD;;;GAGG;AACH,wBAAgB,SAAS,CAAC,EAAE,QAAQ,EAAE,MAAM,EAAE,EAAE,cAAc,GAAG,KAAK,CAAC,GAAG,CAAC,OAAO,CAsCjF"}

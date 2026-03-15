@@ -1,1 +1,0 @@
-{"version":3,"file":"KeyboardNav.d.ts","sourceRoot":"","sources":["../../../../../packages/ui/src/accessibility/KeyboardNav.tsx"],"names":[],"mappings":"AAEA,MAAM,WAAW,sBAAsB;IACrC,IAAI,CAAC,EAAE,OAAO,CAAC;IACf,WAAW,CAAC,EAAE,YAAY,GAAG,UAAU,GAAG,MAAM,CAAC;CAClD;AAED;;;GAGG;AACH,wBAAgB,kBAAkB,CAAC,KAAK,EAAE,WAAW,EAAE,EAAE,OAAO,CAAC,EAAE,sBAAsB,GAAG,IAAI,CA0C/F"}

@@ -1,1 +1,0 @@
-{"version":3,"file":"LocaleSwitcher.d.ts","sourceRoot":"","sources":["../../../../../packages/ui/src/i18n/LocaleSwitcher.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAK,MAAM,OAAO,CAAC;AAG1B,MAAM,WAAW,mBAAmB;IAClC,SAAS,CAAC,EAAE,MAAM,CAAC;CACpB;AAWD,wBAAgB,cAAc,CAAC,EAAE,SAAS,EAAE,EAAE,mBAAmB,GAAG,KAAK,CAAC,GAAG,CAAC,OAAO,CA2CpF"}
