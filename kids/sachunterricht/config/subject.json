@@ -1,8 +1,8 @@
 {
     "id": "generic-trainer",
-    "name": "Generic Trainer",
-    "description": "A configurable trainer for any subject with adaptive learning capabilities",
-    "targetAudience": "Learners of all ages and skill levels",
+    "name": "Sachunterricht",
+    "description": "Sachunterricht für die Volksschule - Interaktive Übungen mit adaptivem Lernpfad",
+    "targetAudience": "Schülerinnen und Schüler der Volksschule",
     "primarySkillArea": "comprehension",
     "enabledExerciseTypes": [
         "fill-blank",

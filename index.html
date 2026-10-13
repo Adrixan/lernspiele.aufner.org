@@ -1,1255 +1,315 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" data-theme="dark">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'none'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="description"
-        content="Lernspiele - Interaktive Bildungsspiele für Kinder und Jugendliche. Deutsch als Zweitsprache und mehr.">
-    <meta name="theme-color" content="#121212" media="(prefers-color-scheme: dark)">
-    <meta name="theme-color" content="#F8FAFC" media="(prefers-color-scheme: light)">
+        content="Lernspiele - Interaktive Bildungsspiele für Volksschule und Sekundarstufe. Kostenlos, ohne Anmeldung, auch als App installierbar.">
+    <meta name="theme-color" content="#121212">
     <title>Lernspiele | Interaktive Bildungsspiele</title>
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
-        rel="stylesheet">
-
-    <style>
-        /* ===== CSS Custom Properties (Theme Variables) ===== */
-        :root {
-            /* Typography */
-            --font-heading: 'Space Grotesk', system-ui, sans-serif;
-            --font-body: 'Inter', system-ui, sans-serif;
-
-            /* Spacing */
-            --space-xs: 0.25rem;
-            --space-sm: 0.5rem;
-            --space-md: 1rem;
-            --space-lg: 1.5rem;
-            --space-xl: 2rem;
-            --space-2xl: 3rem;
-            --space-3xl: 4rem;
-
-            /* Border Radius */
-            --radius-sm: 0.375rem;
-            --radius-md: 0.75rem;
-            --radius-lg: 1rem;
-            --radius-xl: 1.5rem;
-
-            /* Transitions */
-            --transition-fast: 150ms ease;
-            --transition-normal: 250ms ease;
-            --transition-slow: 350ms ease;
-
-            /* Focus Ring */
-            --focus-ring: 0 0 0 3px var(--color-focus);
-
-            /* Touch Target */
-            --touch-target: 44px;
-        }
-
-        /* Light Theme (Default) */
-        :root,
-        [data-theme="light"] {
-            --color-bg-primary: #F8FAFC;
-            --color-bg-secondary: #FFFFFF;
-            --color-bg-card: #FFFFFF;
-            --color-bg-card-hover: #F1F5F9;
-            --color-text-primary: #1E293B;
-            --color-text-secondary: #475569;
-            --color-text-muted: #64748B;
-            --color-accent: #22C55E;
-            --color-accent-hover: #16A34A;
-            --color-accent-soft: #DCFCE7;
-            --color-highlight: #A7F3D0;
-            --color-alert: #F59E0B;
-            --color-border: #E2E8F0;
-            --color-focus: rgba(34, 197, 94, 0.4);
-            --color-shadow: rgba(0, 0, 0, 0.1);
-            --color-shadow-lg: rgba(0, 0, 0, 0.15);
-            --color-gradient-start: #22C55E;
-            --color-gradient-end: #4ADE80;
-        }
-
-        /* Dark Theme */
-        [data-theme="dark"],
-        :root:not([data-theme]) {
-            --color-bg-primary: #121212;
-            --color-bg-secondary: #1E1E1E;
-            --color-bg-card: #1E1E1E;
-            --color-bg-card-hover: #2A2A2A;
-            --color-text-primary: #E0E0E0;
-            --color-text-secondary: #B0B0B0;
-            --color-text-muted: #808080;
-            --color-accent: #4ADE80;
-            --color-accent-hover: #22C55E;
-            --color-accent-soft: rgba(74, 222, 128, 0.15);
-            --color-highlight: #A7F3D0;
-            --color-alert: #F59E0B;
-            --color-border: #2A2A2A;
-            --color-focus: rgba(74, 222, 128, 0.4);
-            --color-shadow: rgba(0, 0, 0, 0.3);
-            --color-shadow-lg: rgba(0, 0, 0, 0.5);
-            --color-gradient-start: #4ADE80;
-            --color-gradient-end: #A7F3D0;
-        }
-
-        /* System Preference - Dark */
-        @media (prefers-color-scheme: dark) {
-            :root:not([data-theme]) {
-                --color-bg-primary: #121212;
-                --color-bg-secondary: #1E1E1E;
-                --color-bg-card: #1E1E1E;
-                --color-bg-card-hover: #2A2A2A;
-                --color-text-primary: #E0E0E0;
-                --color-text-secondary: #B0B0B0;
-                --color-text-muted: #808080;
-                --color-accent: #4ADE80;
-                --color-accent-hover: #22C55E;
-                --color-accent-soft: rgba(74, 222, 128, 0.15);
-                --color-highlight: #A7F3D0;
-                --color-alert: #F59E0B;
-                --color-border: #2A2A2A;
-                --color-focus: rgba(74, 222, 128, 0.4);
-                --color-shadow: rgba(0, 0, 0, 0.3);
-                --color-shadow-lg: rgba(0, 0, 0, 0.5);
-                --color-gradient-start: #4ADE80;
-                --color-gradient-end: #A7F3D0;
-            }
-        }
-
-        /* ===== Base Styles ===== */
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            html {
-                scroll-behavior: auto;
-            }
-
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-
-        body {
-            font-family: var(--font-body);
-            font-size: 1rem;
-            line-height: 1.6;
-            color: var(--color-text-primary);
-            background-color: var(--color-bg-primary);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            transition: background-color var(--transition-normal), color var(--transition-normal);
-        }
-
-        /* ===== Skip Link ===== */
-        .skip-link {
-            position: absolute;
-            top: -100%;
-            left: var(--space-md);
-            z-index: 1000;
-            padding: var(--space-sm) var(--space-md);
-            background-color: var(--color-accent);
-            color: var(--color-bg-primary);
-            font-weight: 600;
-            text-decoration: none;
-            border-radius: var(--radius-sm);
-            transition: top var(--transition-fast);
-        }
-
-        .skip-link:focus {
-            top: var(--space-md);
-            outline: none;
-            box-shadow: var(--focus-ring);
-        }
-
-        /* ===== Header ===== */
-        .header {
-            background-color: var(--color-bg-secondary);
-            border-bottom: 1px solid var(--color-border);
-            padding: var(--space-md) var(--space-lg);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            transition: background-color var(--transition-normal), border-color var(--transition-normal);
-        }
-
-        .header__container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: var(--space-md);
-        }
-
-        .header__brand {
-            display: flex;
-            align-items: center;
-            gap: var(--space-sm);
-            text-decoration: none;
-            color: var(--color-text-primary);
-        }
-
-        .header__logo {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--color-gradient-start), var(--color-gradient-end));
-            border-radius: var(--radius-md);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.25rem;
-        }
-
-        .header__title {
-            font-family: var(--font-heading);
-            font-size: 1.25rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-        }
-
-        /* Theme Toggle */
-        .theme-toggle {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: var(--touch-target);
-            height: var(--touch-target);
-            background-color: var(--color-bg-card);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-md);
-            cursor: pointer;
-            color: var(--color-text-primary);
-            transition: background-color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
-        }
-
-        .theme-toggle:hover {
-            background-color: var(--color-bg-card-hover);
-            transform: scale(1.05);
-        }
-
-        .theme-toggle:focus {
-            outline: none;
-            box-shadow: var(--focus-ring);
-        }
-
-        .theme-toggle:active {
-            transform: scale(0.95);
-        }
-
-        .theme-toggle__icon {
-            width: 24px;
-            height: 24px;
-            transition: transform var(--transition-normal);
-        }
-
-        .theme-toggle__icon--sun {
-            display: none;
-        }
-
-        .theme-toggle__icon--moon {
-            display: block;
-        }
-
-        [data-theme="light"] .theme-toggle__icon--sun {
-            display: block;
-        }
-
-        [data-theme="light"] .theme-toggle__icon--moon {
-            display: none;
-        }
-
-        @media (prefers-color-scheme: light) {
-            :root:not([data-theme]) .theme-toggle__icon--sun {
-                display: block;
-            }
-
-            :root:not([data-theme]) .theme-toggle__icon--moon {
-                display: none;
-            }
-        }
-
-        /* ===== Main Content ===== */
-        .main {
-            flex: 1;
-            padding: var(--space-xl) var(--space-lg);
-        }
-
-        .main__container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* ===== Hero Section ===== */
-        .hero {
-            text-align: center;
-            padding: var(--space-2xl) 0;
-        }
-
-        .hero__badge {
-            display: inline-flex;
-            align-items: center;
-            gap: var(--space-xs);
-            padding: var(--space-xs) var(--space-md);
-            background-color: var(--color-accent-soft);
-            color: var(--color-accent);
-            font-size: 0.875rem;
-            font-weight: 600;
-            border-radius: 9999px;
-            margin-bottom: var(--space-md);
-        }
-
-        .hero__title {
-            font-family: var(--font-heading);
-            font-size: clamp(2rem, 5vw, 3rem);
-            font-weight: 700;
-            line-height: 1.2;
-            letter-spacing: -0.02em;
-            margin-bottom: var(--space-md);
-        }
-
-        .hero__title-accent {
-            background: linear-gradient(135deg, var(--color-gradient-start), var(--color-gradient-end));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero__description {
-            font-size: 1.125rem;
-            color: var(--color-text-secondary);
-            max-width: 600px;
-            margin: 0 auto var(--space-xl);
-        }
-
-        /* ===== Games Section ===== */
-        .games {
-            margin-bottom: var(--space-3xl);
-        }
-
-        .games__header {
-            margin-bottom: var(--space-xl);
-        }
-
-        .games__title {
-            font-family: var(--font-heading);
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: var(--space-sm);
-        }
-
-        .games__subtitle {
-            color: var(--color-text-secondary);
-        }
-
-        .games__grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: var(--space-lg);
-        }
-
-        @media (min-width: 640px) {
-            .games__grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .games__grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        /* Game Card */
-        .game-card {
-            background-color: var(--color-bg-card);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-lg);
-            padding: var(--space-lg);
-            display: flex;
-            flex-direction: column;
-            text-decoration: none;
-            color: inherit;
-            transition: transform var(--transition-normal), box-shadow var(--transition-normal), background-color var(--transition-normal), border-color var(--transition-normal);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .game-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--color-gradient-start), var(--color-gradient-end));
-            opacity: 0;
-            transition: opacity var(--transition-normal);
-        }
-
-        .game-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px var(--color-shadow-lg);
-            background-color: var(--color-bg-card-hover);
-        }
-
-        .game-card:hover::before {
-            opacity: 1;
-        }
-
-        .game-card:focus {
-            outline: none;
-            box-shadow: var(--focus-ring);
-        }
-
-        .game-card__icon {
-            width: 56px;
-            height: 56px;
-            background: linear-gradient(135deg, var(--color-gradient-start), var(--color-gradient-end));
-            border-radius: var(--radius-md);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.75rem;
-            margin-bottom: var(--space-md);
-        }
-
-        .game-card__title {
-            font-family: var(--font-heading);
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: var(--space-sm);
-        }
-
-        .game-card__description {
-            color: var(--color-text-secondary);
-            font-size: 0.9375rem;
-            flex: 1;
-            margin-bottom: var(--space-md);
-        }
-
-        .game-card__cta {
-            display: inline-flex;
-            align-items: center;
-            gap: var(--space-xs);
-            color: var(--color-accent);
-            font-weight: 600;
-            font-size: 0.875rem;
-        }
-
-        .game-card__cta-icon {
-            width: 16px;
-            height: 16px;
-            transition: transform var(--transition-fast);
-        }
-
-        .game-card:hover .game-card__cta-icon {
-            transform: translateX(4px);
-        }
-
-        /* ===== PWA Instructions Section ===== */
-        .pwa-section {
-            background-color: var(--color-bg-secondary);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-xl);
-            padding: var(--space-xl);
-            margin-bottom: var(--space-2xl);
-            transition: background-color var(--transition-normal), border-color var(--transition-normal);
-        }
-
-        .pwa-section__header {
-            display: flex;
-            align-items: center;
-            gap: var(--space-md);
-            margin-bottom: var(--space-lg);
-        }
-
-        .pwa-section__icon {
-            width: 48px;
-            height: 48px;
-            background-color: var(--color-accent-soft);
-            border-radius: var(--radius-md);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--color-accent);
-            flex-shrink: 0;
-        }
-
-        .pwa-section__title {
-            font-family: var(--font-heading);
-            font-size: 1.25rem;
-            font-weight: 600;
-        }
-
-        .pwa-section__subtitle {
-            color: var(--color-text-secondary);
-            font-size: 0.875rem;
-        }
-
-        .pwa-section__content {
-            display: grid;
-            gap: var(--space-lg);
-        }
-
-        @media (min-width: 768px) {
-            .pwa-section__content {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        .pwa-instructions {
-            background-color: var(--color-bg-card);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-md);
-            padding: var(--space-lg);
-            transition: background-color var(--transition-normal), border-color var(--transition-normal);
-        }
-
-        .pwa-instructions__header {
-            display: flex;
-            align-items: center;
-            gap: var(--space-sm);
-            margin-bottom: var(--space-md);
-        }
-
-        .pwa-instructions__device-icon {
-            width: 24px;
-            height: 24px;
-            color: var(--color-accent);
-        }
-
-        .pwa-instructions__title {
-            font-family: var(--font-heading);
-            font-size: 1rem;
-            font-weight: 600;
-        }
-
-        .pwa-instructions__list {
-            list-style: none;
-            counter-reset: pwa-step;
-        }
-
-        .pwa-instructions__item {
-            counter-increment: pwa-step;
-            padding-left: var(--space-xl);
-            position: relative;
-            margin-bottom: var(--space-sm);
-            color: var(--color-text-secondary);
-            font-size: 0.9375rem;
-        }
-
-        .pwa-instructions__item:last-child {
-            margin-bottom: 0;
-        }
-
-        .pwa-instructions__item::before {
-            content: counter(pwa-step);
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 20px;
-            height: 20px;
-            background-color: var(--color-accent-soft);
-            color: var(--color-accent);
-            font-size: 0.75rem;
-            font-weight: 600;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .pwa-instructions__highlight {
-            color: var(--color-text-primary);
-            font-weight: 500;
-        }
-
-        /* ===== Footer ===== */
-        .footer {
-            background-color: var(--color-bg-secondary);
-            border-top: 1px solid var(--color-border);
-            padding: var(--space-lg);
-            text-align: center;
-            transition: background-color var(--transition-normal), border-color var(--transition-normal);
-        }
-
-        .footer__text {
-            color: var(--color-text-muted);
-            font-size: 0.875rem;
-        }
-
-        .footer__link {
-            color: var(--color-accent);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .footer__link:hover {
-            text-decoration: underline;
-        }
-
-        .footer__link:focus {
-            outline: none;
-            box-shadow: var(--focus-ring);
-            border-radius: var(--radius-sm);
-        }
-
-        /* ===== Utility Classes ===== */
-        .visually-hidden {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-    </style>
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+
+    <link rel="preload" href="./fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="./fonts/fonts.css">
+    <link rel="stylesheet" href="./css/site.css">
+    <script src="./js/site.js"></script>
 </head>
 
 <body>
-    <!-- Skip Link -->
     <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
 
-    <!-- Header -->
-    <header class="header" role="banner">
+    <header class="header">
         <div class="header__container">
-            <a href="/" class="header__brand" aria-label="Lernspiele Startseite">
-                <div class="header__logo" aria-hidden="true">🎮</div>
+            <a href="./" class="header__brand" aria-label="Lernspiele Startseite">
+                <span class="header__logo" aria-hidden="true">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="12" x2="10" y2="12"></line><line x1="8" y1="10" x2="8" y2="14"></line><line x1="15" y1="13" x2="15.01" y2="13"></line><line x1="18" y1="11" x2="18.01" y2="11"></line><rect x="2" y="6" width="20" height="12" rx="4"></rect></svg>
+                </span>
                 <span class="header__title">Lernspiele</span>
             </a>
 
-            <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Design-Modus wechseln"
-                title="Zwischen Hell und Dunkel wechseln">
-                <!-- Sun Icon -->
-                <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    aria-hidden="true">
-                    <circle cx="12" cy="12" r="5"></circle>
-                    <line x1="12" y1="1" x2="12" y2="3"></line>
-                    <line x1="12" y1="21" x2="12" y2="23"></line>
-                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                    <line x1="1" y1="12" x2="3" y2="12"></line>
-                    <line x1="21" y1="12" x2="23" y2="12"></line>
-                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                </svg>
-                <!-- Moon Icon -->
-                <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    aria-hidden="true">
-                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                </svg>
+            <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Zum hellen Design wechseln">
+                <svg class="theme-toggle__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                <svg class="theme-toggle__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
             </button>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main id="main-content" class="main" role="main">
+    <main id="main-content" class="main">
         <div class="main__container">
-            <!-- Hero Section -->
             <section class="hero" aria-labelledby="hero-title">
-                <span class="hero__badge">
-                    <span aria-hidden="true">✨</span>
-                    Interaktiv & Kostenlos
-                </span>
-                <h1 id="hero-title" class="hero__title">
-                    Lernen durch <span class="hero__title-accent">Spielen</span>
-                </h1>
+                <span class="hero__badge">Interaktiv &amp; kostenlos</span>
+                <h1 id="hero-title" class="hero__title">Lernen durch <span class="hero__title-accent">Spielen</span></h1>
                 <p class="hero__description">
                     Entdecke unsere Sammlung an interaktiven Bildungsspielen. Perfekt für Kinder, Jugendliche und alle,
                     die spielerisch lernen möchten.
                 </p>
             </section>
 
-            <!-- Games Section -->
             <section class="games" aria-labelledby="games-title">
                 <div class="games__header">
                     <h2 id="games-title" class="games__title">Verfügbare Spiele</h2>
-                    <p class="games__subtitle">Wähle ein Spiel aus, um loszulegen</p>
+                    <p class="games__subtitle">Wähle ein Spiel aus, um loszulegen.</p>
                 </div>
 
-                <!-- Kids Section -->
-                <h3 class="games__category"
-                    style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 600; margin: var(--space-xl) 0 var(--space-md); color: var(--color-text-primary);">
-                    🎮 Für Kinder</h3>
-                <div class="games__grid" role="list">
-                    <!-- DaZ Game Card -->
-                    <a href="./kids/daz/" class="game-card" role="listitem" aria-labelledby="daz-title">
-                        <div class="game-card__icon" aria-hidden="true">📚</div>
-                        <h3 id="daz-title" class="game-card__title">Deutsch als Zweitsprache (DaZ)</h3>
-                        <p class="game-card__description">
-                            Übe deutsche Vokabeln und Grammatik mit interaktiven Übungen. Ideal für Deutschlerner:innen
-                            aller
-                            Stufen.
-                        </p>
-                        <span class="game-card__cta">
-                            Jetzt spielen
-                            <svg class="game-card__cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
-                        </span>
-                    </a>
+                <h3 id="kids-title" class="games__category">🎮 Für Kinder <span class="games__count" aria-label="8 Spiele">8</span></h3>
+                <ul class="games__grid" aria-labelledby="kids-title">
+                    <li>
+                        <a href="./kids/daz/" class="game-card">
+                            <span class="game-card__icon" aria-hidden="true">📚</span>
+                            <h4 class="game-card__title">Deutsch als Zweitsprache (DaZ)</h4>
+                            <p class="game-card__description">Übe deutsche Vokabeln und Grammatik mit interaktiven Übungen. Ideal für Deutschlerner:innen aller Stufen.</p>
+                            <span class="game-card__cta">Jetzt spielen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./kids/deutsch/" class="game-card">
+                            <span class="game-card__icon" aria-hidden="true">📝</span>
+                            <h4 class="game-card__title">Deutsch für die Volksschule</h4>
+                            <p class="game-card__description">Verbessere deine Deutschkenntnisse mit Rechtschreibung, Grammatik und Leseübungen. Ideal für Volksschulkinder.</p>
+                            <span class="game-card__cta">Jetzt spielen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./kids/englisch/" class="game-card">
+                            <span class="game-card__icon" aria-hidden="true">🌍</span>
+                            <h4 class="game-card__title">Englisch für die Volksschule</h4>
+                            <p class="game-card__description">Lerne spielerisch englische Vokabeln und Redewendungen. Perfekt für junge Englischlerner:innen.</p>
+                            <span class="game-card__cta">Jetzt spielen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./kids/kunst/" class="game-card">
+                            <span class="game-card__icon" aria-hidden="true">🎨</span>
+                            <h4 class="game-card__title">Kunst für die Volksschule</h4>
+                            <p class="game-card__description">Entdecke deine kreative Seite mit Mal- und Zeichenübungen. Fördert künstlerische Fähigkeiten bei Kindern.</p>
+                            <span class="game-card__cta">Jetzt spielen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./kids/mathematik/" class="game-card">
+                            <span class="game-card__icon" aria-hidden="true">🔢</span>
+                            <h4 class="game-card__title">Mathematik für die Volksschule</h4>
+                            <p class="game-card__description">Spielerisch Mathe lernen mit Übungen zu Grundrechnungsarten, Textaufgaben und mehr. Perfekt für Volksschulkinder.</p>
+                            <span class="game-card__cta">Jetzt spielen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./kids/musik/" class="game-card">
+                            <span class="game-card__icon" aria-hidden="true">🎵</span>
+                            <h4 class="game-card__title">Musik für die Volksschule</h4>
+                            <p class="game-card__description">Lerne Musiktheorie, Rhythmen und Noten mit interaktiven Übungen. Ideal für junge Musikbegeisterte.</p>
+                            <span class="game-card__cta">Jetzt spielen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./kids/sachunterricht/" class="game-card">
+                            <span class="game-card__icon" aria-hidden="true">🔬</span>
+                            <h4 class="game-card__title">Sachunterricht für die Volksschule</h4>
+                            <p class="game-card__description">Entdecke die Welt mit spannenden Übungen zu Natur, Geschichte und Geographie. Perfekt für neugierige Kinder.</p>
+                            <span class="game-card__cta">Jetzt spielen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./kids/technik/" class="game-card">
+                            <span class="game-card__icon" aria-hidden="true">⚙️</span>
+                            <h4 class="game-card__title">Technik für die Volksschule</h4>
+                            <p class="game-card__description">Erkunde technische Grundlagen mit spannenden Experimenten und Bastelübungen. Fördert technisches Verständnis.</p>
+                            <span class="game-card__cta">Jetzt spielen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+                        </a>
+                    </li>
+                </ul>
 
-                    <!-- Deutsch Game Card -->
-                    <a href="./kids/deutsch/" class="game-card" role="listitem" aria-labelledby="deutsch-title">
-                        <div class="game-card__icon" aria-hidden="true">📝</div>
-                        <h3 id="deutsch-title" class="game-card__title">Deutsch für die Volksschule</h3>
-                        <p class="game-card__description">
-                            Verbessere deine Deutschkenntnisse mit Rechtschreibung, Grammatik und Leseübungen. Ideal für
-                            Volksschulkinder.
-                        </p>
-                        <span class="game-card__cta">
-                            Jetzt spielen
-                            <svg class="game-card__cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
-                        </span>
-                    </a>
-
-                    <!-- Englisch Game Card -->
-                    <a href="./kids/englisch/" class="game-card" role="listitem" aria-labelledby="englisch-title">
-                        <div class="game-card__icon" aria-hidden="true">🌍</div>
-                        <h3 id="englisch-title" class="game-card__title">Englisch für die Volksschule</h3>
-                        <p class="game-card__description">
-                            Lerne spielerisch englische Vokabeln und Redewendungen. Perfekt für junge
-                            Englischlerner:innen.
-                        </p>
-                        <span class="game-card__cta">
-                            Jetzt spielen
-                            <svg class="game-card__cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
-                        </span>
-                    </a>
-
-                    <!-- Kunst Game Card -->
-                    <a href="./kids/kunst/" class="game-card" role="listitem" aria-labelledby="kunst-title">
-                        <div class="game-card__icon" aria-hidden="true">🎨</div>
-                        <h3 id="kunst-title" class="game-card__title">Kunst für die Volksschule</h3>
-                        <p class="game-card__description">
-                            Entdecke deine kreative Seite mit Mal- und Zeichenübungen. Fördert künstlerische
-                            Fähigkeiten bei
-                            Kindern.
-                        </p>
-                        <span class="game-card__cta">
-                            Jetzt spielen
-                            <svg class="game-card__cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
-                        </span>
-                    </a>
-
-                    <!-- Mathematik Game Card -->
-                    <a href="./kids/mathematik/" class="game-card" role="listitem" aria-labelledby="mathematik-title">
-                        <div class="game-card__icon" aria-hidden="true">🔢</div>
-                        <h3 id="mathematik-title" class="game-card__title">Mathematik für die Volksschule</h3>
-                        <p class="game-card__description">
-                            Spielerisch Mathe lernen mit Übungen zu Grundrechnungsarten, Textaufgaben und mehr. Perfekt
-                            für
-                            Volksschulkinder.
-                        </p>
-                        <span class="game-card__cta">
-                            Jetzt spielen
-                            <svg class="game-card__cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
-                        </span>
-                    </a>
-
-                    <!-- Musik Game Card -->
-                    <a href="./kids/musik/" class="game-card" role="listitem" aria-labelledby="musik-title">
-                        <div class="game-card__icon" aria-hidden="true">🎵</div>
-                        <h3 id="musik-title" class="game-card__title">Musik für die Volksschule</h3>
-                        <p class="game-card__description">
-                            Lerne Musiktheorie, Rhythmen und Noten mit interaktiven Übungen. Ideal für junge
-                            Musikbegeisterte.
-                        </p>
-                        <span class="game-card__cta">
-                            Jetzt spielen
-                            <svg class="game-card__cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
-                        </span>
-                    </a>
-
-                    <!-- Sachunterricht Game Card -->
-                    <a href="./kids/sachunterricht/" class="game-card" role="listitem" aria-labelledby="sachunterricht-title">
-                        <div class="game-card__icon" aria-hidden="true">🔬</div>
-                        <h3 id="sachunterricht-title" class="game-card__title">Sachunterricht für die Volksschule</h3>
-                        <p class="game-card__description">
-                            Entdecke die Welt mit spannenden Übungen zu Natur, Geschichte und Geographie. Perfekt für
-                            neugierige Kinder.
-                        </p>
-                        <span class="game-card__cta">
-                            Jetzt spielen
-                            <svg class="game-card__cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
-                        </span>
-                    </a>
-
-                    <!-- Technik Game Card -->
-                    <a href="./kids/technik/" class="game-card" role="listitem" aria-labelledby="technik-title">
-                        <div class="game-card__icon" aria-hidden="true">⚙️</div>
-                        <h3 id="technik-title" class="game-card__title">Technik für die Volksschule</h3>
-                        <p class="game-card__description">
-                            Erkunde technische Grundlagen mit spannenden Experimenten und Bastelübungen. Fördert
-                            technisches Verständnis.
-                        </p>
-                        <span class="game-card__cta">
-                            Jetzt spielen
-                            <svg class="game-card__cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
-                        </span>
-                    </a>
-                </div>
-
-                <!-- Teens Section -->
-                <h3 class="games__category"
-                    style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 600; margin: var(--space-xl) 0 var(--space-md); color: var(--color-text-primary);">
-                    🧑‍🎓 Für Jugendliche</h3>
-                <div class="games__grid" role="list">
-                    <!-- In Memoriam Pascal Game Card -->
-                    <a href="./teens/in-memoriam-pascal/" class="game-card" role="listitem" aria-labelledby="imp-title">
-                        <div class="game-card__icon" aria-hidden="true">💻</div>
-                        <h3 id="imp-title" class="game-card__title">In Memoriam Pascal</h3>
-                        <p class="game-card__description">
-                            Programmier-Lernspiel mit Pascal-Syntax. Lerne die Grundlagen des Programmierens mit einer
-                            klassischen Programmiersprache.
-                        </p>
-                        <span class="game-card__cta">
-                            Jetzt spielen
-                            <svg class="game-card__cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
-                        </span>
-                    </a>
-
-                    <!-- Venomous Snake Game Card -->
-                    <a href="./teens/venomous-snake/" class="game-card" role="listitem" aria-labelledby="venomous-snake-title">
-                        <div class="game-card__icon" aria-hidden="true">🐍</div>
-                        <h3 id="venomous-snake-title" class="game-card__title">Venomous Snake</h3>
-                        <p class="game-card__description">
-                            Ein Cyberpunk-Noir-2D-RPG, das Python-Programmierung durch Hacker-Herausforderungen vermittelt.
-                        </p>
-                        <span class="game-card__cta">
-                            Jetzt spielen
-                            <svg class="game-card__cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
-                        </span>
-                    </a>
-
-                    <!-- LinguaFusion Game Card -->
-                    <a href="./teens/linguafusion/" class="game-card" role="listitem" aria-labelledby="linguafusion-title">
-                        <div class="game-card__icon" aria-hidden="true">🌍</div>
-                        <h3 id="linguafusion-title" class="game-card__title">LinguaFusion</h3>
-                        <p class="game-card__description">
-                            Ein interaktives Sprachlernspiel, das Wortschatz und Grammatik durch spannende Rätsel vermittelt.
-                        </p>
-                        <span class="game-card__cta">
-                            Jetzt spielen
-                            <svg class="game-card__cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
-                        </span>
-                    </a>
-
-                    <!-- Biologie Game Card -->
-                    <a href="./teens/biologie/" class="game-card" role="listitem" aria-labelledby="biologie-title">
-                        <div class="game-card__icon" aria-hidden="true">🧬</div>
-                        <h3 id="biologie-title" class="game-card__title">Biologie</h3>
-                        <p class="game-card__description">
-                            Entdecke die Welt der Lebewesen mit interaktiven Übungen zu Zellbiologie, Genetik und Ökologie.
-                        </p>
-                        <span class="game-card__cta">
-                            Jetzt spielen
-                            <svg class="game-card__cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
-                        </span>
-                    </a>
-
-                    <!-- BKO Game Card -->
-                    <a href="./teens/bko/" class="game-card" role="listitem" aria-labelledby="bko-title">
-                        <div class="game-card__icon" aria-hidden="true">🎯</div>
-                        <h3 id="bko-title" class="game-card__title">BKO</h3>
-                        <p class="game-card__description">
-                            Bereite dich auf die kompetenzorientierte Bildungsstandards-Prüfung vor.
-                        </p>
-                        <span class="game-card__cta">
-                            Jetzt spielen
-                            <svg class="game-card__cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
-                        </span>
-                    </a>
-
-                    <!-- Chemie Game Card -->
-                    <a href="./teens/chemie/" class="game-card" role="listitem" aria-labelledby="chemie-title">
-                        <div class="game-card__icon" aria-hidden="true">⚗️</div>
-                        <h3 id="chemie-title" class="game-card__title">Chemie</h3>
-                        <p class="game-card__description">
-                            Lerne die Grundlagen der Chemie mit interaktiven Experimenten und Übungen zu Stoffen und Reaktionen.
-                        </p>
-                        <span class="game-card__cta">
-                            Jetzt spielen
-                            <svg class="game-card__cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
-                        </span>
-                    </a>
-
-                    <!-- Deutsch (Teens) Game Card -->
-                    <a href="./teens/deutsch/" class="game-card" role="listitem" aria-labelledby="deutsch-teens-title">
-                        <div class="game-card__icon" aria-hidden="true">📝</div>
-                        <h3 id="deutsch-teens-title" class="game-card__title">Deutsch</h3>
-                        <p class="game-card__description">
-                            Verbessere deine Deutschkenntnisse mit Rechtschreibung, Grammatik und Aufsatzübungen.
-                        </p>
-                        <span class="game-card__cta">
-                            Jetzt spielen
-                            <svg class="game-card__cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
-                        </span>
-                    </a>
-
-                    <!-- Digitale Grundbildung Game Card -->
-                    <a href="./teens/digitale/" class="game-card" role="listitem" aria-labelledby="digitale-title">
-                        <div class="game-card__icon" aria-hidden="true">💻</div>
-                        <h3 id="digitale-title" class="game-card__title">Digitale Grundbildung</h3>
-                        <p class="game-card__description">
-                            Lerne die Grundlagen der digitalen Welt: Programmieren, Datenbanken und更多信息stechnologie.
-                        </p>
-                        <span class="game-card__cta">
-                            Jetzt spielen
-                            <svg class="game-card__cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
-                        </span>
-                    </a>
-
-                    <!-- Englisch (Teens) Game Card -->
-                    <a href="./teens/englisch/" class="game-card" role="listitem" aria-labelledby="englisch-teens-title">
-                        <div class="game-card__icon" aria-hidden="true">🌍</div>
-                        <h3 id="englisch-teens-title" class="game-card__title">Englisch</h3>
-                        <p class="game-card__description">
-                            Verbessere dein Englisch mit Vokabelübungen, Grammatik und Leseverständnis.
-                        </p>
-                        <span class="game-card__cta">
-                            Jetzt spielen
-                            <svg class="game-card__cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
-                        </span>
-                    </a>
-
-                    <!-- Geographie Game Card -->
-                    <a href="./teens/geographie/" class="game-card" role="listitem" aria-labelledby="geographie-title">
-                        <div class="game-card__icon" aria-hidden="true">🌍</div>
-                        <h3 id="geographie-title" class="game-card__title">Geographie</h3>
-                        <p class="game-card__description">
-                            Entdecke die Welt mit Übungen zu Landschaften, Klima und Geographie.
-                        </p>
-                        <span class="game-card__cta">
-                            Jetzt spielen
-                            <svg class="game-card__cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
-                        </span>
-                    </a>
-
-                    <!-- Geschichte Game Card -->
-                    <a href="./teens/geschichte/" class="game-card" role="listitem" aria-labelledby="geschichte-title">
-                        <div class="game-card__icon" aria-hidden="true">📜</div>
-                        <h3 id="geschichte-title" class="game-card__title">Geschichte</h3>
-                        <p class="game-card__description">
-                            Reise durch die Zeit mit interaktiven Übungen zur Geschichte.
-                        </p>
-                        <span class="game-card__cta">
-                            Jetzt spielen
-                            <svg class="game-card__cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
-                        </span>
-                    </a>
-
-                    <!-- Kunst (Teens) Game Card -->
-                    <a href="./teens/kunst/" class="game-card" role="listitem" aria-labelledby="kunst-teens-title">
-                        <div class="game-card__icon" aria-hidden="true">🎨</div>
-                        <h3 id="kunst-teens-title" class="game-card__title">Kunst</h3>
-                        <p class="game-card__description">
-                            Entdecke Kunstgeschichte und erlerne kreative Techniken.
-                        </p>
-                        <span class="game-card__cta">
-                            Jetzt spielen
-                            <svg class="game-card__cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
-                        </span>
-                    </a>
-
-                    <!-- Latein Game Card -->
-                    <a href="./teens/latein/" class="game-card" role="listitem" aria-labelledby="latein-title">
-                        <div class="game-card__icon" aria-hidden="true">🏛️</div>
-                        <h3 id="latein-title" class="game-card__title">Latein</h3>
-                        <p class="game-card__description">
-                            Lerne die lateinische Sprache mit Vokabeln, Grammatik und Übersetzungsübungen.
-                        </p>
-                        <span class="game-card__cta">
-                            Jetzt spielen
-                            <svg class="game-card__cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
-                        </span>
-                    </a>
-
-                    <!-- Mathematik (Teens) Game Card -->
-                    <a href="./teens/mathematik/" class="game-card" role="listitem" aria-labelledby="mathematik-teens-title">
-                        <div class="game-card__icon" aria-hidden="true">🔢</div>
-                        <h3 id="mathematik-teens-title" class="game-card__title">Mathematik</h3>
-                        <p class="game-card__description">
-                            Übe Algebra, Geometrie, Analysis und mehr mit interaktiven Aufgaben.
-                        </p>
-                        <span class="game-card__cta">
-                            Jetzt spielen
-                            <svg class="game-card__cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
-                        </span>
-                    </a>
-
-                    <!-- Musik (Teens) Game Card -->
-                    <a href="./teens/musik/" class="game-card" role="listitem" aria-labelledby="musik-teens-title">
-                        <div class="game-card__icon" aria-hidden="true">🎵</div>
-                        <h3 id="musik-teens-title" class="game-card__title">Musik</h3>
-                        <p class="game-card__description">
-                            Vertiefe dein Musikwissen mit Musiktheorie und Gehörbildung.
-                        </p>
-                        <span class="game-card__cta">
-                            Jetzt spielen
-                            <svg class="game-card__cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
-                        </span>
-                    </a>
-
-                    <!-- Physik Game Card -->
-                    <a href="./teens/physik/" class="game-card" role="listitem" aria-labelledby="physik-title">
-                        <div class="game-card__icon" aria-hidden="true">⚛️</div>
-                        <h3 id="physik-title" class="game-card__title">Physik</h3>
-                        <p class="game-card__description">
-                            Entdecke die Gesetze der Physik mit interaktiven Übungen zu Mechanik, Elektrik und mehr.
-                        </p>
-                        <span class="game-card__cta">
-                            Jetzt spielen
-                            <svg class="game-card__cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
-                        </span>
-                    </a>
-
-                    <!-- Religion Game Card -->
-                    <a href="./teens/religion/" class="game-card" role="listitem" aria-labelledby="religion-title">
-                        <div class="game-card__icon" aria-hidden="true">✝️</div>
-                        <h3 id="religion-title" class="game-card__title">Religion</h3>
-                        <p class="game-card__description">
-                            Lerne über Religionen, Ethik und moralische Fragen.
-                        </p>
-                        <span class="game-card__cta">
-                            Jetzt spielen
-                            <svg class="game-card__cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
-                        </span>
-                    </a>
-
-                    <!-- Sport Game Card -->
-                    <a href="./teens/sport/" class="game-card" role="listitem" aria-labelledby="sport-title">
-                        <div class="game-card__icon" aria-hidden="true">⚽</div>
-                        <h3 id="sport-title" class="game-card__title">Sport</h3>
-                        <p class="game-card__description">
-                            Teste dein Sportwissen mit Fragen zu Regeln, Geschichte und Training.
-                        </p>
-                        <span class="game-card__cta">
-                            Jetzt spielen
-                            <svg class="game-card__cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
-                        </span>
-                    </a>
-
-                    <!-- Technik (Teens) Game Card -->
-                    <a href="./teens/technik/" class="game-card" role="listitem" aria-labelledby="technik-teens-title">
-                        <div class="game-card__icon" aria-hidden="true">⚙️</div>
-                        <h3 id="technik-teens-title" class="game-card__title">Technik</h3>
-                        <p class="game-card__description">
-                            Erkunde technische Konzepte und Grundlagen der Technologie.
-                        </p>
-                        <span class="game-card__cta">
-                            Jetzt spielen
-                            <svg class="game-card__cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
-                        </span>
-                    </a>
-                </div>
+                <h3 id="teens-title" class="games__category">🧑‍🎓 Für Jugendliche <span class="games__count" aria-label="19 Spiele">19</span></h3>
+                <ul class="games__grid" aria-labelledby="teens-title">
+                    <li>
+                        <a href="./teens/in-memoriam-pascal/" class="game-card">
+                            <span class="game-card__icon" aria-hidden="true">⌨️</span>
+                            <h4 class="game-card__title">In Memoriam Pascal</h4>
+                            <p class="game-card__description">Programmier-Lernspiel mit Pascal-Syntax. Lerne die Grundlagen des Programmierens mit einer klassischen Programmiersprache.</p>
+                            <span class="game-card__cta">Jetzt spielen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./teens/venomous-snake/" class="game-card">
+                            <span class="game-card__icon" aria-hidden="true">🐍</span>
+                            <h4 class="game-card__title">Venomous Snake</h4>
+                            <p class="game-card__description">Ein Cyberpunk-Noir-2D-RPG, das Python-Programmierung durch Hacker-Herausforderungen vermittelt.</p>
+                            <span class="game-card__cta">Jetzt spielen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./teens/linguafusion/" class="game-card">
+                            <span class="game-card__icon" aria-hidden="true">🧩</span>
+                            <h4 class="game-card__title">LinguaFusion</h4>
+                            <p class="game-card__description">Ein interaktives Sprachlernspiel, das Wortschatz und Grammatik durch spannende Rätsel vermittelt.</p>
+                            <span class="game-card__cta">Jetzt spielen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./teens/biologie/" class="game-card">
+                            <span class="game-card__icon" aria-hidden="true">🧬</span>
+                            <h4 class="game-card__title">Biologie</h4>
+                            <p class="game-card__description">Entdecke die Welt der Lebewesen mit interaktiven Übungen zu Körper, Tieren, Pflanzen, Ökologie und Genetik.</p>
+                            <span class="game-card__cta">Jetzt spielen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./teens/bko/" class="game-card">
+                            <span class="game-card__icon" aria-hidden="true">🧭</span>
+                            <h4 class="game-card__title">Bildungs- und Berufsorientierung</h4>
+                            <p class="game-card__description">Erkunde Berufe, Ausbildungswege und Zukunftsplanung für die AHS-Unterstufe.</p>
+                            <span class="game-card__cta">Jetzt spielen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./teens/chemie/" class="game-card">
+                            <span class="game-card__icon" aria-hidden="true">⚗️</span>
+                            <h4 class="game-card__title">Chemie</h4>
+                            <p class="game-card__description">Lerne die Grundlagen der Chemie mit interaktiven Übungen zu Stoffen, Reaktionen und dem Periodensystem.</p>
+                            <span class="game-card__cta">Jetzt spielen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./teens/deutsch/" class="game-card">
+                            <span class="game-card__icon" aria-hidden="true">📝</span>
+                            <h4 class="game-card__title">Deutsch</h4>
+                            <p class="game-card__description">Verbessere deine Deutschkenntnisse mit Rechtschreibung, Grammatik und Aufsatzübungen.</p>
+                            <span class="game-card__cta">Jetzt spielen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./teens/digitale/" class="game-card">
+                            <span class="game-card__icon" aria-hidden="true">💻</span>
+                            <h4 class="game-card__title">Digitale Grundbildung</h4>
+                            <p class="game-card__description">Lerne die Grundlagen der digitalen Welt: Medien, Technologie und digitale Kompetenzen.</p>
+                            <span class="game-card__cta">Jetzt spielen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./teens/englisch/" class="game-card">
+                            <span class="game-card__icon" aria-hidden="true">💬</span>
+                            <h4 class="game-card__title">Englisch</h4>
+                            <p class="game-card__description">Verbessere dein Englisch mit Vokabelübungen, Grammatik und Leseverständnis.</p>
+                            <span class="game-card__cta">Jetzt spielen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./teens/geographie/" class="game-card">
+                            <span class="game-card__icon" aria-hidden="true">🗺️</span>
+                            <h4 class="game-card__title">Geographie</h4>
+                            <p class="game-card__description">Entdecke die Welt mit Übungen zu Landschaften, Klima, Wirtschaft und Europa.</p>
+                            <span class="game-card__cta">Jetzt spielen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./teens/geschichte/" class="game-card">
+                            <span class="game-card__icon" aria-hidden="true">📜</span>
+                            <h4 class="game-card__title">Geschichte</h4>
+                            <p class="game-card__description">Reise durch die Zeit mit interaktiven Übungen von der Antike bis zur Gegenwart.</p>
+                            <span class="game-card__cta">Jetzt spielen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./teens/kunst/" class="game-card">
+                            <span class="game-card__icon" aria-hidden="true">🎨</span>
+                            <h4 class="game-card__title">Kunst</h4>
+                            <p class="game-card__description">Entdecke Kunstgeschichte und erlerne kreative Techniken.</p>
+                            <span class="game-card__cta">Jetzt spielen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./teens/latein/" class="game-card">
+                            <span class="game-card__icon" aria-hidden="true">🏛️</span>
+                            <h4 class="game-card__title">Latein</h4>
+                            <p class="game-card__description">Lerne die lateinische Sprache mit Vokabeln, Grammatik und Übersetzungsübungen.</p>
+                            <span class="game-card__cta">Jetzt spielen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./teens/mathematik/" class="game-card">
+                            <span class="game-card__icon" aria-hidden="true">🔢</span>
+                            <h4 class="game-card__title">Mathematik</h4>
+                            <p class="game-card__description">Übe Algebra, Geometrie, Analysis und mehr mit interaktiven Aufgaben.</p>
+                            <span class="game-card__cta">Jetzt spielen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./teens/musik/" class="game-card">
+                            <span class="game-card__icon" aria-hidden="true">🎵</span>
+                            <h4 class="game-card__title">Musik</h4>
+                            <p class="game-card__description">Vertiefe dein Musikwissen mit Musiktheorie und Gehörbildung.</p>
+                            <span class="game-card__cta">Jetzt spielen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./teens/physik/" class="game-card">
+                            <span class="game-card__icon" aria-hidden="true">⚛️</span>
+                            <h4 class="game-card__title">Physik</h4>
+                            <p class="game-card__description">Entdecke die Gesetze der Physik mit interaktiven Übungen zu Mechanik, Elektrik und mehr.</p>
+                            <span class="game-card__cta">Jetzt spielen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./teens/religion/" class="game-card">
+                            <span class="game-card__icon" aria-hidden="true">🕊️</span>
+                            <h4 class="game-card__title">Religion</h4>
+                            <p class="game-card__description">Lerne über Religionen, Ethik und moralische Fragen.</p>
+                            <span class="game-card__cta">Jetzt spielen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./teens/sport/" class="game-card">
+                            <span class="game-card__icon" aria-hidden="true">⚽</span>
+                            <h4 class="game-card__title">Sport</h4>
+                            <p class="game-card__description">Teste dein Sportwissen mit Fragen zu Bewegung, Gesundheit und Teamgeist.</p>
+                            <span class="game-card__cta">Jetzt spielen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./teens/technik/" class="game-card">
+                            <span class="game-card__icon" aria-hidden="true">🔧</span>
+                            <h4 class="game-card__title">Technik</h4>
+                            <p class="game-card__description">Erkunde technische Konzepte und Grundlagen der Technologie.</p>
+                            <span class="game-card__cta">Jetzt spielen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+                        </a>
+                    </li>
+                </ul>
             </section>
 
-            <!-- PWA Installation Instructions -->
-            <section class="pwa-section" aria-labelledby="pwa-title">
-                <div class="pwa-section__header">
-                    <div class="pwa-section__icon" aria-hidden="true">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                            <polyline points="7 10 12 15 17 10"></polyline>
-                            <line x1="12" y1="15" x2="12" y2="3"></line>
-                        </svg>
-                    </div>
+            <section class="pwa" aria-labelledby="pwa-title">
+                <div class="pwa__header">
+                    <span class="pwa__icon" aria-hidden="true">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    </span>
                     <div>
-                        <h2 id="pwa-title" class="pwa-section__title">App installieren</h2>
-                        <p class="pwa-section__subtitle">Installiere die Spiele auf deinem Startbildschirm</p>
+                        <h2 id="pwa-title" class="pwa__title">App installieren</h2>
+                        <p class="pwa__subtitle">Installiere die Spiele auf deinem Startbildschirm.</p>
                     </div>
                 </div>
 
-                <div class="pwa-section__content">
-                    <!-- iOS Instructions -->
+                <div class="pwa__content">
                     <div class="pwa-instructions">
-                        <div class="pwa-instructions__header">
-                            <svg class="pwa-instructions__device-icon" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                aria-hidden="true">
-                                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
-                                <line x1="12" y1="18" x2="12.01" y2="18"></line>
-                            </svg>
-                            <h3 class="pwa-instructions__title">iPhone & iPad (Safari)</h3>
-                        </div>
+                        <h3 class="pwa-instructions__title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg> iPhone &amp; iPad (Safari)</h3>
                         <ol class="pwa-instructions__list">
-                            <li class="pwa-instructions__item">
-                                Öffne das Spiel in <span class="pwa-instructions__highlight">Safari</span>
-                            </li>
-                            <li class="pwa-instructions__item">
-                                Tippe auf das <span class="pwa-instructions__highlight">Teilen-Symbol</span> (Quadrat
-                                mit Pfeil nach oben)
-                            </li>
-                            <li class="pwa-instructions__item">
-                                Scrolle nach unten und tippe auf <span class="pwa-instructions__highlight">"Zum
-                                    Home-Bildschirm"</span>
-                            </li>
-                            <li class="pwa-instructions__item">
-                                Tippe auf <span class="pwa-instructions__highlight">"Hinzufügen"</span> oben rechts
-                            </li>
+                            <li class="pwa-instructions__item">Öffne das Spiel in <strong>Safari</strong></li>
+                            <li class="pwa-instructions__item">Tippe auf das <strong>Teilen-Symbol</strong> (Quadrat mit Pfeil nach oben)</li>
+                            <li class="pwa-instructions__item">Scrolle nach unten und tippe auf <strong>„Zum Home-Bildschirm“</strong></li>
+                            <li class="pwa-instructions__item">Tippe auf <strong>„Hinzufügen“</strong> oben rechts</li>
                         </ol>
                     </div>
 
-                    <!-- Android Instructions -->
                     <div class="pwa-instructions">
-                        <div class="pwa-instructions__header">
-                            <svg class="pwa-instructions__device-icon" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                aria-hidden="true">
-                                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
-                                <line x1="12" y1="18" x2="12.01" y2="18"></line>
-                            </svg>
-                            <h3 class="pwa-instructions__title">Android (Chrome)</h3>
-                        </div>
+                        <h3 class="pwa-instructions__title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg> Android (Chrome)</h3>
                         <ol class="pwa-instructions__list">
-                            <li class="pwa-instructions__item">
-                                Öffne das Spiel in <span class="pwa-instructions__highlight">Google Chrome</span>
-                            </li>
-                            <li class="pwa-instructions__item">
-                                Tippe auf das <span class="pwa-instructions__highlight">Menü</span> (drei Punkte oben
-                                rechts)
-                            </li>
-                            <li class="pwa-instructions__item">
-                                Tippe auf <span class="pwa-instructions__highlight">"Zum Startbildschirm
-                                    hinzufügen"</span> oder <span class="pwa-instructions__highlight">"App
-                                    installieren"</span>
-                            </li>
-                            <li class="pwa-instructions__item">
-                                Bestätige mit <span class="pwa-instructions__highlight">"Installieren"</span>
-                            </li>
+                            <li class="pwa-instructions__item">Öffne das Spiel in <strong>Google Chrome</strong></li>
+                            <li class="pwa-instructions__item">Tippe auf das <strong>Menü</strong> (drei Punkte oben rechts)</li>
+                            <li class="pwa-instructions__item">Tippe auf <strong>„Zum Startbildschirm hinzufügen“</strong> oder <strong>„App installieren“</strong></li>
+                            <li class="pwa-instructions__item">Bestätige mit <strong>„Installieren“</strong></li>
                         </ol>
                     </div>
                 </div>
@@ -1257,68 +317,13 @@
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer" role="contentinfo">
+    <footer class="footer">
         <p class="footer__text">
-            © <span id="copyright-year"></span> <a href="https://peter.aufner.org" class="footer__link">Peter Aufner</a>
-            |
-            Lernspiele für Bildung und Spaß
+            © <span id="copyright-year">2026</span>
+            <a href="https://peter.aufner.org" class="footer__link" rel="noopener">Peter Aufner</a>
+            | Lernspiele für Bildung und Spaß
         </p>
     </footer>
-
-    <!-- Theme Toggle Script -->
-    <script>
-        (function () {
-            'use strict';
-
-            // Set copyright year dynamically
-            document.getElementById('copyright-year').textContent = new Date().getFullYear();
-
-            const THEME_KEY = 'lernspiele-theme';
-            const themeToggle = document.getElementById('theme-toggle');
-
-            // Get stored theme or system preference
-            function getPreferredTheme() {
-                const stored = localStorage.getItem(THEME_KEY);
-                if (stored) {
-                    return stored;
-                }
-                return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-            }
-
-            // Apply theme
-            function setTheme(theme) {
-                document.documentElement.setAttribute('data-theme', theme);
-                localStorage.setItem(THEME_KEY, theme);
-
-                // Update aria-label for accessibility
-                const label = theme === 'dark'
-                    ? 'Zum Hell-Modus wechseln'
-                    : 'Zum Dunkel-Modus wechseln';
-                themeToggle.setAttribute('aria-label', label);
-            }
-
-            // Toggle theme
-            function toggleTheme() {
-                const current = document.documentElement.getAttribute('data-theme');
-                const next = current === 'dark' ? 'light' : 'dark';
-                setTheme(next);
-            }
-
-            // Initialize
-            setTheme(getPreferredTheme());
-
-            // Event listener
-            themeToggle.addEventListener('click', toggleTheme);
-
-            // Listen for system preference changes
-            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
-                if (!localStorage.getItem(THEME_KEY)) {
-                    setTheme(e.matches ? 'dark' : 'light');
-                }
-            });
-        })();
-    </script>
 </body>
 
 </html>

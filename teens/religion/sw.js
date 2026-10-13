@@ -9,26 +9,27 @@ const CACHE_NAME = 'mini-trainer-ahs-religion-v1773153023339';
 const STATIC_CACHE_NAME = 'maxi-trainer-static-v1';
 const DATA_CACHE_NAME = 'maxi-trainer-data-v1';
 
+// The app is served from a sub-directory (e.g. /kids/daz/), so every path is
+// resolved against the service worker scope instead of the origin root.
+const scopeUrl = (path) => new URL(path, self.registration.scope).href;
+
 // Static assets to cache immediately on install
 const STATIC_ASSETS = [
-    '/',
-    '/index.html',
-    '/icon-192.png',
-    '/icon-512.png',
-    '/icon-192.svg',
-    '/icon-512.svg',
-    '/manifest.json',
-    '/sw.js',
+    './',
+    'index.html',
+    'icon-192.svg',
+    'icon-512.svg',
+    'manifest.json',
 ];
 
 // Data files to pre-cache for offline use
 const DATA_ASSETS = [
-    '/data/exercises.js',
+    'data/exercises.js',
 ];
 
 // Directories to cache for offline use
 const DATA_DIRECTORIES = [
-    '/config/',
+    'config/',
 ];
 
 // File extensions to consider as static assets
@@ -61,8 +62,8 @@ function isStaticAsset(url) {
  */
 function isDataAsset(url) {
     const path = new URL(url).pathname;
-    return DATA_ASSETS.some(asset => path === asset || path.startsWith(asset)) ||
-        DATA_DIRECTORIES.some(dir => path.startsWith(dir));
+    return DATA_ASSETS.some(asset => path === new URL(asset, self.registration.scope).pathname) ||
+        DATA_DIRECTORIES.some(dir => path.startsWith(new URL(dir, self.registration.scope).pathname));
 }
 
 /**
@@ -75,13 +76,13 @@ self.addEventListener('install', (event) => {
         caches.open(STATIC_CACHE_NAME)
             .then((cache) => {
                 console.log('[SW] Caching static assets');
-                return cache.addAll(STATIC_ASSETS);
+                return cache.addAll(STATIC_ASSETS.map(scopeUrl));
             })
             .then(() => {
                 // Also pre-cache data assets for offline use
                 console.log('[SW] Pre-caching data assets');
                 return caches.open(DATA_CACHE_NAME)
-                    .then((dataCache) => dataCache.addAll(DATA_ASSETS));
+                    .then((dataCache) => dataCache.addAll(DATA_ASSETS.map(scopeUrl)));
             })
             .then(() => {
                 console.log('[SW] All assets cached successfully');
@@ -187,7 +188,7 @@ async function cacheFirst(request, cacheName) {
 
         // Return offline fallback for navigation requests
         if (request.mode === 'navigate') {
-            return caches.match('/index.html');
+            return caches.match(scopeUrl('index.html'));
         }
 
         throw error;
@@ -220,7 +221,7 @@ async function networkFirst(request, cacheName) {
 
         // Return offline fallback for navigation requests
         if (request.mode === 'navigate') {
-            return caches.match('/index.html');
+            return caches.match(scopeUrl('index.html'));
         }
 
         throw error;

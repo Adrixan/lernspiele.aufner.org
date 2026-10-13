@@ -22,11 +22,12 @@ Educational games website serving kids (Volksschule) and teens with interactive 
 | Sachunterricht | /kids/sachunterricht | Active |
 | Technik | /kids/technik | Active |
 
-### Teens Games (18)
+### Teens Games (19)
 | Game | Path | Status |
 |------|------|--------|
 | In Memoriam Pascal | /teens/in-memoriam-pascal | Active |
 | Venomous Snake | /teens/venomous-snake | Active |
+| LinguaFusion | /teens/linguafusion | Active |
 | Biologie | /teens/biologie | Active |
 | BKO | /teens/bko | Active |
 | Chemie | /teens/chemie | Active |
@@ -45,6 +46,13 @@ Educational games website serving kids (Volksschule) and teens with interactive 
 | Technik | /teens/technik | Active |
 
 ## History
+
+### 2026-10-13
+- Landing page rewritten to the "Bioluminescent Night" styleguide (dark default, self-hosted fonts in /fonts, css/site.css, js/site.js, strict CSP meta)
+- Fixed garbled text and wrong BKO description on the landing page
+- Service workers of the Mini/Maxi Trainer games resolve paths against their scope (offline mode and fresh exercise data work under /kids/* and /teens/*)
+- Manifests of the trainer games point to existing SVG icons; Pascal/LinguaFusion manifests use relative start_url
+- Trainer games: lang="de", proper subject names for six kids games
 
 ### 2026-03-14
 - Added "Venomous Snake" game to teens section in index.html
