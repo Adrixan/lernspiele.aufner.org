@@ -1,2 +1,2 @@
-// subject.json - Auto-generated for USB/offline mode
-window.__TRAINER_SUBJECT__ = {"id":"ahs-digitale","name":"Digitale Grundbildung (AHS)","description":"Lerne digitale Kompetenzen für die AHS Unterstufe - Medien und Technologie","targetAudience":"Schülerinnen und Schüler der AHS Unterstufe (10-14 Jahre)","primarySkillArea":"technology","enabledExerciseTypes":["multiple-choice"],"exerciseTypeConfig":{"multiple-choice":{"hintsEnabled":false,"maxAttempts":1}}};
+// subject.json (generated)
+window.__TRAINER_SUBJECT__ = {"id":"teens-digitale","name":"Digitale Grundbildung (AHS)","description":"Lerne digitale Kompetenzen für die AHS Unterstufe - Medien und Technologie","targetAudience":"Schülerinnen und Schüler der AHS Unterstufe (10-14 Jahre)","primarySkillArea":"technology","enabledExerciseTypes":["multiple-choice","fill-blank","matching","sorting"],"exerciseTypeConfig":{"multiple-choice":{"hintsEnabled":false,"maxAttempts":1}}};

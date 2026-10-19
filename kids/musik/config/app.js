@@ -1,0 +1,2 @@
+// app.json (generated)
+window.__TRAINER_APP__ = {"id":"kids-musik","name":"Musik","version":"1.0.0","build":{"pwaEnabled":true,"usbDistribution":true},"display":{"primaryColor":"#f59e0b","icon":"/assets/musik-icon.svg"},"terminology":{"level":"Schulstufe","levelPlural":"Schulstufen","theme":"Thema","themePlural":"Themen","exercise":"Aufgabe","exercisePlural":"Aufgaben"}};

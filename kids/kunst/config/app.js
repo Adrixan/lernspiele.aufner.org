@@ -1,0 +1,2 @@
+// app.json (generated)
+window.__TRAINER_APP__ = {"id":"kids-kunst","name":"Kunst und Gestaltung","version":"1.0.0","build":{"pwaEnabled":true,"usbDistribution":true},"display":{"primaryColor":"#ec4899","icon":"/assets/kunst-icon.svg"},"terminology":{"level":"Schulstufe","levelPlural":"Schulstufen","theme":"Thema","themePlural":"Themen","exercise":"Aufgabe","exercisePlural":"Aufgaben"}};

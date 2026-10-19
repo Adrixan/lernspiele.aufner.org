@@ -1,0 +1,2 @@
+// app.json (generated)
+window.__TRAINER_APP__ = {"id":"kids-technik","name":"Technik und Design","version":"1.0.0","build":{"pwaEnabled":true,"usbDistribution":true},"display":{"primaryColor":"#6366f1","icon":"/assets/technik-icon.svg"},"terminology":{"level":"Schulstufe","levelPlural":"Schulstufen","theme":"Thema","themePlural":"Themen","exercise":"Aufgabe","exercisePlural":"Aufgaben"}};

@@ -1,0 +1,2 @@
+// app.json (generated)
+window.__TRAINER_APP__ = {"id":"kids-daz","name":"Deutsch als Zweitsprache","version":"1.0.0","build":{"pwaEnabled":true,"usbDistribution":true},"display":{"primaryColor":"#3b82f6","icon":"/assets/daz-icon.svg"},"terminology":{"level":"Wortschatz-Level","levelPlural":"Wortschatz-Level","theme":"Thema","themePlural":"Themen","exercise":"Übung","exercisePlural":"Übungen"}};

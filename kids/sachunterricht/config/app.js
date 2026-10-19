@@ -1,0 +1,2 @@
+// app.json (generated)
+window.__TRAINER_APP__ = {"id":"kids-sachunterricht","name":"Sachunterricht","version":"1.0.0","build":{"pwaEnabled":true,"usbDistribution":true},"display":{"primaryColor":"#8b5cf6","icon":"/assets/sachunterricht-icon.svg"},"terminology":{"level":"Schulstufe","levelPlural":"Schulstufen","theme":"Thema","themePlural":"Themen","exercise":"Aufgabe","exercisePlural":"Aufgaben"}};

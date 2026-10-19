@@ -1,0 +1,2 @@
+// app.json (generated)
+window.__TRAINER_APP__ = {"id":"kids-mathematik","name":"Mathematik Grundstufe","version":"1.0.0","build":{"pwaEnabled":true,"usbDistribution":true},"display":{"primaryColor":"#10b981","icon":"/assets/mathematik-icon.svg"},"terminology":{"level":"Level","levelPlural":"Level","theme":"Thema","themePlural":"Themen","exercise":"Aufgabe","exercisePlural":"Aufgaben"}};
