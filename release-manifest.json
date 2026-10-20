@@ -1,0 +1,96 @@
+{
+  "version": 1,
+  "deployment": {
+    "sshHost": "aufner.org",
+    "remoteDocroot": "lernspiele.aufner.org"
+  },
+  "sources": {
+    "trainer-engine": {
+      "path": "../trainer-engine",
+      "repository": "Adrixan/trainer-engine",
+      "packageManager": "npm",
+      "install": ["npm", "ci"],
+      "audit": ["npm", "audit", "--audit-level=low"],
+      "checks": [
+        ["npm", "run", "typecheck"],
+        ["npm", "run", "validate"],
+        ["npm", "test", "--", "--run"],
+        ["npm", "run", "lint"]
+      ],
+      "build": ["npm", "run", "build:site"],
+      "output": "dist/site"
+    },
+    "venomous-snake": {
+      "path": "../venomous-snake",
+      "repository": "Adrixan/venomous-snake",
+      "packageManager": "pnpm",
+      "install": ["pnpm", "install", "--frozen-lockfile"],
+      "audit": ["pnpm", "audit", "--audit-level=low"],
+      "checks": [
+        ["pnpm", "run", "lint"],
+        ["pnpm", "run", "type-check"],
+        ["pnpm", "run", "test"]
+      ],
+      "build": ["pnpm", "run", "build"],
+      "output": "dist"
+    },
+    "in-memoriam-pascal": {
+      "path": "../in-memoriam-pascal",
+      "repository": "Adrixan/in-memoriam-pascal",
+      "packageManager": "npm",
+      "submodules": true,
+      "install": ["npm", "ci"],
+      "audit": ["npm", "audit", "--audit-level=low"],
+      "checks": [
+        ["npm", "run", "lint"],
+        ["npm", "run", "typecheck"],
+        ["npm", "test", "--", "--run"]
+      ],
+      "build": ["npm", "run", "build"],
+      "output": "dist"
+    },
+    "linguafusion": {
+      "path": "../LinguaFusion",
+      "repository": "Adrixan/LinguaFusion",
+      "packageManager": "npm",
+      "install": ["npm", "ci"],
+      "audit": ["npm", "audit", "--audit-level=low"],
+      "checks": [
+        ["npm", "run", "lint"],
+        ["npm", "run", "typecheck"],
+        ["npm", "test"]
+      ],
+      "build": ["npm", "run", "build"],
+      "output": "dist"
+    }
+  },
+  "games": [
+    { "path": "kids/daz", "source": "trainer-engine" },
+    { "path": "kids/deutsch", "source": "trainer-engine" },
+    { "path": "kids/englisch", "source": "trainer-engine" },
+    { "path": "kids/kunst", "source": "trainer-engine" },
+    { "path": "kids/mathematik", "source": "trainer-engine" },
+    { "path": "kids/musik", "source": "trainer-engine" },
+    { "path": "kids/sachunterricht", "source": "trainer-engine" },
+    { "path": "kids/technik", "source": "trainer-engine" },
+    { "path": "teens/biologie", "source": "trainer-engine" },
+    { "path": "teens/bko", "source": "trainer-engine" },
+    { "path": "teens/chemie", "source": "trainer-engine" },
+    { "path": "teens/deutsch", "source": "trainer-engine" },
+    { "path": "teens/digitale", "source": "trainer-engine" },
+    { "path": "teens/englisch", "source": "trainer-engine" },
+    { "path": "teens/geographie", "source": "trainer-engine" },
+    { "path": "teens/geschichte", "source": "trainer-engine" },
+    { "path": "teens/kunst", "source": "trainer-engine" },
+    { "path": "teens/latein", "source": "trainer-engine" },
+    { "path": "teens/mathematik", "source": "trainer-engine" },
+    { "path": "teens/musik", "source": "trainer-engine" },
+    { "path": "teens/physik", "source": "trainer-engine" },
+    { "path": "teens/religion", "source": "trainer-engine" },
+    { "path": "teens/sport", "source": "trainer-engine" },
+    { "path": "teens/technik", "source": "trainer-engine" },
+    { "path": "teens/venomous-snake", "source": "venomous-snake" },
+    { "path": "teens/in-memoriam-pascal", "source": "in-memoriam-pascal" },
+    { "path": "teens/linguafusion", "source": "linguafusion" }
+  ]
+}
