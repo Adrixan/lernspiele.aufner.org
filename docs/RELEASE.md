@@ -22,4 +22,6 @@ The `Release Lernspiele` workflow can be started manually or through the `game-r
 - `LERNSPIELE_SSH_HOST`: host name covered by the known-hosts entry.
 - `LERNSPIELE_SSH_USER`: Plesk SSH account username.
 
+For automatic release notifications, configure `LERNSPIELE_DISPATCH_TOKEN` in each of the four source repositories. It needs permission to dispatch events to `Adrixan/lernspiele.aufner.org` (typically a fine-grained token with Actions read/write permission). Without this secret, source pushes succeed and log that automatic deployment was skipped; run the site workflow manually instead.
+
 The SSH account must have a writable home directory, `bash`, `tar`, `sha256sum`, and the existing `~/lernspiele.aufner.org/` document root. The workflow does not deploy unless the production audit gates, tests, builds, and path validation all pass.
