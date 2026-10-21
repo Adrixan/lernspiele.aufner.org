@@ -2,7 +2,8 @@
   "version": 1,
   "deployment": {
     "sshHost": "aufner.org",
-    "remoteDocroot": "lernspiele.aufner.org"
+    "remoteDocroot": "lernspiele.aufner.org",
+    "publicBaseUrl": "https://lernspiele.aufner.org/"
   },
   "sources": {
     "trainer-engine": {
