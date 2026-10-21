@@ -1,0 +1,71 @@
+name: Release Lernspiele
+
+on:
+  workflow_dispatch:
+  repository_dispatch:
+    types: [game-release]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lernspiele-production-release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    environment: production
+    steps:
+      - name: Checkout site repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.30.3
+
+      - name: Check out game source repositories
+        env:
+          SOURCE_TOKEN: ${{ secrets.LERNSPIELE_DEPLOY_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ -z "$SOURCE_TOKEN" ]; then
+            echo "LERNSPIELE_DEPLOY_TOKEN must be able to read the game source repositories." >&2
+            exit 1
+          fi
+          export GIT_CONFIG_COUNT=1
+          export GIT_CONFIG_KEY_0=http.https://github.com/.extraheader
+          export GIT_CONFIG_VALUE_0="AUTHORIZATION: basic $(printf 'x-access-token:%s' "$SOURCE_TOKEN" | base64 -w0)"
+          git clone --no-checkout https://github.com/Adrixan/trainer-engine.git ../trainer-engine
+          git clone --no-checkout https://github.com/Adrixan/venomous-snake.git ../venomous-snake
+          git clone --no-checkout https://github.com/Adrixan/in-memoriam-pascal.git ../in-memoriam-pascal
+          git clone --no-checkout https://github.com/Adrixan/LinguaFusion.git ../LinguaFusion
+
+      - name: Set up SSH deploy key
+        env:
+          DEPLOY_KEY: ${{ secrets.LERNSPIELE_SSH_KEY }}
+          DEPLOY_KNOWN_HOSTS: ${{ secrets.LERNSPIELE_KNOWN_HOSTS }}
+          DEPLOY_HOST: ${{ secrets.LERNSPIELE_SSH_HOST }}
+          DEPLOY_USER: ${{ secrets.LERNSPIELE_SSH_USER }}
+        run: |
+          test -n "$DEPLOY_KEY"
+          test -n "$DEPLOY_KNOWN_HOSTS"
+          test -n "$DEPLOY_HOST"
+          test -n "$DEPLOY_USER"
+          install -d -m 700 ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/lernspiele_deploy
+          chmod 600 ~/.ssh/lernspiele_deploy
+          printf '%s\n' "$DEPLOY_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/known_hosts
+          printf 'Host aufner.org\n  HostName %s\n  User %s\n  IdentityFile ~/.ssh/lernspiele_deploy\n  IdentitiesOnly yes\n  BatchMode yes\n' \
+            "$DEPLOY_HOST" "$DEPLOY_USER" >> ~/.ssh/config
+
+      - name: Build, validate, and deploy all games
+        run: npm run release

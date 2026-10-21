@@ -1,0 +1,13 @@
+{
+  "name": "lernspiele-site-release",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "release": "node scripts/release-site.mjs",
+    "release:build": "node scripts/release-site.mjs --no-deploy",
+    "release:dry-run": "node scripts/release-site.mjs --dry-run"
+  }
+}
