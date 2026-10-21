@@ -77,6 +77,10 @@ function validateManifest() {
     if (!/^[A-Za-z0-9._@-]+$/.test(manifest.deployment.sshHost) || !/^[A-Za-z0-9.-]+$/.test(manifest.deployment.remoteDocroot)) {
         throw new Error('Deployment host or document root contains unsupported characters.');
     }
+    const publicBaseUrl = new URL(manifest.deployment.publicBaseUrl);
+    if (publicBaseUrl.protocol !== 'https:' || !publicBaseUrl.pathname.endsWith('/')) {
+        throw new Error('The public base URL must be HTTPS and end with a slash.');
+    }
     const paths = manifest.games.map((game) => game.path);
     if (new Set(paths).size !== paths.length || [...paths].sort().join('\n') !== [...expectedGames].sort().join('\n')) {
         throw new Error('Release manifest game paths do not exactly match the supported site catalog.');
@@ -286,6 +290,12 @@ ${remoteScript}`);
     }
     const stale = [...remoteInventory.keys()].filter((path) => !expectedFiles.some((file) => path === `${remoteDocroot}/${file}`));
     console.log(`Post-deploy verification: ${expectedFiles.length} files match; ${stale.length} legacy/extraneous files remain in docroot.`);
+    for (const game of manifest.games) {
+        const url = new URL(`${game.path}/`, manifest.deployment.publicBaseUrl).href;
+        const status = await run('curl', ['--fail', '--silent', '--show-error', '--output', '/dev/null', '--write-out', '%{http_code}', url], { stdio: 'pipe' });
+        if (status !== '200') throw new Error(`Live route ${url} returned HTTP ${status}.`);
+    }
+    console.log(`Live HTTP verification passed for all ${manifest.games.length} game URLs.`);
 }
 
 async function preflightDeployment() {
