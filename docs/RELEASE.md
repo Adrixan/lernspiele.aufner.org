@@ -1,10 +1,10 @@
 # Release workflow
 
-The release manifest (`release-manifest.json`) is the authoritative inventory of all 27 public game routes and their source repositories. The root `index.html` remains the curated presentation; a validator fails when its links differ from the manifest.
+The release manifest (`release-manifest.json`) is the authoritative inventory of public game routes and source repositories. The root `index.html` remains the curated presentation; a validator fails when its links differ from the manifest.
 
 ## Local release
 
-Run `npm run release` from this repository. It fetches each source repository's current GitHub default branch, builds in disposable Git worktrees (leaving adjacent checkouts untouched), runs checks and dependency audits, assembles the site, checks all 27 game entry points and bundled HTML/JS/CSS/JSON for Google Fonts references, creates a server-side backup, deploys, and verifies SHA-256 checksums.
+Run `npm run release` from this repository. It fetches each source repository's current GitHub default branch, builds in disposable Git worktrees (leaving adjacent checkouts untouched), runs checks and dependency audits, assembles the site, checks every manifest game entry point and bundled HTML/JS/CSS/JSON for Google Fonts references, creates a server-side backup, deploys, and verifies SHA-256 checksums and live game URLs.
 
 Other commands:
 - `npm run release:dry-run`: fetch sources and report their exact revisions without installing or deploying.
@@ -12,6 +12,8 @@ Other commands:
 - Set `RELEASE_AUDIT_STRICT=0` only to explicitly continue past npm audit findings. This does not remediate them; default behavior is to stop on an audit failure.
 
 Each finished release writes `release-info.json` with exact source commit hashes. Temporary worktrees, staging output, and archives are kept under `.scratch/release/` and ignored by Git.
+
+Cast-Game is listed at `/teens/cast-game/` as “The Unseen Architecture”. The game is English-language and retains its own visual design; it is not presented as an installable or offline-capable PWA. Its historical Archive entries are identified as educational summaries that have not been independently verified.
 
 ## GitHub Actions setup
 

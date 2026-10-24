@@ -26,12 +26,6 @@ for (const arg of args) {
     if (!allowedArgs.has(arg)) throw new Error(`Unknown argument: ${arg}`);
 }
 
-const expectedGames = [
-    'kids/daz', 'kids/deutsch', 'kids/englisch', 'kids/kunst', 'kids/mathematik', 'kids/musik', 'kids/sachunterricht', 'kids/technik',
-    'teens/biologie', 'teens/bko', 'teens/chemie', 'teens/deutsch', 'teens/digitale', 'teens/englisch', 'teens/geographie', 'teens/geschichte',
-    'teens/in-memoriam-pascal', 'teens/kunst', 'teens/latein', 'teens/linguafusion', 'teens/mathematik', 'teens/musik', 'teens/physik', 'teens/religion',
-    'teens/sport', 'teens/technik', 'teens/venomous-snake',
-];
 const rootFiles = ['index.html', 'css', 'js', 'fonts', 'favicon.svg', 'LICENSE'];
 const worktrees = [];
 
@@ -71,8 +65,8 @@ function checkPathWithin(base, candidate) {
 }
 
 function validateManifest() {
-    if (manifest.version !== 1 || Object.keys(manifest.sources).length !== 4 || manifest.games.length !== 27) {
-        throw new Error('Release manifest must define the four sources and all 27 public game paths.');
+    if (manifest.version !== 1 || Object.keys(manifest.sources).length < 1 || manifest.games.length < 1) {
+        throw new Error('Release manifest must define at least one source and one public game path.');
     }
     if (!/^[A-Za-z0-9._@-]+$/.test(manifest.deployment.sshHost) || !/^[A-Za-z0-9.-]+$/.test(manifest.deployment.remoteDocroot)) {
         throw new Error('Deployment host or document root contains unsupported characters.');
@@ -82,15 +76,19 @@ function validateManifest() {
         throw new Error('The public base URL must be HTTPS and end with a slash.');
     }
     const paths = manifest.games.map((game) => game.path);
-    if (new Set(paths).size !== paths.length || [...paths].sort().join('\n') !== [...expectedGames].sort().join('\n')) {
-        throw new Error('Release manifest game paths do not exactly match the supported site catalog.');
+    if (new Set(paths).size !== paths.length) {
+        throw new Error('Release manifest contains duplicate game paths.');
     }
     for (const game of manifest.games) {
         if (!/^(kids|teens)\/[a-z0-9-]+$/.test(game.path) || !manifest.sources[game.source]) {
             throw new Error(`Invalid game entry: ${JSON.stringify(game)}`);
         }
     }
-    for (const source of Object.values(manifest.sources)) {
+    for (const [name, source] of Object.entries(manifest.sources)) {
+        if (!/^[a-z0-9-]+$/.test(name) || !/^\.\.\/[A-Za-z0-9._-]+$/.test(source.path)
+            || !/^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(source.repository)) {
+            throw new Error(`Invalid source entry: ${name}`);
+        }
         for (const command of [source.install, source.audit, ...source.checks, source.build]) {
             if (!Array.isArray(command) || command.length < 1 || command.some((part) => typeof part !== 'string')) {
                 throw new Error('Every source command must be an argument array.');
@@ -183,12 +181,12 @@ function validateSite(siteDir) {
     const html = readFileSync(join(siteDir, 'index.html'), 'utf8');
     const linkedGames = [...html.matchAll(/href=["']\.\/(kids|teens)\/([a-z0-9-]+)\/?["']/g)]
         .map((match) => `${match[1]}/${match[2]}`);
-    const expected = [...expectedGames].sort();
+    const expected = manifest.games.map(({ path }) => path).sort();
     const actual = [...new Set(linkedGames)].sort();
     if (actual.join('\n') !== expected.join('\n')) {
         throw new Error(`Landing-page links do not match the release catalog. Found ${actual.length} unique game links.`);
     }
-    for (const game of expectedGames) {
+    for (const game of expected) {
         if (!existsSync(join(siteDir, game, 'index.html'))) throw new Error(`Missing built game: ${game}`);
     }
     const textFiles = collectFiles(siteDir).filter((path) => /\.(?:html|js|css|json|webmanifest)$/i.test(path));
@@ -199,7 +197,7 @@ function validateSite(siteDir) {
         }
     }
     const allHtml = textFiles.filter((path) => path.endsWith('.html'));
-    console.log(`Validated ${expectedGames.length} game entry points and ${allHtml.length} HTML files; no Google Fonts requests.`);
+    console.log(`Validated ${expected.length} game entry points and ${allHtml.length} HTML files; no Google Fonts requests.`);
 }
 
 function makeReleaseInfo(releases) {
@@ -265,12 +263,10 @@ async function deploy(siteDir, releaseId) {
         const ssh = spawn('ssh', ['-o', 'BatchMode=yes', '-o', 'ConnectTimeout=20', host, 'bash -s'], { stdio: ['pipe', 'inherit', 'inherit'] });
         ssh.on('error', rejectPromise);
         ssh.on('close', (code) => code === 0 ? resolvePromise() : rejectPromise(new Error(`SSH deploy failed with exit code ${code}.`)));
-        ssh.stdin.end(`set -euo pipefail
-cat > "$HOME/${upload}"
-${remoteScript}`);
+        ssh.stdin.end(`set -euo pipefail\n${remoteScript}`);
     });
     const remoteFiles = (await run('ssh', ['-o', 'BatchMode=yes', '-o', 'ConnectTimeout=20', host,
-        `find "$HOME/${remoteDocroot}" -type f -print0 | sort -z | xargs -0 sha256sum`], { stdio: 'pipe' }));
+        `cd "$HOME/${remoteDocroot}" && find . -type f -print0 | sort -z | xargs -0 sha256sum`], { stdio: 'pipe' }));
     const remoteInventory = new Map(remoteFiles.split('\n').map((line) => {
         const match = line.match(/^([0-9a-f]{64})  (.+)$/);
         if (!match) throw new Error(`Invalid remote checksum entry: ${line}`);
@@ -280,7 +276,7 @@ ${remoteScript}`);
     const missing = [];
     const mismatched = [];
     for (const file of expectedFiles) {
-        const key = `${remoteDocroot}/${file}`;
+        const key = `./${file}`;
         const remoteHash = remoteInventory.get(key);
         if (!remoteHash) missing.push(file);
         else if (remoteHash !== sha256(join(siteDir, file))) mismatched.push(file);
@@ -288,7 +284,7 @@ ${remoteScript}`);
     if (missing.length || mismatched.length) {
         throw new Error(`Post-deploy verification failed: ${missing.length} missing, ${mismatched.length} mismatched files. ${[...missing, ...mismatched].slice(0, 10).join(', ')}`);
     }
-    const stale = [...remoteInventory.keys()].filter((path) => !expectedFiles.some((file) => path === `${remoteDocroot}/${file}`));
+    const stale = [...remoteInventory.keys()].filter((path) => !expectedFiles.some((file) => path === `./${file}`));
     console.log(`Post-deploy verification: ${expectedFiles.length} files match; ${stale.length} legacy/extraneous files remain in docroot.`);
     for (const game of manifest.games) {
         const url = new URL(`${game.path}/`, manifest.deployment.publicBaseUrl).href;
