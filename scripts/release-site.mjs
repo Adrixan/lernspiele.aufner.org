@@ -288,7 +288,7 @@ async function deploy(siteDir, releaseId) {
     console.log(`Post-deploy verification: ${expectedFiles.length} files match; ${stale.length} legacy/extraneous files remain in docroot.`);
     for (const game of manifest.games) {
         const url = new URL(`${game.path}/`, manifest.deployment.publicBaseUrl).href;
-        const status = await run('curl', ['--fail', '--silent', '--show-error', '--output', '/dev/null', '--write-out', '%{http_code}', url], { stdio: 'pipe' });
+        const status = await run('curl', ['--user-agent', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36', '--fail', '--silent', '--show-error', '--output', '/dev/null', '--write-out', '%{http_code}', url], { stdio: 'pipe' });
         if (status !== '200') throw new Error(`Live route ${url} returned HTTP ${status}.`);
     }
     console.log(`Live HTTP verification passed for all ${manifest.games.length} game URLs.`);
