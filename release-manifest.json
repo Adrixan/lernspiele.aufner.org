@@ -63,6 +63,19 @@
       ],
       "build": ["npm", "run", "build"],
       "output": "dist"
+    },
+    "cast-game": {
+      "path": "../Cast-Game",
+      "repository": "Adrixan/Cast-Game",
+      "packageManager": "npm",
+      "install": ["npm", "ci"],
+      "audit": ["npm", "audit", "--audit-level=low"],
+      "checks": [
+        ["npm", "run", "typecheck"],
+        ["npm", "test"]
+      ],
+      "build": ["npm", "run", "build"],
+      "output": "dist"
     }
   },
   "games": [
@@ -92,6 +105,7 @@
     { "path": "teens/technik", "source": "trainer-engine" },
     { "path": "teens/venomous-snake", "source": "venomous-snake" },
     { "path": "teens/in-memoriam-pascal", "source": "in-memoriam-pascal" },
-    { "path": "teens/linguafusion", "source": "linguafusion" }
+    { "path": "teens/linguafusion", "source": "linguafusion" },
+    { "path": "teens/cast-game", "source": "cast-game" }
   ]
 }
