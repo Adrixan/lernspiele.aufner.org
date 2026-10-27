@@ -101,6 +101,8 @@
     { "path": "teens/musik", "source": "trainer-engine" },
     { "path": "teens/physik", "source": "trainer-engine" },
     { "path": "teens/religion", "source": "trainer-engine" },
+    { "path": "teens/religion-evangelisch", "source": "trainer-engine" },
+    { "path": "teens/religion-islam", "source": "trainer-engine" },
     { "path": "teens/sport", "source": "trainer-engine" },
     { "path": "teens/technik", "source": "trainer-engine" },
     { "path": "teens/venomous-snake", "source": "venomous-snake" },
