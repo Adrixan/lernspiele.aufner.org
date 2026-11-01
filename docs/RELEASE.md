@@ -9,6 +9,7 @@ Run `npm run release` from this repository. It fetches each source repository's 
 Other commands:
 - `npm run release:dry-run`: fetch sources and report their exact revisions without installing or deploying.
 - `npm run release:build`: build and validate into `.scratch/release/site/<release-id>` without touching production.
+- Each source's `audit` command is the gate. Sources with accepted advisories (`audit-exceptions.json`) run their own `npm run audit`, which fails on anything not accepted there.
 - Set `RELEASE_AUDIT_STRICT=0` only to explicitly continue past npm audit findings. This does not remediate them; default behavior is to stop on an audit failure.
 
 Each finished release writes `release-info.json` with exact source commit hashes. Temporary worktrees, staging output, and archives are kept under `.scratch/release/` and ignored by Git.

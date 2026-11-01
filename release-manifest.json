@@ -41,7 +41,7 @@
       "packageManager": "npm",
       "submodules": true,
       "install": ["npm", "ci"],
-      "audit": ["npm", "audit", "--audit-level=low"],
+      "audit": ["npm", "run", "audit"],
       "checks": [
         ["npm", "run", "lint"],
         ["npm", "run", "typecheck"],
@@ -55,7 +55,7 @@
       "repository": "Adrixan/LinguaFusion",
       "packageManager": "npm",
       "install": ["npm", "ci"],
-      "audit": ["npm", "audit", "--audit-level=low"],
+      "audit": ["npm", "run", "audit"],
       "checks": [
         ["npm", "run", "lint"],
         ["npm", "run", "typecheck"],
