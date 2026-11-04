@@ -1,0 +1,68 @@
+/* Support footer added to every game or material page by scripts/support-footer.mjs.
+   Identical copies in lernspiele.aufner.org (css/) and lernmaterial.aufner.org (public/css/).
+   Self-contained and always dark (Bioluminescent Night): own background and colours, so it stays
+   readable on any game theme (contrast at least 7:1 for text and link). */
+.support-footer {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom, 0px));
+    background: #121212;
+    border-top: 1px solid #2a2a2a;
+    color: #a3a3a3;
+    font: 400 0.8125rem/1.5 'Inter', 'Public Sans', system-ui, sans-serif;
+    text-align: center;
+}
+
+.support-footer p {
+    max-width: 60rem;
+    margin: 0 auto;
+}
+
+.support-footer a {
+    color: #4ade80;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.15em;
+}
+
+.support-footer a:hover {
+    text-decoration-thickness: 2px;
+}
+
+.support-footer a:focus-visible {
+    outline: 2px solid #4ade80;
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+.support-footer__hint {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Line inside the shared site footer (lernmaterial shell): colours come from the shell theme. */
+.footer__support {
+    margin-top: 0.5rem;
+    font-size: 0.8125rem;
+}
+
+.footer__support a {
+    font-weight: 400;
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+}
+
+@media print {
+    .support-footer,
+    .footer__support {
+        display: none;
+    }
+}

@@ -549,6 +549,29 @@ a {
     text-decoration: underline;
 }
 
+.footer__support {
+    margin-top: var(--space-sm);
+    font-size: 0.8125rem;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.footer__support .footer__link {
+    font-weight: 400;
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+}
+
 @media (prefers-reduced-motion: reduce) {
     html {
         scroll-behavior: auto;
