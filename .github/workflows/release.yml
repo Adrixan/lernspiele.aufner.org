@@ -47,6 +47,8 @@ jobs:
           git clone --no-checkout https://github.com/Adrixan/venomous-snake.git ../venomous-snake
           git clone --no-checkout https://github.com/Adrixan/in-memoriam-pascal.git ../in-memoriam-pascal
           git clone --no-checkout https://github.com/Adrixan/LinguaFusion.git ../LinguaFusion
+          git clone --no-checkout https://github.com/Adrixan/Cast-Game.git ../Cast-Game
+          git clone --no-checkout https://github.com/Adrixan/sudoku-grove.git ../sudoku-grove
 
       - name: Set up SSH deploy key
         env:

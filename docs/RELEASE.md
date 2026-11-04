@@ -16,17 +16,19 @@ Every page carries a small Ko-fi support footer (`https://ko-fi.com/prof_aufner`
 
 Each finished release writes `release-info.json` with exact source commit hashes. Temporary worktrees, staging output, and archives are kept under `.scratch/release/` and ignored by Git.
 
+Sudoku (`sudoku-grove`, public) is listed at `/teens/sudoku/` with its learning pages (`info.html`, `techniken.html`, `programmieren.html`) in the same folder.
+
 Cast-Game is listed at `/teens/cast-game/` as “The Unseen Architecture”. The game is English-language and retains its own visual design; it is not presented as an installable or offline-capable PWA. Its historical Archive entries are identified as educational summaries that have not been independently verified.
 
 ## GitHub Actions setup
 
 The `Release Lernspiele` workflow can be started manually or through the `game-release` repository-dispatch event. Configure these Actions secrets:
-- `LERNSPIELE_DEPLOY_TOKEN`: GitHub token with read access to all four source repositories.
+- `LERNSPIELE_DEPLOY_TOKEN`: GitHub token with read access to all source repositories in `release-manifest.json` (currently six; the workflow clones each of them).
 - `LERNSPIELE_SSH_KEY`: private deployment key for the hosting account.
 - `LERNSPIELE_KNOWN_HOSTS`: pinned `known_hosts` line for the configured SSH hostname.
 - `LERNSPIELE_SSH_HOST`: host name covered by the known-hosts entry.
 - `LERNSPIELE_SSH_USER`: Plesk SSH account username.
 
-For automatic release notifications, configure `LERNSPIELE_DISPATCH_TOKEN` in each of the four source repositories. It needs permission to dispatch events to `Adrixan/lernspiele.aufner.org` (typically a fine-grained token with Actions read/write permission). Without this secret, source pushes succeed and log that automatic deployment was skipped; run the site workflow manually instead.
+For automatic release notifications, configure `LERNSPIELE_DISPATCH_TOKEN` in each source repository that has a notify workflow (trainer-engine, Venomous Snake, Pascal, LinguaFusion, sudoku-grove; sudoku-grove notifies only after its CI passed on `main`). It needs permission to dispatch events to `Adrixan/lernspiele.aufner.org` (typically a fine-grained token with Actions read/write permission). Without this secret, source pushes succeed and log that automatic deployment was skipped; run the site workflow manually instead.
 
 The SSH account must have a writable home directory, `bash`, `tar`, `sha256sum`, and the existing `~/lernspiele.aufner.org/` document root. The workflow does not deploy unless the production audit gates, tests, builds, and path validation all pass.
