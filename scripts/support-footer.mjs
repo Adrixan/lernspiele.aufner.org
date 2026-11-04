@@ -10,11 +10,13 @@ import { join } from 'node:path';
 
 export const SUPPORT_URL = 'https://ko-fi.com/prof_aufner';
 export const SUPPORT_STYLESHEET = '/css/support-footer.css';
+export const SUPPORT_LOGO = '/img/kofi_logo.svg'; // official Ko-fi logo (brand asset kit v2), unmodified
 const MARKER = 'data-support-footer';
+const SUPPORT_LOGO_TAG = `<img src="${SUPPORT_LOGO}" class="support-logo" width="80" height="22" alt="Prof. Aufner auf Ko-fi (externe Seite, öffnet in neuem Tab)">`;
 const SITE_FOOTER = '<footer class="footer">';
 
 const supportLine = `Kostenlos und ohne Werbung. Für Erwachsene, die das Projekt unterstützen möchten:
-<a href="${SUPPORT_URL}" target="_blank" rel="noopener noreferrer">Prof. Aufner auf Ko-fi<span class="support-footer__hint"> (externe Seite, öffnet in neuem Tab)</span></a>`;
+<a href="${SUPPORT_URL}" class="support-link" target="_blank" rel="noopener noreferrer">${SUPPORT_LOGO_TAG}</a>`;
 
 /** Standalone band for pages without the shared site footer. */
 export const supportFooterHtml = `<footer class="support-footer" ${MARKER}>

@@ -27,7 +27,7 @@ for (const arg of args) {
     if (!allowedArgs.has(arg)) throw new Error(`Unknown argument: ${arg}`);
 }
 
-const rootFiles = ['index.html', 'css', 'js', 'fonts', 'favicon.svg', 'LICENSE'];
+const rootFiles = ['index.html', 'css', 'js', 'fonts', 'img', 'favicon.svg', 'LICENSE'];
 const worktrees = [];
 
 function run(command, commandArgs, options = {}) {
@@ -207,7 +207,9 @@ function validateSite(siteDir) {
         if (!existsSync(join(siteDir, game, 'index.html'))) throw new Error(`Missing built game: ${game}`);
     }
     assertSupportFooter(join(siteDir, 'index.html'));
-    if (!existsSync(join(siteDir, 'css', 'support-footer.css'))) throw new Error('css/support-footer.css is missing.');
+    for (const path of ['css/support-footer.css', 'img/kofi_logo.svg']) {
+        if (!existsSync(join(siteDir, path))) throw new Error(`${path} is missing.`);
+    }
     const textFiles = collectFiles(siteDir).filter((path) => /\.(?:html|js|css|json|webmanifest)$/i.test(path));
     for (const path of textFiles) {
         const content = readFileSync(join(siteDir, path), 'utf8');
