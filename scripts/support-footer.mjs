@@ -1,4 +1,4 @@
-// Shared support footer (Ko-fi link) added to every page of every release.
+// Shared support footer (prof.aufner.org and Ko-fi links) added to every page of every release.
 // The release script calls injectSupportFooter() for each route after copying its build output, so new
 // games and materials get the link without changes in their own repositories. Markup only: the look comes
 // from css/support-footer.css at the site root (no inline styles, so strict CSPs with style-src 'self' hold).
@@ -9,13 +9,17 @@ import { existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 export const SUPPORT_URL = 'https://ko-fi.com/prof_aufner';
+export const PROF_URL = 'https://prof.aufner.org/'; // canonical URL from ~/code/prof.aufner.org index.html
 export const SUPPORT_STYLESHEET = '/css/support-footer.css';
 export const SUPPORT_LOGO = '/img/kofi_logo.svg'; // official Ko-fi logo (brand asset kit v2), unmodified
 const MARKER = 'data-support-footer';
 const SUPPORT_LOGO_TAG = `<img src="${SUPPORT_LOGO}" class="support-logo" width="80" height="22" alt="Prof. Aufner auf Ko-fi (externe Seite, öffnet in neuem Tab)">`;
 const SITE_FOOTER = '<footer class="footer">';
 
-const supportLine = `Kostenlos und ohne Werbung. Für Erwachsene, die das Projekt unterstützen möchten:
+const NEW_TAB_HINT = '<span class="support-sr"> (öffnet in neuem Tab)</span>';
+
+const supportLine = `<span>Ein Angebot von <a href="${PROF_URL}" class="support-prof" target="_blank" rel="noopener">Prof. Aufner${NEW_TAB_HINT}</a>.</span>
+<span>Kostenlos und ohne Werbung. Für Erwachsene, die das Projekt unterstützen möchten:</span>
 <a href="${SUPPORT_URL}" class="support-link" target="_blank" rel="noopener noreferrer">${SUPPORT_LOGO_TAG}</a>`;
 
 /** Standalone band for pages without the shared site footer. */
@@ -72,7 +76,7 @@ export function injectSupportFooter(routeDir) {
 /** Throws when a route entry page lacks the footer, so a release can never ship without it. */
 export function assertSupportFooter(pagePath) {
     const html = readFileSync(pagePath, 'utf8');
-    if (!html.includes(MARKER) || !html.includes(SUPPORT_URL)) {
+    if (!html.includes(MARKER) || !html.includes(SUPPORT_URL) || !html.includes(`href="${PROF_URL}"`)) {
         throw new Error(`Support footer missing in ${pagePath}`);
     }
 }

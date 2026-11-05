@@ -14,7 +14,7 @@ import {
 } from 'node:fs';
 import { dirname, join, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { SUPPORT_URL, assertSupportFooter, injectSupportFooter } from './support-footer.mjs';
+import { PROF_URL, SUPPORT_URL, assertSupportFooter, injectSupportFooter } from './support-footer.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const manifest = JSON.parse(readFileSync(join(root, 'release-manifest.json'), 'utf8'));
@@ -156,15 +156,19 @@ function copyGame(sourceName, output, gamePath, siteDir) {
     cpSync(sourcePath, destination, { recursive: true, force: true, errorOnExist: false });
 }
 
-// Every game shows the Ko-fi support footer. By default the release appends it to the game's HTML pages;
+// Every game shows the support footer (prof.aufner.org and Ko-fi links). By default the release appends it to the game's HTML pages;
 // games whose screen is a fixed full-viewport app (the footer would sit hidden behind it) set
-// "supportFooter": "in-app" in the manifest and render the link themselves, which is checked here.
+// "supportFooter": "in-app" in the manifest and render both links themselves, which is checked here.
 function addSupportFooter(game, siteDir) {
     const gameDir = join(siteDir, game.path);
     if (game.supportFooter === 'in-app') {
-        const bundled = collectFiles(gameDir).filter((path) => /\.(?:html|js)$/i.test(path))
-            .some((path) => readFileSync(join(gameDir, path), 'utf8').includes(SUPPORT_URL));
-        if (!bundled) throw new Error(`${game.path} declares an in-app support link, but its build does not contain ${SUPPORT_URL}.`);
+        const bundle = collectFiles(gameDir).filter((path) => /\.(?:html|js)$/i.test(path))
+            .map((path) => readFileSync(join(gameDir, path), 'utf8'));
+        for (const url of [SUPPORT_URL, PROF_URL]) {
+            if (!bundle.some((content) => content.includes(url))) {
+                throw new Error(`${game.path} declares in-app support links, but its build does not contain ${url}.`);
+            }
+        }
         return;
     }
     injectSupportFooter(gameDir);
