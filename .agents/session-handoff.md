@@ -1,6 +1,6 @@
 # Session handoff: lernspiele.aufner.org
 
-Last updated: 2026-10-24, exit handoff
+Last updated: 2026-11-05
 
 ## Done
 - Existing one-command release pipeline: `npm run release` fetches latest default-branch commits into disposable worktrees, runs checks/builds, assembles and validates games, backs up, deploys, and verifies SHA-256 checksums. Dry-run: `npm run release:dry-run`; local build without deploy: `npm run release:build`.
@@ -66,3 +66,12 @@ Last updated: 2026-10-24, exit handoff
 - On go: merge the three branches (--no-ff), `npm run release` in lernspiele.aufner.org and lernmaterial.aufner.org (one SSH attempt, fallback DEPLOY_VIA=m11x).
 - DEPLOYED 2026-11-04 on Peter's go ("Deploy everywhere", kids games included, § 46 SchUG question accepted by him): merged to main (venomous-snake 63aa115, lernspiele 6227477, lernmaterial 1eecac8). lernspiele release 20261104063004-309030 (818 files match, 31 routes HTTP 200, backup ~/lernspiele-backup-20261104063004-309030.tar.gz); lernmaterial release 1eecac8 (all deploy checks ok). Live curl check: link on landing pages, kids/mathematik, sudoku, cast-game, zaehlen-denken-wahrnehmen, snake bundle; /css/support-footer.css 200 on both hosts.
 - 2026-11-04 later: on Peter's request the text link became the official Ko-fi logo (`kofi_logo.svg` from Ko-fi brand asset kit v2, self-hosted, unmodified, 22 px high, alt text with link name and new-tab hint). Live: lernspiele release 20261104064840-316540 (820 files, 31 routes 200), lernmaterial fa024e2; snake precaches the logo.
+
+## 2026-11-05 prof.aufner.org link on every page (task from Peter via the Greeter)
+- Shared footer (`scripts/support-footer.mjs`, `css/support-footer.css`) now starts with "Ein Angebot von Prof. Aufner" linking `PROF_URL` = https://prof.aufner.org/ (canonical URL from `~/code/prof.aufner.org/index.html`), new tab, `rel="noopener"`, visually hidden "(öffnet in neuem Tab)" (`.support-sr`); then the Ko-fi line. `assertSupportFooter()` requires both URLs; in-app games (Venomous Snake) must bundle both. Landing `index.html` line and `css/site.css` updated by hand (marked pages get no injected stylesheet).
+- Both files are byte-identical with lernmaterial.aufner.org (sha256 cfece2d5… / d9138081…), which adopted them in its release a929c85. Change them in both repos together.
+- Venomous Snake main menu: `e47ab91`, merge `d612724` (DE "Ein Angebot von", EN "Brought to you by").
+- Merges: lernspiele `78d6f27`. Release `20261105042700-768200`: 820 files match SHA-256, all 31 routes HTTP 200, backup `~/lernspiele-backup-20261105042700-768200.tar.gz`. Local browser check of the built site: link visible and not covered on all 32 pages at 1280 and 390 px (only LinguaFusion's first-start tutorial modal overlays it); live curl confirms the link on landing, kids/mathematik, teens/technik, sudoku, cast-game, Pascal, LinguaFusion and the Snake bundle.
+- Ko-fi was already on every page since 2026-11-04; nothing missing.
+- Gap: this repo has no `AGENTS.md`; project rules live only in this handoff.
+- Known limit: Pascal and LinguaFusion show a cached start page via their service workers until their next own release (same as for Ko-fi).
