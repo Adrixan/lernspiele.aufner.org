@@ -75,3 +75,8 @@ Last updated: 2026-11-05
 - Ko-fi was already on every page since 2026-11-04; nothing missing.
 - Gap: this repo has no `AGENTS.md`; project rules live only in this handoff.
 - Known limit: Pascal and LinguaFusion show a cached start page via their service workers until their next own release (same as for Ko-fi).
+
+## Exit 2026-11-05 (stopped by the Greeter)
+- Trajectory: status check, then Peter's task via the Greeter (prof.aufner.org link plus Ko-fi everywhere); done and live, see section above. Nothing in progress; `main` synced with `origin/main`, no open branches.
+- Open decisions (Peter): create `AGENTS.md` from the rules in this handoff; delete the 3 local and 11 remote branches already merged into `main`.
+- Next steps (from open points): font licence files in `fonts/`; check newer major versions of the `@v4` actions in `.github/workflows/release.yml`; live browser test of the service workers; Cast-Game source and accessibility review; `LERNSPIELE_DISPATCH_TOKEN` for automatic releases.
