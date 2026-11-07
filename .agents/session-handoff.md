@@ -80,3 +80,9 @@ Last updated: 2026-11-05
 - Trajectory: status check, then Peter's task via the Greeter (prof.aufner.org link plus Ko-fi everywhere); done and live, see section above. Nothing in progress; `main` synced with `origin/main`, no open branches.
 - Open decisions (Peter): create `AGENTS.md` from the rules in this handoff; delete the 3 local and 11 remote branches already merged into `main`.
 - Next steps (from open points): font licence files in `fonts/`; check newer major versions of the `@v4` actions in `.github/workflows/release.yml`; live browser test of the service workers; Cast-Game source and accessibility review; `LERNSPIELE_DISPATCH_TOKEN` for automatic releases.
+
+## 2026-11-07: relicensed to PolyForm Noncommercial 1.0.0
+- Peter's order: only he may make money from the games. `LICENSE` (deployed at the site root by `rootFiles`) is the verbatim PolyForm Noncommercial 1.0.0 text with two Required Notice lines; `package.json` license `PolyForm-Noncommercial-1.0.0`. New `README.md` (root `.md` files stay ignored, `!/README.md` is the only exception) records code PolyForm NC, landing-page content CC BY-NC-SA 4.0, contributions only with a written agreement, and that versions before 2026-11-07 stay AGPL-3.0 for those who received them.
+- Added the missing OFL texts for the self-hosted fonts in `fonts/` (deployed with the `fonts` root entry).
+- The committed game builds under `kids/` and `teens/` still show the old AGPL footers until the next `npm run release`, which rebuilds them from the relicensed source repos. Not released by this session: the coordinator releases once at the end.
+- Checked: `node --check` on both scripts, `npm run release:dry-run` (all sources resolved to their relicense merges).
