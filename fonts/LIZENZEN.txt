@@ -1,0 +1,9 @@
+Schriften auf lernspiele.aufner.org
+
+Alle Schriften stehen unter der SIL Open Font License 1.1 (OFL). Die Lizenztexte liegen in diesem Ordner:
+
+- Inter: OFL-Inter.txt
+- Space Grotesk: OFL-SpaceGrotesk.txt
+- JetBrains Mono: OFL-JetBrainsMono.txt
+
+Die Schriften fallen nicht unter die PolyForm-Noncommercial-Lizenz des Codes.
