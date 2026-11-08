@@ -65,8 +65,8 @@
       "output": "dist"
     },
     "cast-game": {
-      "path": "../Cast-Game",
-      "repository": "Adrixan/Cast-Game",
+      "path": "../knots-of-alderwick",
+      "repository": "Adrixan/knots-of-alderwick",
       "packageManager": "npm",
       "install": ["npm", "ci"],
       "audit": ["npm", "audit", "--audit-level=low"],

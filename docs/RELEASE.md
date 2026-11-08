@@ -18,7 +18,7 @@ Each finished release writes `release-info.json` with exact source commit hashes
 
 Sudoku (`sudoku-grove`, public) is listed at `/teens/sudoku/` with its learning pages (`info.html`, `techniken.html`, `programmieren.html`) in the same folder.
 
-Cast-Game is listed at `/teens/cast-game/` as “The Unseen Architecture”. The game is English-language and retains its own visual design; it is not presented as an installable or offline-capable PWA. Its historical Archive entries are identified as educational summaries that have not been independently verified.
+The Knots of Alderwick (repository `Adrixan/knots-of-alderwick` since 2026-11-08; the old `Adrixan/Cast-Game` is no longer built) is listed at `/teens/cast-game/`. The game is English-language and retains its own visual design; it is not presented as an installable or offline-capable PWA. Its Archive cases carry sources with a verified flag; unverified evidence is marked in the game.
 
 ## GitHub Actions setup
 
