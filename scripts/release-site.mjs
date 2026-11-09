@@ -86,6 +86,17 @@ function validateManifest() {
             throw new Error(`Invalid game entry: ${JSON.stringify(game)}`);
         }
     }
+    const redirects = manifest.redirects ?? [];
+    if (!Array.isArray(redirects)) throw new Error('Release manifest redirects must be a list.');
+    for (const redirect of redirects) {
+        if (!/^(kids|teens)\/[a-z0-9-]+$/.test(redirect.path) || paths.includes(redirect.path) || !paths.includes(redirect.to)
+            || !/^[A-Za-z0-9 .,'-]+$/.test(redirect.title ?? '') || !/^[a-z]{2}$/.test(redirect.lang ?? '')) {
+            throw new Error(`Invalid redirect entry: ${JSON.stringify(redirect)}`);
+        }
+    }
+    if (new Set(redirects.map((redirect) => redirect.path)).size !== redirects.length) {
+        throw new Error('Release manifest contains duplicate redirect paths.');
+    }
     for (const [name, source] of Object.entries(manifest.sources)) {
         if (!/^[a-z0-9-]+$/.test(name) || !/^\.\.\/[A-Za-z0-9._-]+$/.test(source.path)
             || !/^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(source.repository)) {
@@ -175,6 +186,40 @@ function addSupportFooter(game, siteDir) {
     assertSupportFooter(join(gameDir, 'index.html'));
 }
 
+// Old public URLs of renamed routes (manifest "redirects") become static pages: meta refresh, canonical link and a plain
+// link, no script, so strict CSPs hold. Saves survive a rename because localStorage belongs to the origin, not the path.
+function redirectTarget(redirect) {
+    return new URL(`${redirect.to}/`, manifest.deployment.publicBaseUrl).href;
+}
+
+function writeRedirects(siteDir) {
+    for (const redirect of manifest.redirects ?? []) {
+        const target = redirectTarget(redirect);
+        const directory = checkPathWithin(siteDir, join(siteDir, redirect.path));
+        mkdirSync(directory, { recursive: true });
+        writeFileSync(join(directory, 'index.html'), `<!doctype html>
+<html lang="${redirect.lang}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta http-equiv="refresh" content="0; url=${target}">
+<link rel="canonical" href="${target}">
+<title>${redirect.title}: new address</title>
+</head>
+<body>
+<main>
+<h1>${redirect.title} has a new address</h1>
+<p><a href="${target}">${target}</a></p>
+</main>
+</body>
+</html>
+`);
+        injectSupportFooter(directory);
+        assertSupportFooter(join(directory, 'index.html'));
+    }
+}
+
 function collectFiles(directory, prefix = '') {
     const files = [];
     for (const entry of readdirSync(directory, { withFileTypes: true })) {
@@ -210,6 +255,10 @@ function validateSite(siteDir) {
     for (const game of expected) {
         if (!existsSync(join(siteDir, game, 'index.html'))) throw new Error(`Missing built game: ${game}`);
     }
+    for (const redirect of manifest.redirects ?? []) {
+        const page = readFileSync(join(siteDir, redirect.path, 'index.html'), 'utf8');
+        if (!page.includes(`url=${redirectTarget(redirect)}`) || /<script/i.test(page)) throw new Error(`Invalid redirect page: ${redirect.path}`);
+    }
     assertSupportFooter(join(siteDir, 'index.html'));
     for (const path of ['css/support-footer.css', 'img/kofi_logo.svg']) {
         if (!existsSync(join(siteDir, path))) throw new Error(`${path} is missing.`);
@@ -241,7 +290,7 @@ function deployScript(releaseId) {
     const docroot = manifest.deployment.remoteDocroot;
     const remoteStage = `lernspiele-release-${releaseId}`;
     const backup = `lernspiele-backup-${releaseId}.tar.gz`;
-    const routes = manifest.games.map((game) => game.path);
+    const routes = [...manifest.games, ...(manifest.redirects ?? [])].map((route) => route.path);
     const rootFilesToCopy = [...rootFiles, 'release-info.json', 'checksums.sha256'];
     return `set -euo pipefail
 HOME_DIR="$HOME"
@@ -316,7 +365,12 @@ async function deploy(siteDir, releaseId) {
         const status = await run('curl', ['--user-agent', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36', '--fail', '--silent', '--show-error', '--output', '/dev/null', '--write-out', '%{http_code}', url], { stdio: 'pipe' });
         if (status !== '200') throw new Error(`Live route ${url} returned HTTP ${status}.`);
     }
-    console.log(`Live HTTP verification passed for all ${manifest.games.length} game URLs.`);
+    for (const redirect of manifest.redirects ?? []) {
+        const url = new URL(`${redirect.path}/`, manifest.deployment.publicBaseUrl).href;
+        const page = await run('curl', ['--user-agent', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36', '--fail', '--silent', '--show-error', url], { stdio: 'pipe' });
+        if (!page.includes(`url=${redirectTarget(redirect)}`)) throw new Error(`Live redirect ${url} does not point to ${redirectTarget(redirect)}.`);
+    }
+    console.log(`Live HTTP verification passed for all ${manifest.games.length} game URLs and ${(manifest.redirects ?? []).length} redirects.`);
 }
 
 async function preflightDeployment() {
@@ -372,6 +426,7 @@ async function main() {
             copyGame(game.source, releases[game.source].output, game.path, siteDir);
             addSupportFooter(game, siteDir);
         }
+        writeRedirects(siteDir);
         writeFileSync(join(siteDir, 'release-info.json'), `${JSON.stringify(makeReleaseInfo(releases), null, 2)}\n`);
         validateSite(siteDir);
         writeChecksums(siteDir);

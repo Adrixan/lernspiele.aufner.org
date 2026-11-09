@@ -18,7 +18,9 @@ Each finished release writes `release-info.json` with exact source commit hashes
 
 Sudoku (`sudoku-grove`, public) is listed at `/teens/sudoku/` with its learning pages (`info.html`, `techniken.html`, `programmieren.html`) in the same folder.
 
-The Knots of Alderwick (repository `Adrixan/knots-of-alderwick` since 2026-11-08; the old `Adrixan/Cast-Game` is no longer built) is listed at `/teens/cast-game/`. The game is English-language and retains its own visual design; it is not presented as an installable or offline-capable PWA. Its Archive cases carry sources with a verified flag; unverified evidence is marked in the game.
+The Knots of Alderwick (repository `Adrixan/knots-of-alderwick` since 2026-11-08; the old `Adrixan/Cast-Game` is archived and no longer built) is listed at `/teens/knots-of-alderwick/` since 2026-11-09. The game is English-language and retains its own visual design; it is not presented as an installable or offline-capable PWA. Its Archive cases carry sources with a verified flag; the game marks unverified evidence (none at present).
+
+Renamed routes keep their old URL through `redirects` in the manifest (`path`, `to` = a game path, `title`, `lang`): the release writes a static page at the old path (meta refresh, canonical link, plain link and the support footer; no script, so strict CSPs hold), deploys it like a route (replacing the old build there) and checks it live. Saves survive a rename because localStorage belongs to the origin. Current redirect: `/teens/cast-game/` to `/teens/knots-of-alderwick/`.
 
 ## GitHub Actions setup
 
