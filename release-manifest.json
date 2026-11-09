@@ -64,7 +64,7 @@
       "build": ["npm", "run", "build"],
       "output": "dist"
     },
-    "cast-game": {
+    "knots-of-alderwick": {
       "path": "../knots-of-alderwick",
       "repository": "Adrixan/knots-of-alderwick",
       "packageManager": "npm",
@@ -121,7 +121,10 @@
     { "path": "teens/venomous-snake", "source": "venomous-snake", "supportFooter": "in-app" },
     { "path": "teens/in-memoriam-pascal", "source": "in-memoriam-pascal" },
     { "path": "teens/linguafusion", "source": "linguafusion" },
-    { "path": "teens/cast-game", "source": "cast-game" },
+    { "path": "teens/knots-of-alderwick", "source": "knots-of-alderwick" },
     { "path": "teens/sudoku", "source": "sudoku-grove" }
+  ],
+  "redirects": [
+    { "path": "teens/cast-game", "to": "teens/knots-of-alderwick", "title": "The Knots of Alderwick", "lang": "en" }
   ]
 }
