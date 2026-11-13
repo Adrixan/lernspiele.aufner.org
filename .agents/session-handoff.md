@@ -86,3 +86,8 @@ Last updated: 2026-11-05
 - Added the missing OFL texts for the self-hosted fonts in `fonts/` (deployed with the `fonts` root entry).
 - The committed game builds under `kids/` and `teens/` still show the old AGPL footers until the next `npm run release`, which rebuilds them from the relicensed source repos. Not released by this session: the coordinator releases once at the end.
 - Checked: `node --check` on both scripts, `npm run release:dry-run` (all sources resolved to their relicense merges).
+
+## 2026-11-13 Buchstabenfährte and Themetrail added
+- New repository `Adrixan/buchstabenfaehrte` (currently private) as two manifest sources: `buchstabenfaehrte` (`npm run build`, `dist`, route `teens/buchstabenfaehrte`) and `themetrail` (`npm run build:en`, `dist-en`, route `teens/themetrail`, English edition). Two landing cards, teens count 25. Merges `9942232` and `ee7775a`.
+- Release `20261113141526-786462`: 872 files match, all 33 routes HTTP 200, backup `~/lernspiele-backup-20261113141526-786462.tar.gz`. Live curl check of both routes (title, CSP, sw.js, manifest) ok.
+- The first name "Wortfährte" was dropped before any release (taken by another publisher's app).
