@@ -16,6 +16,8 @@ Every page carries a small Ko-fi support footer (`https://ko-fi.com/prof_aufner`
 
 Each finished release writes `release-info.json` with exact source commit hashes. Temporary worktrees, staging output, and archives are kept under `.scratch/release/` and ignored by Git.
 
+Wortfährte (`wortfaehrte`, public) is listed at `/teens/wortfaehrte/`.
+
 Sudoku (`sudoku-grove`, public) is listed at `/teens/sudoku/` with its learning pages (`info.html`, `techniken.html`, `programmieren.html`) in the same folder.
 
 The Knots of Alderwick (repository `Adrixan/knots-of-alderwick` since 2026-11-08; the old `Adrixan/Cast-Game` is archived and no longer built) is listed at `/teens/knots-of-alderwick/` since 2026-11-09. The game is English-language and retains its own visual design; it is not presented as an installable or offline-capable PWA. Its Archive cases carry sources with a verified flag; the game marks unverified evidence (none at present).
