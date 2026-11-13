@@ -90,9 +90,9 @@
       "build": ["npm", "run", "build"],
       "output": "dist"
     },
-    "wortfaehrte": {
-      "path": "../wortfaehrte",
-      "repository": "Adrixan/wortfaehrte",
+    "buchstabenfaehrte": {
+      "path": "../buchstabenfaehrte",
+      "repository": "Adrixan/buchstabenfaehrte",
       "packageManager": "npm",
       "install": ["npm", "ci"],
       "audit": ["npm", "audit", "--audit-level=low"],
@@ -102,6 +102,16 @@
       ],
       "build": ["npm", "run", "build"],
       "output": "dist"
+    },
+    "themetrail": {
+      "path": "../buchstabenfaehrte",
+      "repository": "Adrixan/buchstabenfaehrte",
+      "packageManager": "npm",
+      "install": ["npm", "ci"],
+      "audit": ["npm", "audit", "--audit-level=low"],
+      "checks": [],
+      "build": ["npm", "run", "build:en"],
+      "output": "dist-en"
     }
   },
   "games": [
@@ -136,7 +146,8 @@
     { "path": "teens/linguafusion", "source": "linguafusion" },
     { "path": "teens/knots-of-alderwick", "source": "knots-of-alderwick" },
     { "path": "teens/sudoku", "source": "sudoku-grove" },
-    { "path": "teens/wortfaehrte", "source": "wortfaehrte" }
+    { "path": "teens/buchstabenfaehrte", "source": "buchstabenfaehrte" },
+    { "path": "teens/themetrail", "source": "themetrail" }
   ],
   "redirects": [
     { "path": "teens/cast-game", "to": "teens/knots-of-alderwick", "title": "The Knots of Alderwick", "lang": "en" }

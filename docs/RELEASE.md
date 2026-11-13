@@ -16,7 +16,7 @@ Every page carries a small Ko-fi support footer (`https://ko-fi.com/prof_aufner`
 
 Each finished release writes `release-info.json` with exact source commit hashes. Temporary worktrees, staging output, and archives are kept under `.scratch/release/` and ignored by Git.
 
-Wortfährte (`wortfaehrte`, public) is listed at `/teens/wortfaehrte/`.
+Buchstabenfährte and its English edition Themetrail come from one repository (`buchstabenfaehrte`) as two manifest sources with different build commands: `/teens/buchstabenfaehrte/` (`npm run build`, `dist`) and `/teens/themetrail/` (`npm run build:en`, `dist-en`).
 
 Sudoku (`sudoku-grove`, public) is listed at `/teens/sudoku/` with its learning pages (`info.html`, `techniken.html`, `programmieren.html`) in the same folder.
 
