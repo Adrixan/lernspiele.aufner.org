@@ -1,6 +1,6 @@
 # Session handoff: lernspiele.aufner.org
 
-Last updated: 2026-11-05
+Last updated: 2026-11-14
 
 ## Done
 - Existing one-command release pipeline: `npm run release` fetches latest default-branch commits into disposable worktrees, runs checks/builds, assembles and validates games, backs up, deploys, and verifies SHA-256 checksums. Dry-run: `npm run release:dry-run`; local build without deploy: `npm run release:build`.
@@ -73,12 +73,12 @@ Last updated: 2026-11-05
 - Venomous Snake main menu: `e47ab91`, merge `d612724` (DE "Ein Angebot von", EN "Brought to you by").
 - Merges: lernspiele `78d6f27`. Release `20261105042700-768200`: 820 files match SHA-256, all 31 routes HTTP 200, backup `~/lernspiele-backup-20261105042700-768200.tar.gz`. Local browser check of the built site: link visible and not covered on all 32 pages at 1280 and 390 px (only LinguaFusion's first-start tutorial modal overlays it); live curl confirms the link on landing, kids/mathematik, teens/technik, sudoku, cast-game, Pascal, LinguaFusion and the Snake bundle.
 - Ko-fi was already on every page since 2026-11-04; nothing missing.
-- Gap: this repo has no `AGENTS.md`; project rules live only in this handoff.
+- (Resolved 2026-11-14: `AGENTS.md` now holds the project rules.)
 - Known limit: Pascal and LinguaFusion show a cached start page via their service workers until their next own release (same as for Ko-fi).
 
 ## Exit 2026-11-05 (stopped by the Greeter)
 - Trajectory: status check, then Peter's task via the Greeter (prof.aufner.org link plus Ko-fi everywhere); done and live, see section above. Nothing in progress; `main` synced with `origin/main`, no open branches.
-- Open decisions (Peter): create `AGENTS.md` from the rules in this handoff; delete the 3 local and 11 remote branches already merged into `main`.
+- Open decisions (Peter): both decided 2026-11-14 (D29 A, D38 A), see the last section.
 - Next steps (from open points): font licence files in `fonts/`; check newer major versions of the `@v4` actions in `.github/workflows/release.yml`; live browser test of the service workers; Cast-Game source and accessibility review; `LERNSPIELE_DISPATCH_TOKEN` for automatic releases.
 
 ## 2026-11-07: relicensed to PolyForm Noncommercial 1.0.0
@@ -91,3 +91,12 @@ Last updated: 2026-11-05
 - New repository `Adrixan/buchstabenfaehrte` (currently private) as two manifest sources: `buchstabenfaehrte` (`npm run build`, `dist`, route `teens/buchstabenfaehrte`) and `themetrail` (`npm run build:en`, `dist-en`, route `teens/themetrail`, English edition). Two landing cards, teens count 25. Merges `9942232` and `ee7775a`.
 - Release `20261113141526-786462`: 872 files match, all 33 routes HTTP 200, backup `~/lernspiele-backup-20261113141526-786462.tar.gz`. Live curl check of both routes (title, CSP, sw.js, manifest) ok.
 - The first name "Wortfährte" was dropped before any release (taken by another publisher's app).
+
+## 2026-11-14 Peter's decisions D29 A and D38 A (via the Greeter and the Code dispatcher)
+- D29 A: `AGENTS.md` created from the rules of this handoff and `docs/RELEASE.md`, `CLAUDE.md` = `@AGENTS.md`, `.gitignore` exceptions for both. Release stays manual (`npm run release` only); `release.yml` stays unused with its `@v4` actions, no Actions secrets, no `LERNSPIELE_DISPATCH_TOKEN`. Recorded as a standing rule in `AGENTS.md`; the item is closed and only reopens when Peter asks for automatic releases (then options B: deploy keys, C: per-repo dispatch token).
+- D38 A: all 13 remote branches (ccr-7c0ffc3c-bl6eh2, chore/drop-copilot-kilo, chore/knots-of-alderwick-repo, chore/relicense-polyform-nc, chore/track-agent-state, docs/release-token-setup, feat/add-cast-game-release, feat/multi-game-release-pipeline, feat/post-deploy-route-checks, feat/religion-apps, feat/sudoku, fix/release-browser-user-agent, fix/use-source-audit-gates) and the 5 local ones deleted after `git ls-remote` showed each head as an ancestor of remote `main` `e2c5ee2`; no open PRs. Remote now has only `main`.
+- No release: none of the changed files is deployed (the release copies an explicit `rootFiles` list).
+- Remaining open points (unchanged, not decided): live browser test of the service workers; Knots of Alderwick source and accessibility review.
+
+## Exit 2026-11-14
+- Trajectory: took over D29 A and D38 A from the Code dispatcher; both done, merged to `main`, pushed. Nothing in progress, nothing needs Peter.
