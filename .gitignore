@@ -1,6 +1,8 @@
 # Markdown files in root directory
 /*.md
 !/README.md
+!/AGENTS.md
+!/CLAUDE.md
 
 # Dependencies
 node_modules/
