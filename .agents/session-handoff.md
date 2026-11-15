@@ -120,3 +120,32 @@ Last updated: 2026-11-15
 - Trajectory: took over Peter's two Greeter decisions from the brief; both done, `main` pushed in all three repos.
 - Open decision for Peter: the nginx CSP header for knots-of-alderwick (above).
 - Open points unchanged: live browser test of the service workers; Knots of Alderwick source and accessibility review.
+
+## 2026-11-15 live browser test of the service workers (brief from Peter via the Greeter and the Code dispatcher)
+- Tool: `.scratch/sw-live/live-sw.cjs` (ignored; Playwright from `/usr/local/lib/node_modules/@playwright/mcp`). Launch flag `--user-agent=<desktop Chrome>` is required: the context option alone leaves `HeadlessChrome` on the `sw.js` script fetch (checked against a local header probe, `ua-probe.cjs`).
+- Per route: fresh context, load, wait for `serviceWorker.ready`, reload, check `controller`, list caches, go offline, reload, check status, `fromServiceWorker`, rendered text and failed requests. Run against the live release of 14:00 UTC (built by another session: venomous-snake `6125a91`, buchstabenfaehrte/themetrail `c26c500`, sudoku-grove `a2662e2`, rest as in `20261115044055-2297153`).
+- Result: 34 of 34 pass. 31 routes have a SW; all register in their own scope, control after reload and serve the page offline with zero failed requests. Caches: trainer games 18 entries each; Pascal Workbox precache 65; LinguaFusion Workbox precache 17; Venomous Snake static 17 (shell, bundles and all Pyodide files); sudoku 27; buchstabenfaehrte and themetrail 16. Landing page and Knots of Alderwick have no SW (no offline claim on their cards).
+- Venomous Snake in depth (`snake-run.cjs`): offline reload, Tutorial, lesson "01. First Contact", `print("offline ok", 6*7)` runs and prints `offline ok 42`; no console errors. The one `ERR_ABORTED` on `pyodide.asm.wasm` in the generic run is an in-flight request cancelled by the reload, not a cache gap: Pyodide is precached at install.
+- Closes the open point "service workers only verified by a Node simulation".
+- Observation for the trainer-engine session (not acted on): the trainer header bar renders light grey above the dark body (`offline-teens_technik.png`); check whether that matches the dark default.
+
+## Knots of Alderwick CSP header: decided, waiting for Peter's Plesk change
+- Peter chose option A on 2026-11-15 (AskUserQuestion): an nginx directive scoped to the game.
+- Current live state (checked 14:03 UTC): `HEAD` requests (`curl -I`) return the CSP with `frame-ancestors 'none'` because Apache answers them with `.htaccess`, but real `GET` requests are served by nginx without any CSP header. A browser iframe of `/teens/knots-of-alderwick/` still loads (`.scratch/sw-live/frame-test.cjs`). Verify with GET (`curl -sS -o /dev/null -D - -A '<desktop UA>' URL`), never with `-I`.
+- Needs Peter: Plesk > Websites & Domains > lernspiele.aufner.org > Hosting & DNS > Apache & nginx Settings > "Additional nginx directives", paste, OK (Plesk runs `nginx -t` and refuses a broken config):
+```
+location ^~ /teens/knots-of-alderwick/ {
+    add_header Content-Security-Policy "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'" always;
+    add_header Strict-Transport-Security "max-age=15768000; includeSubDomains" always;
+    location ~ /\.ht { deny all; }
+}
+```
+  `^~` keeps Plesk's static regex location out, so nginx serves the files itself with the header; HSTS is repeated because a location-level `add_header` drops inherited ones; the nested rule keeps `.htaccess` at 403. The policy string must stay identical to the game's `.htaccess` and meta CSP (knots `src/test/securityHeaders.test.ts`).
+- After the change (next session): GET check on `/teens/knots-of-alderwick/`, an asset and `.htaccess` (403), `frame-test.cjs` must show the knots iframe blocked and sudoku still loading, the landing page and other games must have no CSP header; then tell the knots-of-alderwick session to note that production enforces the header through the Plesk nginx directive (its commit note says "Apache mod_headers").
+
+## Exit 2026-11-15 (afternoon)
+- Trajectory: took over the SW live test from the dispatcher brief; done, all pass. Asked Peter the knots CSP question; answer A, steps above.
+- Open decisions: none.
+- Needs Peter: the Plesk nginx directive above.
+- Open points: Knots of Alderwick source and accessibility review (belongs to the knots-of-alderwick repo session); trainer header colour observation (trainer-engine session).
+- No code changed, no release (handoff only, not deployed).
