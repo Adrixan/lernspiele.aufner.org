@@ -1,6 +1,6 @@
 # Session handoff: lernspiele.aufner.org
 
-Last updated: 2026-11-14
+Last updated: 2026-11-15
 
 ## Done
 - Existing one-command release pipeline: `npm run release` fetches latest default-branch commits into disposable worktrees, runs checks/builds, assembles and validates games, backs up, deploys, and verifies SHA-256 checksums. Dry-run: `npm run release:dry-run`; local build without deploy: `npm run release:build`.
@@ -100,3 +100,23 @@ Last updated: 2026-11-14
 
 ## Exit 2026-11-14
 - Trajectory: took over D29 A and D38 A from the Code dispatcher; both done, merged to `main`, pushed. Nothing in progress, nothing needs Peter.
+
+## 2026-11-15 web-modernize (Modern Web Guidance, timer run)
+- Trajectory: Peter's standing order (2026-11-11), started by the `web-modernize` timer. `legacy-scan --json` on `index.html`, `css/`, `js/`, `fonts/`, `scripts/` returned 0 findings (scanner sanity-checked with a scratch `max-height` accordion, which it flagged). `kids/` and `teens/` are game builds and belong to the game repos' sessions.
+- Nothing changed: no branch, no commit, no release (brief rule 5). This handoff paragraph is the only working-tree change and is left uncommitted on purpose.
+- Report: `~/sync/ai/web-modernize/2026-11-15/lernspiele.aufner.org.md`.
+- Open points unchanged: live browser test of the service workers; Knots of Alderwick source and accessibility review.
+
+## 2026-11-15 production release `20261115044055-2297153` and theme decision (Peter via the Greeter)
+- Peter's decisions in the Greeter menu: "Release lernspiele now" and "Keep dark default".
+- Release: knots-of-alderwick `05a2373` (scrollbar contrast, CSP `frame-ancestors` moved to `public/.htaccess`) and venomous-snake `b48240a` (interactive input, Pyodide advisory docs), both merged to `main` beforehand; other sources trainer-engine `9fd426c`, Pascal `3b660fe`, LinguaFusion `82cc5df`, sudoku-grove `85f91a4`, buchstabenfaehrte/themetrail `4760be8`. 873 files match SHA-256, all 33 routes and 1 redirect HTTP 200, backup `~/lernspiele-backup-20261115044055-2297153.tar.gz`; `favicon.ico` stays as the one extra docroot file.
+- The release ran past the 10 min background limit of the agent shell and was killed in the `finally` worktree cleanup, after deploy and live verification had passed; leftover worktrees were removed by hand. Next time run it with a longer limit (it took about 9 min).
+- Live check (curl, desktop User-Agent): `release-info.json` lists the revisions above; knots CSS has the new scrollbar colours; the meta CSP is in place; `/teens/knots-of-alderwick/.htaccess` answers 403.
+- Problem for knots-of-alderwick, needs Peter: Plesk's nginx serves the static files directly (`server: nginx`, no CSP header in the response), so the `.htaccess` header never reaches the browser and `frame-ancestors` is not enforced. No loss against before (the meta CSP never enforced it either). Fix options: Plesk "Additional nginx directives" for the domain (`add_header Content-Security-Policy ... always;` scoped to `/teens/knots-of-alderwick/`), or switch off "serve static files directly by nginx" so Apache applies `.htaccess`. Both are Plesk panel settings; afterwards the knots-of-alderwick session should correct its commit note and handoff ("Apache mod_headers").
+- Theme: dark default stays (rule added under Catalog in `AGENTS.md`). The proposals in buchstabenfaehrte (merge `64db024`) and sudoku-grove (merge `a2662e2`) are closed in their `.agents/to-do.md` and recorded in their `AGENTS.md`; this repo had no proposal. Both web-modernize reports in `~/sync/ai/web-modernize/2026-11-15/` got a "Decision" section.
+- Not touched: sudoku-grove's open Dependabot branch `vite-8.3.7` (not part of this task).
+
+## Exit 2026-11-15
+- Trajectory: took over Peter's two Greeter decisions from the brief; both done, `main` pushed in all three repos.
+- Open decision for Peter: the nginx CSP header for knots-of-alderwick (above).
+- Open points unchanged: live browser test of the service workers; Knots of Alderwick source and accessibility review.
