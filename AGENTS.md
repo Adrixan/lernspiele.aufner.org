@@ -15,6 +15,7 @@ Landing page (`index.html`, `css/`, `js/`, `fonts/`, `img/`) and release pipelin
 - `release-manifest.json` is the authoritative inventory of sources, routes and redirects; the landing page `index.html` is the curated presentation, and the release fails when its links differ from the manifest. A new game needs a manifest source and route plus a landing card (and the badge count).
 - Renamed routes keep their old URL through `redirects` in the manifest.
 - Every page carries the shared footer: "Ein Angebot von Prof. Aufner" (https://prof.aufner.org/) and the Ko-fi logo link (https://ko-fi.com/prof_aufner). The release injects it (`scripts/support-footer.mjs`, `css/support-footer.css`) and fails when an entry page lacks it; full-screen apps set `"supportFooter": "in-app"` and render both links themselves. Both files are byte-identical with `~/code/lernmaterial.aufner.org`: change them in both repos together.
+- Theme (Peter, 2026-11-15): dark stays the default for every visitor; only a toggle choice in `lernspiele-theme` (`js/site.js`, shared with the games on this origin) switches to light; never follow the system colour scheme. Drop web-modernize `dark-mode-toggle` findings that propose a system default.
 - Prof. Aufner rules apply (audience 10 to 18): Ko-fi is addressed to adults and never pushed at minors; no tracking, no external requests (fonts are self-hosted, the release fails on Google Fonts references).
 
 ## Licence
