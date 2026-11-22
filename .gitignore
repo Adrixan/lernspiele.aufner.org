@@ -30,3 +30,8 @@ Thumbs.db
 # Logs
 *.log
 npm-debug.log*
+
+# Game builds: the release builds kids/ and teens/ from the source repos
+# (release-manifest.json) into .scratch/release; never commit them here
+/kids/
+/teens/

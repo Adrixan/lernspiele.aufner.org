@@ -1,2 +1,0 @@
-// subject.json (generated)
-window.__TRAINER_SUBJECT__ = {"id":"teens-latein","name":"Latein (AHS)","description":"Lerne Latein für die AHS Unterstufe - Sprache, Grammatik und Kultur","targetAudience":"Schülerinnen und Schüler der AHS Unterstufe (10-14 Jahre)","primarySkillArea":"language","enabledExerciseTypes":["multiple-choice","fill-blank","matching","sorting","word-order"],"exerciseTypeConfig":{"multiple-choice":{"hintsEnabled":false,"maxAttempts":1},"fill-blank":{"hintsEnabled":true,"maxAttempts":3}}};
