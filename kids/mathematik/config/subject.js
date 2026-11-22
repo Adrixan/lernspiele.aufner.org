@@ -1,2 +1,0 @@
-// subject.json (generated)
-window.__TRAINER_SUBJECT__ = {"id":"kids-mathematik","name":"Mathematik","description":"Mathematik Grundstufe - Ein interaktiver Trainer für mathematische Grundkompetenzen","targetAudience":"Lernende der Grundstufe","primarySkillArea":"mathematics","enabledExerciseTypes":["multiple-choice","fill-blank","matching","sorting","word-order"],"exerciseTypeConfig":{"multiple-choice":{"hintsEnabled":true,"maxAttempts":2},"fill-blank":{"hintsEnabled":true,"maxAttempts":3},"matching":{"hintsEnabled":true,"maxAttempts":2}}};

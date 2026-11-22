@@ -1,2 +1,0 @@
-// subject.json (generated)
-window.__TRAINER_SUBJECT__ = {"id":"teens-musik","name":"Musik (AHS)","description":"Lerne Musik für die AHS Unterstufe - Rhythmus, Instrumente und Musikgeschichte","targetAudience":"Schülerinnen und Schüler der AHS Unterstufe (10-14 Jahre)","primarySkillArea":"arts","enabledExerciseTypes":["multiple-choice","matching","fill-blank","sorting"],"exerciseTypeConfig":{"multiple-choice":{"hintsEnabled":false,"maxAttempts":1}}};

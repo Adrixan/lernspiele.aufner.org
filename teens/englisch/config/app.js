@@ -1,2 +1,0 @@
-// app.json (generated)
-window.__TRAINER_APP__ = {"id":"teens-englisch","name":"Englisch (AHS)","version":"1.0.0","build":{"pwaEnabled":true,"usbDistribution":true},"display":{"primaryColor":"#059669","icon":"/assets/englisch-icon.svg"},"terminology":{"level":"Klasse","levelPlural":"Klassen","theme":"Unit","themePlural":"Units","exercise":"Exercise","exercisePlural":"Exercises"}};

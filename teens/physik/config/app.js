@@ -1,2 +1,0 @@
-// app.json (generated)
-window.__TRAINER_APP__ = {"id":"teens-physik","name":"Physik (AHS)","version":"1.0.0","build":{"pwaEnabled":true,"usbDistribution":true},"display":{"primaryColor":"#0d9488","icon":"/assets/physik-icon.svg"},"terminology":{"level":"Klasse","levelPlural":"Klassen","theme":"Thema","themePlural":"Themen","exercise":"Aufgabe","exercisePlural":"Aufgaben"}};

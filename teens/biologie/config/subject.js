@@ -1,2 +1,0 @@
-// subject.json (generated)
-window.__TRAINER_SUBJECT__ = {"id":"teens-biologie","name":"Biologie (AHS)","description":"Lerne Biologie für die AHS Unterstufe - Körper, Tiere, Pflanzen, Ökologie und Genetik","targetAudience":"Schülerinnen und Schüler der AHS Unterstufe (10-14 Jahre)","primarySkillArea":"science","enabledExerciseTypes":["multiple-choice","fill-blank","matching","sorting"],"exerciseTypeConfig":{"multiple-choice":{"hintsEnabled":false,"maxAttempts":1},"fill-blank":{"hintsEnabled":true,"maxAttempts":3},"matching":{"hintsEnabled":true,"maxAttempts":2}}};

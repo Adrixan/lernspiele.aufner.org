@@ -1,2 +1,0 @@
-// subject.json (generated)
-window.__TRAINER_SUBJECT__ = {"id":"teens-physik","name":"Physik (AHS)","description":"Lerne Physik für die AHS Unterstufe - Mechanik, Elektrik, Optik und Wellen","targetAudience":"Schülerinnen und Schüler der AHS Unterstufe (10-14 Jahre)","primarySkillArea":"science","enabledExerciseTypes":["multiple-choice","fill-blank","matching","sorting"],"exerciseTypeConfig":{"multiple-choice":{"hintsEnabled":false,"maxAttempts":1},"fill-blank":{"hintsEnabled":true,"maxAttempts":3}}};
