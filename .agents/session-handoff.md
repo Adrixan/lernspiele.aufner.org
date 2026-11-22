@@ -1,6 +1,6 @@
 # Session handoff: lernspiele.aufner.org
 
-Last updated: 2026-11-15
+Last updated: 2026-11-22
 
 ## Done
 - Existing one-command release pipeline: `npm run release` fetches latest default-branch commits into disposable worktrees, runs checks/builds, assembles and validates games, backs up, deploys, and verifies SHA-256 checksums. Dry-run: `npm run release:dry-run`; local build without deploy: `npm run release:build`.
@@ -157,3 +157,9 @@ location ^~ /teens/knots-of-alderwick/ {
 - Live checks (desktop UA, `.scratch/sw-live/`): `pyodide/LICENSE.txt` 200, 1828 lines, contains "Third-party notices for the Pyodide runtime"; main bundle carries the Ko-fi and prof.aufner.org URLs; `snake-lang.cjs` with de-AT and en-GB: German or English title screen, German manifest (`lang` de), lazy chunks `de-*.js` and `en-*.js` 200, EN/DE switcher visible top right (x 1183/1223, y 17, not covered), active language `aria-pressed`, EN click shows "New Game", no console errors. SW: Snake static cache 20 entries, offline reload and offline Python run (`offline ok 42`) pass; Pascal Workbox precache 51 entries, offline reload passes.
 - Note from Code: venomous-snake: its build now fails on purpose if Pyodide is not 314.0.7 until the licence texts are re-vendored; a release stopped there belongs to that session.
 - Unchanged: Needs Peter = Plesk nginx directive for the knots CSP (section above).
+
+## 2026-11-22 security scan 2026-11-21 wrapped up
+- Trajectory: Peter's "Wrap the weekly security scan up" (via Greeter). The scan's own session of 2026-11-21 hit the usage limit and changed nothing (tree was clean). Finding: npm `underscore` 1.1.7 (GHSA-qpx9-hpmf-5gmw, high) in `teens/in-memoriam-pascal/external/pascal.js/package-lock.json`, part of a stale committed snapshot, never deployed (release ships landing files plus fresh source builds; live URL 404).
+- Decision (Peter, AskUserQuestion): delete all stale committed game snapshots. Commit `9184a33`, merge `b061668`: `kids/` and `teens/` removed (670 files) and git-ignored, README and AGENTS.md rule updated. Ignored local Pascal.js leftovers deleted too; `in-memoriam-pascal` submodule untouched.
+- Verified: `npm run release:build` (`20261122083434-71507`) passes, 33 entry points, 38 HTML, all audits clean; scanner dry run on this repo 0 advisories. No release: the shipped site is unchanged. Report `~/sync/ai/security-scan/2026-11-21/lernspiele.aufner.org.md`, linked from `index.md`; `.agents/security-scan.md` removed (resolved).
+- Unchanged: Needs Peter = Plesk nginx directive for the knots CSP.
